@@ -25,14 +25,16 @@ export const Recommendations =({favorites }) => {
     <div className="flex row w-full p-10">
 
   <div className="w-4/5">
-  {newArray.map((wine) => {
+  { newArray.length ? 
+  newArray.map((wine) => {
     return (<>
     
     <Link className="card bg-red-300" to={`/library/details/${wine.id}`}>
     <div>{wine.region?.location} {wine.varietal?.name}</div>
     </Link>
         </>)
-  })}
+  })
+  : <div>Please add more favorites</div>}
   </div>
   <div className="right-0">
     <img className="w-2/5 h-auto"src="https://cdn3.iconfinder.com/data/icons/special-unusual-odd-jobs/237/weird-job-005-512.png"/>

@@ -23,7 +23,8 @@ useEffect(
 
     return <>
     <div className=" w-full text-center">
-        <Link className="btn" to="/somm/createVarietalRegion">Create a new Varietal Region</Link>
+        <Link className="btn m-3" to="/somm/createVarietalRegion">Assign a new Varietal Region</Link>
+        <Link className="btn" to="/somm/createWineBottle">Add new Wine Bottle</Link>
     <div className="overflow-x-auto p-10 ">
     <table className="table w-full ">
         <tr className="hover">

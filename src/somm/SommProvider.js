@@ -73,3 +73,14 @@ export const createVarietal = (varietalObject) => {
     })
         .then(response => response.json())
 }
+
+export const createWineBottle = (bottleObject) => {
+    return fetch(` http://localhost:8088/wineBottles`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(bottleObject)
+    })
+        .then(response => response.json())
+}

@@ -55,7 +55,7 @@ export const SearchedVarietalRegionList = ({ searchTermState }) => {
 
 
         <h2>Varietal Regions</h2>
-        <article>
+        <article className="flex row">
 
           
 {

@@ -24,20 +24,22 @@ useEffect(
     return <>
     <div className=" w-full text-center">
         <Link className="btn" to="/somm/createVarietalRegion">Create a new Varietal Region</Link>
-    <table className="text-center">
-        <tr>
+    <div className="overflow-x-auto p-10 ">
+    <table className="table w-full ">
+        <tr className="hover">
             <td>Customer Name</td>
-            <td>Favorites Added</td>
+            <td className="text-center">Favorites Added</td>
         </tr>
         {
         customers.map((customer) => {
-        return <tr>
+        return <tr className="hover">
             <td>{customer.fullName}</td>
             <td className="text-center">{customer.favorites?.length}</td>
             </tr>})
 }
 
         </table>
+        </div>
         </div>
         </>
 }

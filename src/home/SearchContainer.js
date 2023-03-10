@@ -7,7 +7,7 @@ export const SearchedContainer = () => {
     
     return (
         <>
-        <div className="p-10 text-center">
+        <div className=" text-center">
         <WineSearch setterFunction={setSearchTerms}/> 
         <SearchedVarietalRegionList searchTermState={searchTerms} /> 
         </div>

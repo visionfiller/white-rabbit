@@ -18,9 +18,10 @@ export const WhiteRabbit = () => {
 				<Route path="*" element={
 				<Authorized>
 					<>
+					
                     <NavBar />
                     <ApplicationViews />
-						
+					
 					</>
 				</Authorized>
 

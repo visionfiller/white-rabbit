@@ -19,14 +19,13 @@ export const addToFavorites = (wineObject) => {
         .then(response => response.json())
 }
 
-// export const updateVarietalRegion =(varietalRegionObject) => {
-//     return fetch(`http://localhost:8088/varietalRegions/${}}`, {
-//         method: "PUT",
-//         headers: {
-//           "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(varietalRegionObject)
-//       })
-//       .then(response => response.json())
-//       .then(getVarietalRegions)
-// }
+export const updateVarietalRegion =(varietalRegionObject) => {
+    return fetch(`http://localhost:8088/varietalRegions/${varietalRegionObject.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(varietalRegionObject)
+      })
+      .then(response => response.json())
+}

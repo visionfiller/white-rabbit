@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { getVarietalRegionsById } from "../cellar/CellarProvider"
+import { addToFavorites } from "./LibraryProvider"
 
 export const CardDetails =() => {
 const {varietalRegionId} = useParams()
 const [wine, setWine]= useState({})
+const localRabbitUser = localStorage.getItem("rabbit_user")
+const rabbitUserObject = JSON.parse(localRabbitUser)
+
+const wineObject = {
+    userId:rabbitUserObject.id,
+    varietalRegionId: wine.id
+}
 
 useEffect(
     () => {
@@ -12,11 +20,12 @@ useEffect(
         .then((detail) => {
             setWine(detail)
         })
-    }
+    },[]
 )
 
     return(<>
     <div className="text-center">
+        <button className="btn btn-accent" onClick={()=> addToFavorites(wineObject) }>Add to favorites</button>
     <div className="text-4xl font-bold">{wine?.region?.location} {wine.varietal?.name}</div>
     <div>Country: {wine?.region?.country}</div>
     <div>

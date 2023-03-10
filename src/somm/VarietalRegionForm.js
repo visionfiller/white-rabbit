@@ -139,11 +139,11 @@ DisplayDryness()
 
     return <>
         <div className="flex row justify-evenly p-10 m-10">
-        <form>
-            <h2>Create a new Varietal Region</h2>
-            <fieldset>
-                <div className="flex flex-col" >
-                    <select
+        <form className="form-control">
+            <h2 className="text-center font-extrabold text-lg">Assign a new Varietal Region</h2>
+            <fieldset className="p-1 pt-4">
+                <div className="input-group" >
+                    <select className=""
                         id="varietal"
                         onChange={
                             (evt) => {
@@ -152,7 +152,7 @@ DisplayDryness()
                                 update(copy)
                             }}>
 
-                        <option name="varietal"> Choose a varietal...</option>
+                        <option className="" name="varietal"> Choose a varietal...</option>
                         {varietals.map(
                             (varietal) => {
                                 return (<option
@@ -167,9 +167,10 @@ DisplayDryness()
                     >+ New Varietal</button>
                 </div>
             </fieldset>
-            <fieldset>
-                <div className="flex flex-col" >
+            <fieldset className="p-1">
+                <div className="input-group" >
                     <select
+                    className=""
                         id="region"
                         onChange={
                             (evt) => {
@@ -193,7 +194,7 @@ DisplayDryness()
                     >+ New Region</button>
                 </div>
             </fieldset>
-            <fieldset>
+            <fieldset className="p-1">
                 <div >
                     <select
                         id="body"
@@ -216,7 +217,7 @@ DisplayDryness()
                     </select>
                 </div>
             </fieldset>
-            <fieldset>
+            <fieldset className="p-1">
                 <div >
                     <select
                         id="dryness"
@@ -239,7 +240,7 @@ DisplayDryness()
                     </select>
                 </div>
             </fieldset>
-            <fieldset>
+            <fieldset className="p-1">
                 <div >
                     <select
                         id="acidity"
@@ -262,7 +263,7 @@ DisplayDryness()
                     </select>
                 </div>
             </fieldset>
-            <button onClick={(clickEvent) => handleSaveButton(clickEvent)}>Create New Varietal Region</button>
+            <button className="btn m-2" onClick={(clickEvent) => handleSaveButton(clickEvent)}>Create New Varietal Region</button>
         </form>
         
 

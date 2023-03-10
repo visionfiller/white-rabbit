@@ -30,39 +30,47 @@ export const Login = () => {
     }
 
     return (
-        <main className="container--login">
-            <section>
-                <form className="form--login" onSubmit={handleLogin}>
-                    <h1>White Rabbit</h1>
-                    <h2>Please sign in</h2>
-                    <fieldset>
-                        <label htmlFor="inputEmail"> Email address </label>
-                        <input type="email"
+        <main className="">
+
+            <section className="bg-white ml-auto mr-auto w-3/5 m-14  pt-6 pb-6 border border-dashed border-black">
+                <form className="w-2/5 ml-auto mr-auto form-control" onSubmit={handleLogin}>
+                    <h2 className="text-left">Please sign in</h2>
+                    <fieldset className="form-control pt-2">
+                        <label className="input-group input-group-md" htmlFor="inputEmail">
+                         <input type="email"
                             value={email}
                             onChange={evt => set(evt.target.value)}
-                            className="form-control"
+                            className="input input-bordered input-md"
                             placeholder="Email address"
                             required autoFocus />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="password"> Password </label>
+                         <span className="">email</span>
+                        </label>
+                            </fieldset>
+                  
+                    <fieldset className="form-control pt-2">
+                        <label className="input-group input-group-md" htmlFor="password">
                         <input type="password"
                             value={password}
                             onChange={evt => setPassword(evt.target.value)}
-                            className="form-control"
+                            className="input input-bordered input-md"
                             placeholder="password"
                             required autoFocus />
+                            <span>password</span>
+                            </label>
                     </fieldset>
-                    <fieldset>
-                        <button type="submit">
+                    <fieldset className="pt-8 flex row">
+                        <button className="btn mr-auto ml-auto" type="submit">
                             Sign in
                         </button>
+                        <Link className="w-full inline-block pl-8"to="/register">Not a member yet?</Link>
                     </fieldset>
                 </form>
+                
             </section>
-            <section className="link--register">
-                <Link to="/register">Not a member yet?</Link>
-            </section>
+
+            
+                
+            
         </main>
     )
 }

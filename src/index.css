@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -26,9 +27,4 @@ code {
 .card {
   @apply m-5 p-5 rounded border border-black  text-center w-2/5 h-auto shadow-lg
 }
-.card img {
-  @apply object-cover
-}
-.btn{
-  @apply bg-red-400 rounded-full py-2 px-3 text-sm font-bold cursor-pointer tracking-wider;
-}
+

@@ -5,6 +5,7 @@ import { Home } from "../home/Home"
 import { WillILikeIt } from "../somm/LikeIt"
 import { SearchedContainer } from "../home/SearchContainer"
 import { CardDetails } from "../library/CardDetails"
+import { CellarContainer } from "../cellar/CellarContainer"
 
 
 export const CustomerViews = () => {
@@ -13,7 +14,7 @@ export const CustomerViews = () => {
         <Route path="/library" element={ <Library/>} />
         <Route path="/library/details/:varietalRegionId" element={ <CardDetails />} />
 
-        <Route path="/cellar" element={ <WineCellar />} />
+        <Route path="/cellar" element={ <CellarContainer />} />
         <Route path="/like" element={ <WillILikeIt/>} />
        
 

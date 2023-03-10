@@ -93,19 +93,29 @@ useEffect(
 // })
 
 const calculatePercentage =(foundWine) => {
-    let bodyArray = filteredVarietalRegions.filter(varietalRegion => varietalRegion.bodyId <= foundWine.bodyId || varietalRegion.bodyId >= foundWine.bodyId)
-    let drynessArray = filteredVarietalRegions.filter(varietalRegion => varietalRegion.drynessId === foundWine.drynessId)
-    let acidityArray = filteredVarietalRegions.filter(varietalRegion => varietalRegion.acidityId === foundWine.acidityId)
+    let bodyRange = foundWine.bodyId + 1
+    let bodyRangeTwo = foundWine.bodyId - 1
+    let bodyArray = filteredVarietalRegions.filter(varietalRegion => (varietalRegion.bodyId === bodyRange) || (varietalRegion.bodyId === foundWine.bodyId) || (varietalRegion.bodyId === bodyRangeTwo)  )
+    console.log(bodyArray.length/filteredVarietalRegions.length)
+    let drynessUp = foundWine.drynessId + 1
+    let drynessDown = foundWine.drynessId -1
+    let drynessArray = filteredVarietalRegions.filter(varietalRegion => varietalRegion.drynessId === foundWine.drynessId || varietalRegion.drynessId === drynessUp || varietalRegion.drynessId === drynessDown)
+
+    let acidityUp = foundWine.acidityId + 1
+    let acidityDown = foundWine.acidityId -1
+    let acidityArray = filteredVarietalRegions.filter(varietalRegion => varietalRegion.acidityId === foundWine.acidityId || varietalRegion.acidityId === acidityUp || varietalRegion.acidityId === acidityDown)
     
-    let bodyPercentage = bodyArray.length/varietalRegions.length
-    let drynessPercentage = drynessArray.length/varietalRegions.length
-    let acidityPercentage = acidityArray.length/varietalRegions.length
+    let bodyPercentage = bodyArray.length/filteredVarietalRegions.length
+    let drynessPercentage = drynessArray.length/filteredVarietalRegions.length
+    let acidityPercentage = acidityArray.length/filteredVarietalRegions.length
     
 return(<div className="h-full p-10">
 <div className="text-2xl">{foundWine.region.location},{foundWine.region.country} - {foundWine.varietal.name}</div>
 <div>Body:{parseFloat(bodyPercentage *100).toFixed(0)}% </div>
 <div>Dryness:{parseFloat(drynessPercentage *100).toFixed(0)}% </div>
 <div>Acidity:{parseFloat(acidityPercentage *100).toFixed(0) }% </div>
+{bodyPercentage > .50 && drynessPercentage > .50 && acidityPercentage > .50 ? <div className="text-2xl font-extrabold">YES! I think you'll like this wine</div>
+: <div className="text-2xl font-extrabold">No, it might not be for you :(</div>}
 </div>)
 
 }

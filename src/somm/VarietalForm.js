@@ -21,12 +21,16 @@ export const VarietalForm = () => {
     
     const HandleClickSaveVarietal =(event) => {
         event.preventDefault()
-    
+    if (varietal.image && varietal.name && varietal.description && varietal.wineTypeId ){
         createVarietal(varietal)
-              .then(() => {
-                  navigate("/somm/createVarietalRegion")
-              })
-    
+        .then(() => {
+            navigate("/somm/createVarietalRegion")
+        })
+
+    }
+        else{
+            window.alert("Please fill in all fields")
+        }
     
     }
     

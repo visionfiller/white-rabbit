@@ -8,23 +8,18 @@ const navigate = useNavigate()
 
 const HandleClickSaveRegion =(event) => {
     event.preventDefault()
-
+if(region.location && region.country) {
     createRegion(region)
-          .then(() => {
-              navigate("/somm/createVarietalRegion")
-          })
+    .then(() => {
+        navigate("/somm/createVarietalRegion")
+    })
+}
+    else{
+        window.alert("Please fill in both fields")
+    }
 
 
 }
-
-
-
-
-
-
-
-
-
 
 
     return (<>

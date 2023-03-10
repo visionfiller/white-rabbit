@@ -34,6 +34,7 @@ DisplayDryness()
                console.log(varietal)
                setDisplayVarietal (<>
                 <div>{varietal.name}</div>
+                <img src={varietal.image}/>
                 </>)
             
             })
@@ -129,11 +130,17 @@ DisplayDryness()
   
     const handleSaveButton = (event) => {
         event.preventDefault()
-
-      createNewVarietalRegion(newVarietalRegion)
+if (newVarietalRegion.regionId && newVarietalRegion.varietalId && newVarietalRegion.bodyId && newVarietalRegion.acidityId && newVarietalRegion.drynessId) 
+{
+    createNewVarietalRegion(newVarietalRegion)
             .then(() => {
                 navigate("/somm")
             })
+}
+else {
+    window.alert("Please select all fields.")
+}
+      
 
     }
 

@@ -9,6 +9,7 @@ import { RegionForm } from "../somm/RegionForm"
 import { Somm } from "../somm/Somm"
 import { VarietalForm } from "../somm/VarietalForm"
 import { VarietalRegionForm } from "../somm/VarietalRegionForm"
+import { WineBottleForm } from "../somm/WineBottleForm"
 
 export const EmployeeViews = () => {
     return (
@@ -20,8 +21,11 @@ export const EmployeeViews = () => {
         <Route path="/cellar" element={ <WineCellar />} />
         <Route path="/somm" element={ <Somm />} />
         <Route path="/somm/createVarietalRegion" element={ <VarietalRegionForm />} />
+        <Route path="/somm/createWineBottle" element={ <WineBottleForm />} />
         <Route path="/somm/createVarietalRegion/createRegion" element={ <RegionForm />} />
         <Route path="/somm/createVarietalRegion/createVarietal" element={<VarietalForm />} />
+     
+        
        
     </Routes>
     )

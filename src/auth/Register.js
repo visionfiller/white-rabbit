@@ -4,16 +4,15 @@ import { getUsersToCreate, getUserByEmailId, createNewCustomer } from "./UserPro
 
 export const Register = (props) => {
     const [user, setUser] = useState({
-       fullName: "",
-       emailAddress: "",
-       password: "",
+    
+      
        isStaff: false
        
     })
     let navigate = useNavigate()
 
     const registerNewUser = () => {
-        return getUsersToCreate({user})
+        return getUsersToCreate(user)
             .then(createdUser => {
                 if (createdUser.hasOwnProperty("id")) {
                     localStorage.setItem("rabbit_user", JSON.stringify({
@@ -54,7 +53,7 @@ export const Register = (props) => {
                 <fieldset>
                     <label htmlFor="fullName"> Full Name </label>
                     <input onChange={updateUser}
-                           type="text" id="name" className="form-control"
+                           type="text" id="fullName" className="form-control"
                            placeholder="Enter your name" required autoFocus />
                 </fieldset>
                 <fieldset>

@@ -5,8 +5,9 @@ import { SearchedContainer } from "./SearchContainer"
 export const Home = () => {
 
     return <>
-    <h2 className="text-4xl text-center">Let's talk about wine!</h2>
+    <div className="bg-slate-400 h-screen">
+    <h2 className="text-6xl text-center p-20">Let's talk about wine!</h2>
     <SearchedContainer />
-    
+    </div>
     </>
 }

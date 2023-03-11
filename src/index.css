@@ -24,7 +24,6 @@ code {
 }
 
 
-.card {
-  @apply m-5 p-5 rounded border border-black  text-center w-2/5 h-auto shadow-lg
-}
+
+
 

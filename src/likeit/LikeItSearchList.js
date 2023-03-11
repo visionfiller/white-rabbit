@@ -75,22 +75,6 @@ const HandleSaveSearch = (event) => {
    
 }
 
-useEffect(
-    () => {
-
-    }
-)
-// const burger = document.querySelector(`#burger`)
-// const menu = document.querySelector(`#menu`)
-
-// burger.addEventListener(`click`, () => {
-//     if(menu.classList.contains(`hidden`)){
-//         menu.classList.remove(`hidden`)
-//     }
-//     else{
-//         menu.classList.add(`hidden`)
-//     }
-// })
 
 const calculatePercentage =(foundWine) => {
     let bodyRange = foundWine.bodyId + 1
@@ -114,7 +98,7 @@ return(<div className="h-full p-10">
 <div>Body:{parseFloat(bodyPercentage *100).toFixed(0)}% </div>
 <div>Dryness:{parseFloat(drynessPercentage *100).toFixed(0)}% </div>
 <div>Acidity:{parseFloat(acidityPercentage *100).toFixed(0) }% </div>
-{bodyPercentage > .50 && drynessPercentage > .50 && acidityPercentage > .50 ? <div className="text-2xl font-extrabold">YES! I think you'll like this wine</div>
+{bodyPercentage > .50 || drynessPercentage > .50 || acidityPercentage > .50 ? <div className="text-2xl font-extrabold">YES! I think you'll like this wine</div>
 : <div className="text-2xl font-extrabold">No, it might not be for you :(</div>}
 </div>)
 
@@ -128,10 +112,10 @@ return(<div className="h-full p-10">
         
    
                 {
-                    foundWine ? <> <Link className="card" to={`/library/details/${foundWine.id}`}>
+                    foundWine ? <> <Link className="card w-64 h-64 bg-slate-100 shadow-xl p-4 m-2" to={`/library/details/${foundWine.id}`}>
                     <div>{foundWine?.region?.location} {foundWine.varietal?.name}</div>
                     <div>{foundWine?.region?.country}</div>
-                    <img src={foundWine?.varietal?.image}/>
+                    <img className="h-3/5 object-cover"src={foundWine?.varietal?.image}/>
                     <button onClick={(event) => HandleSaveSearch(event)}>See Results</button></Link> 
                     </>
 
@@ -141,7 +125,7 @@ return(<div className="h-full p-10">
   
     
     
-    {probability ? calculatePercentage(foundWine)
+    {probability && foundWine ? calculatePercentage(foundWine)
     : ""}
     
     </>)

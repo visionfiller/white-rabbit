@@ -29,3 +29,8 @@ export const updateVarietalRegion =(varietalRegionObject) => {
       })
       .then(response => response.json())
 }
+
+export const Geocoding = (city) => {
+    return fetch (`https://graphhopper.com/api/1/geocode?q=${city}&limit=1&key=f8c2147e-b7dc-4d37-9d6e-a0a259f410a8`)
+    .then(response => response.json())
+}

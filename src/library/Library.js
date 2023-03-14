@@ -63,7 +63,7 @@ useEffect(
 
     return <>
     <h2 className="text-center text-4xl">The Library</h2>
-    <div className="grid-cols-2 p-10 bg-slate-200">
+    <div className="grid-cols-2 p-10 bg-slate-200 font-body">
     <div className="">
     <label>Filter by type: </label>
     <select

@@ -19,7 +19,7 @@ export const WineBottleForm = () => {
 
     const HandleClickSaveWineBottle =(event) => {
         event.preventDefault()
-    if(wineBottle.name && wineBottle.vintage && wineBottle.varietalRegionId) {
+    if(wineBottle.name && wineBottle.vintage && wineBottle.varietalRegionId && wineBottle.image && wineBottle.link) {
         createWineBottle(wineBottle)
         .then(() => {
             navigate("/somm/createVarietalRegion")
@@ -50,6 +50,18 @@ export const WineBottleForm = () => {
             
         </fieldset>
         <fieldset>
+            <label>Wine Bottle Image</label>
+            <input 
+            onChange={
+                (evt) => {
+                    const copy = { ...wineBottle }
+                    copy.image = evt.target.value
+                    setWineBottle(copy)
+                }}
+            className="pl-2" name="name" id="name" type="text" placeholder="image URL"/>
+            
+        </fieldset>
+        <fieldset>
             <label>Wine Vintage</label>
             <input 
             onChange={
@@ -59,6 +71,18 @@ export const WineBottleForm = () => {
                     setWineBottle(copy)
                 }}
             className="pl-2" name="name" id="name" type="text" placeholder="e.g. 2019 or 2022"/>
+            
+        </fieldset>
+        <fieldset>
+            <label>Website URL</label>
+            <input 
+            onChange={
+                (evt) => {
+                    const copy = { ...wineBottle }
+                    copy.link = evt.target.value
+                    setWineBottle(copy)
+                }}
+            className="pl-2" name="name" id="name" type="text" placeholder="e.g.https://www.wines.com"/>
             
         </fieldset>
         <fieldset>

@@ -14,14 +14,12 @@ export const CardDetails = () => {
     const rabbitUserObject = JSON.parse(localRabbitUser)
     const [lat, setLat] = useState("")
     const [lng, setLng] = useState("")
-   
-
-
     const wineObject = {
         userId: rabbitUserObject.id,
         varietalRegionId: wine.id
     }
    
+
     useEffect(
         () => {
             getVarietalRegionsById(varietalRegionId)
@@ -34,6 +32,7 @@ export const CardDetails = () => {
 
 useEffect(
     ()=>{
+        if (wine.regionId) {
         Geocoding(wine?.region?.geoCodeCity).then((geoCode)=> 
         {let foundLat = geoCode?.hits[0]?.point?.lat.toFixed(2)
             let foundLng = geoCode?.hits[0]?.point?.lng.toFixed(2)
@@ -41,6 +40,7 @@ useEffect(
             setLng(foundLng)
             setIsLoading(false)})
             .then(() => MyMapComponent())
+        }
     },[wine]
 )
     // const findCoordinates = () => {
@@ -69,7 +69,8 @@ useEffect(
     const MyMapComponent = () => {
 
         return (<>
-
+       { isLoading ? "" 
+       :
             <MapContainer center={[lat, lng]} zoom={10} scrollWheelZoom={false}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -78,7 +79,7 @@ useEffect(
 
 
             </MapContainer>
-
+    }
         </>)
 
 
@@ -91,18 +92,34 @@ useEffect(
             {rabbitUserObject.staff ? ""
                 : <button className="btn btn-accent" onClick={() => addToFavorites(wineObject)}>Add to favorites</button>}
 
-            <div className="text-4xl font-bold">{wine?.region?.location} {wine.varietal?.name}</div>
+            <h2 className="text-4xl font-bold">{wine?.region?.location} {wine.varietal?.name}</h2>
             <div>Country: {wine?.region?.country}</div>
-            <div className="p-5 flex row">
-                <img className="w-1/2 h-auto ml-auto mr-auto" src={wine?.varietal?.image} />
-                <div id="map" className="h-auto w-1/2 mr-auto">
-                    { isLoading ? ""
-                     :MyMapComponent()}</div>
+        <div className="px-24">
+                <div className="flex row justify-evenly py-10">
+                <div>Body: {wine?.body?.density}</div>
+                <div>Acidity: {wine?.acidity?.style}</div>
+                <div>Dryness: {wine?.dryness?.level}</div>
+        </div>
+                <div>About this wine: {wine?.varietal?.description}</div>
+        </div>
+
+
+
+
+            <div className="flex row h-full p-10 gap-10">
+
+            <div>
+            <img className="w-full h-full ml-auto mr-auto" src={wine?.varietal?.image} /> 
             </div>
-            <div>Body: {wine?.body?.density}</div>
-            <div>Acidity: {wine?.acidity?.style}</div>
-            <div>Dryness: {wine?.dryness?.level}</div>
-            <div>About this wine: {wine?.varietal?.description}</div>
+
+            <div className="">
+                <div id="map" className="mr-auto object-cover">
+                    { isLoading ? ""
+                    : MyMapComponent()}</div>
+            </div>
+</div>
+
+            
         </div>
     </>)
 }

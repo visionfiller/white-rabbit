@@ -31,11 +31,11 @@ export const Login = () => {
 
     return (
         <main className="flex row h-screen">
-            <div className="hidden bg-cover lg:block lg: w-3/5 h-screen bg-[url('https://th.bing.com/th/id/R.8a3385dee3d63c5dd977705abf4cad84?rik=NaXhHe9JUTk9Zw&riu=http%3a%2f%2fwp.production.patheos.com%2fblogs%2funcommongodcommongood%2ffiles%2f2014%2f07%2fiStock_000036147510Small.jpg&ehk=N5mDs7Sa8pDyw5lExQhvswZwotK290GhnV9dVlS9Wh0%3d&risl=&pid=ImgRaw&r=0')]">
-                <h2 className="mx-auto  text-white text-6xl flex flex-col"><span>White</span><span>Rabbit</span></h2>
+            <div className="bg-cover w-3/5 h-full  bg-[url('https://th.bing.com/th/id/R.8a3385dee3d63c5dd977705abf4cad84?rik=NaXhHe9JUTk9Zw&riu=http%3a%2f%2fwp.production.patheos.com%2fblogs%2funcommongodcommongood%2ffiles%2f2014%2f07%2fiStock_000036147510Small.jpg&ehk=N5mDs7Sa8pDyw5lExQhvswZwotK290GhnV9dVlS9Wh0%3d&risl=&pid=ImgRaw&r=0')]">
+                <h2 className="text-center h-full w-full my-auto  text-white  text-6xl flex flex-col"><span>White</span><span>Rabbit</span></h2>
             </div>
 
-            <section className="bg-white w-2/5 m-14  pt-6 pb-6 border border-dashed border-black">
+            <section className=" bg-white w-2/5 m-14  pt-6 pb-6 border border-dashed border-black">
                 <form className="w-2/5 ml-auto mr-auto form-control" onSubmit={handleLogin}>
                     <h2 className="text-left">Please sign in</h2>
                     <fieldset className="form-control pt-2">

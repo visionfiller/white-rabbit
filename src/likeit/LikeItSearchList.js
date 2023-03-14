@@ -75,47 +75,33 @@ const HandleSaveSearch = (event) => {
    
 }
 
-useEffect(
-    () => {
-
-    }
-)
-// const burger = document.querySelector(`#burger`)
-// const menu = document.querySelector(`#menu`)
-
-// burger.addEventListener(`click`, () => {
-//     if(menu.classList.contains(`hidden`)){
-//         menu.classList.remove(`hidden`)
-//     }
-//     else{
-//         menu.classList.add(`hidden`)
-//     }
-// })
 
 const calculatePercentage =(foundWine) => {
     let bodyRange = foundWine.bodyId + 1
     let bodyRangeTwo = foundWine.bodyId - 1
     let bodyArray = filteredVarietalRegions.filter(varietalRegion => (varietalRegion.bodyId === bodyRange) || (varietalRegion.bodyId === foundWine.bodyId) || (varietalRegion.bodyId === bodyRangeTwo)  )
-    console.log(bodyArray.length/filteredVarietalRegions.length)
+   
     let drynessUp = foundWine.drynessId + 1
     let drynessDown = foundWine.drynessId -1
     let drynessArray = filteredVarietalRegions.filter(varietalRegion => varietalRegion.drynessId === foundWine.drynessId || varietalRegion.drynessId === drynessUp || varietalRegion.drynessId === drynessDown)
 
-    let acidityUp = foundWine.acidityId + 1
-    let acidityDown = foundWine.acidityId -1
-    let acidityArray = filteredVarietalRegions.filter(varietalRegion => varietalRegion.acidityId === foundWine.acidityId || varietalRegion.acidityId === acidityUp || varietalRegion.acidityId === acidityDown)
+    let acidityArray = filteredVarietalRegions.filter(varietalRegion => varietalRegion.acidityId === foundWine.acidityId)
     
     let bodyPercentage = bodyArray.length/filteredVarietalRegions.length
     let drynessPercentage = drynessArray.length/filteredVarietalRegions.length
     let acidityPercentage = acidityArray.length/filteredVarietalRegions.length
+    let wineAverage = (bodyPercentage + drynessPercentage + acidityPercentage)/3
+    console.log(wineAverage)
     
 return(<div className="h-full p-10">
 <div className="text-2xl">{foundWine.region.location},{foundWine.region.country} - {foundWine.varietal.name}</div>
-<div>Body:{parseFloat(bodyPercentage *100).toFixed(0)}% </div>
-<div>Dryness:{parseFloat(drynessPercentage *100).toFixed(0)}% </div>
+<h2>Matched percentage to your favorites</h2>
+<div>Body: {parseFloat(bodyPercentage *100).toFixed(0)}% </div>
+<div>Dryness: {parseFloat(drynessPercentage *100).toFixed(0)}% </div>
 <div>Acidity:{parseFloat(acidityPercentage *100).toFixed(0) }% </div>
-{bodyPercentage > .50 && drynessPercentage > .50 && acidityPercentage > .50 ? <div className="text-2xl font-extrabold">YES! I think you'll like this wine</div>
-: <div className="text-2xl font-extrabold">No, it might not be for you :(</div>}
+{wineAverage > .5 ? <div className="text-2xl font-extrabold">YES! I think you'll like this wine</div>
+: <div className="text-2xl font-extrabold">No, it might not be for you :(</div>
+}
 </div>)
 
 }
@@ -128,10 +114,10 @@ return(<div className="h-full p-10">
         
    
                 {
-                    foundWine ? <> <Link className="card" to={`/library/details/${foundWine.id}`}>
+                    foundWine ? <> <Link className="card w-64 h-64 bg-slate-100 shadow-xl p-4 m-2" to={`/library/details/${foundWine.id}`}>
                     <div>{foundWine?.region?.location} {foundWine.varietal?.name}</div>
                     <div>{foundWine?.region?.country}</div>
-                    <img src={foundWine?.varietal?.image}/>
+                    <img className="h-3/5 object-cover"src={foundWine?.varietal?.image}/>
                     <button onClick={(event) => HandleSaveSearch(event)}>See Results</button></Link> 
                     </>
 
@@ -141,7 +127,7 @@ return(<div className="h-full p-10">
   
     
     
-    {probability ? calculatePercentage(foundWine)
+    {probability && foundWine ? calculatePercentage(foundWine)
     : ""}
     
     </>)

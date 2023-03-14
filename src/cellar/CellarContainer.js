@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { getVarietalRegions } from "../library/LibraryProvider"
 import { getFavorites, getUsers } from "./CellarProvider"
 import { Recommendations } from "./Recommendations"
+import { MatchedWineBottles, WineBottles } from "./WineBottles"
 import { WineCellar } from "./WineCellar"
 
 export const CellarContainer =() => {
@@ -33,27 +34,28 @@ const rabbitUserObject = JSON.parse(localRabbitUser)
         },[]
     
     )
+    
      
-    useEffect(
-        () => {
-            getVarietalRegions()
-            .then((varietalRegionsArray) => {
-                let favoriteRegions = varietalRegionsArray.filter(region => favorites.find((favorite) => favorite.varietalRegionId === region.id))
-                setVarietalRegions(favoriteRegions)
-            }
-            )
-        },[favorites]
-    )
+    
     
     return (<>
     <h2 className="text-center text-4xl">{user.fullName}'s Favorite Wines</h2>
     <WineCellar 
     rabbitUserObject={rabbitUserObject}
-    favorites={favorites}
-    varietalRegions={varietalRegions}
+    
      />
+     <div className="flex row">
+     <div className="flex flex-col">
     <Recommendations 
      favorites={favorites}
      varietalRegions={varietalRegions}/>
+    <MatchedWineBottles
+    rabbitUserObject={rabbitUserObject} />
+    </div>
+    <div className="mx-auto my-auto">
+    <img className="w-3/5 h-auto bg-none"src="https://cdn3.iconfinder.com/data/icons/special-unusual-odd-jobs/237/weird-job-005-512.png"/>
+  </div>
+  </div>
+  
     </>)
 }

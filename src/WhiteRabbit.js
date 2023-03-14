@@ -4,7 +4,7 @@ import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
 import { NavBar } from "./nav/NavBar";
 import { ApplicationViews } from "./views/ApplicationViews";
-
+import './index.css';
 export const WhiteRabbit = () => {
 
 

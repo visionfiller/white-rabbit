@@ -274,7 +274,7 @@ else {
         </form>
         
 
-<div className="card">
+<div className="card w-64 h-64 bg-slate-100 shadow-xl m-2">
     {newVarietalRegion ? displayVarietalHTML
 : "" }
  {newVarietalRegion ? displayRegionHTML

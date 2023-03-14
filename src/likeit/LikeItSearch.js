@@ -1,6 +1,6 @@
 export const LikeItSearchBar = ({setterFunctionVarietal, setterFunctionRegion}) => {
     return(<>
-     <div className="form-control w-full max-w-xs ml-auto mr-auto pt-10 pb-10">
+     <div className="form-control w-full max-w-xs ml-auto mr-auto pt-10 pb-10 ">
             <label className="label label-text">What is the grape?</label>
             <input 
             className="input input-bordered w-full max-w-xs"

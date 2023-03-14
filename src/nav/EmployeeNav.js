@@ -23,7 +23,7 @@ return (
         </li>
         <li ><button onClick={() => navigate("/somm")}>Sommelier</button>
         </li>
-        <li><button className="" onClick={() => navigate("/library")}>Library</button>
+        <li className=" transform hover:scale-125  transition ease-out duration-300" ><button className="" onClick={() => navigate("/library")}>Library</button>
         </li>
         
     </ul>

@@ -22,9 +22,9 @@ export const Recommendations =({favorites }) => {
     return (<>
     <h2 className="text-2xl ">Try these different varietal regions!</h2>
      <p className="">These wines are chosen based on your favorites</p>
-    <div className="flex row w-full p-10">
+    <div className="flex  w-full p-10 justify-evenly">
 
-  <div className="w-3/5">
+  <div className="w-full flex flex-col">
   { newArray.length ? 
   newArray.map((wine) => {
     return (<>

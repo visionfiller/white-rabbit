@@ -84,3 +84,8 @@ export const createWineBottle = (bottleObject) => {
     })
         .then(response => response.json())
 }
+
+export const getWineBottles = () => {
+    return fetch(`http://localhost:8088/wineBottles`)
+    .then(response => response.json())
+}

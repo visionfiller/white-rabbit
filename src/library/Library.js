@@ -7,6 +7,7 @@ const [varietalRegions, setVarietalRegions] = useState([])
 const [filteredWines, setFilteredWines] = useState([])
 const [wineTypeId, setWineTypeId] = useState("")
 const [wineTypes, setWineTypes] = useState([])
+const [sorted, setSorted] = useState("")
 
 useEffect(
     () => {
@@ -26,44 +27,63 @@ useEffect(
 )
 useEffect(
     () => {
+        let varietalRegionsFiltered = [...varietalRegions]
         if (wineTypeId){
-            const wineTypesArray = varietalRegions.filter(varietal => varietal.varietal?.wineTypeId === wineTypeId)
-            setFilteredWines(wineTypesArray)
+             varietalRegionsFiltered = varietalRegionsFiltered.filter(varietal => varietal.varietal?.wineTypeId === wineTypeId)
         }
-        else {
-//for customers
-            setFilteredWines(varietalRegions)
-     
-}
-    },
-[varietalRegions]   
-)
-
-useEffect(
-    () => {
-        if (wineTypeId){
-            const wineTypesArray = varietalRegions.filter(varietal => varietal.varietal?.wineTypeId === wineTypeId)
-            setFilteredWines(wineTypesArray)
+         if (sorted === "body") {
+            varietalRegionsFiltered = varietalRegionsFiltered.sort((a,b) => b.bodyId - a.bodyId)
+            
         }
-        else {
+        if (sorted === "acidity") {
+            varietalRegionsFiltered = varietalRegionsFiltered.sort((a,b) => a.acidityId - b.acidityId)
+            
+        }
+        if (sorted === "dryness") {
+            varietalRegionsFiltered = varietalRegionsFiltered.sort((a,b) => a.drynessId - b.drynessId)
+            
+        }
+        
 //for customers
-            setFilteredWines(varietalRegions)
+            setFilteredWines( varietalRegionsFiltered )
      
-}
+
     },
-    [wineTypeId]
+[varietalRegions, wineTypeId, sorted]   
 )
-
-
-
-
-
+// useEffect(
+//     () => {
+//         if (wineTypeId){
+//             const wineTypesArray = varietalRegions.filter(varietal => varietal.varietal?.wineTypeId === wineTypeId)
+//             setFilteredWines(wineTypesArray)
+//         }
+//         //  if (sorted === "body") {
+//         //     const sortedBodyArray = varietalRegions.sort((a,b) => b.bodyId - a.bodyId)
+//         //     setFilteredWines(sortedBodyArray)
+//         // }
+//         // if (sorted === "acidity") {
+//         //     const sortedAcidityArray = varietalRegions.sort((a,b) => b.acidityId - a.acidityId)
+//         //     setFilteredWines(sortedAcidityArray)
+//         // }
+//         // if (sorted === "dryness") {
+//         //     const sortedDrynessArray = varietalRegions.sort((a,b) => b.drynessId - a.drynessId)
+//         //     setFilteredWines(sortedDrynessArray)
+//         // }
+//         else {
+// //for customers
+//             setFilteredWines(varietalRegions)
+     
+// }
+//     },
+// [wineTypeId]   
+// )
 
 
 
     return <>
-    <h2 className="text-center text-4xl">The Library</h2>
+    <h2 className="text-center text-4xl bg-slate-200">The Library</h2>
     <div className="grid-cols-2 p-10 bg-slate-200 font-body">
+    <div className="flex row justify-evenly">
     <div className="">
     <label>Filter by type: </label>
     <select
@@ -76,7 +96,23 @@ useEffect(
             return <option value={type.id} id={type.id}>{type.type}</option>
         })}
     </select>
+    </div>
+    <div className="">
+    <label>Sort by: </label>
+    <select
+    onChange={
+        (evt) => {
+            setSorted(evt.target.value)
+        }}>
+             <option id="none" value="none">Sort by Ascending</option>
+            <option id="Body" value="body">Body</option>
+            <option id="Acidity"value="acidity">Acidity</option>
+            <option id="Dryness"value="dryness">Dryness</option>
+    
+       
+    </select>
 
+    </div>
     </div>
     <div className="flex row flex-wrap">
     {filteredWines.map(wine => <LibraryCard 

@@ -7,6 +7,7 @@ import { SearchedContainer } from "../home/SearchContainer"
 import { CardDetails } from "../library/CardDetails"
 import { CellarContainer } from "../cellar/CellarContainer"
 import { Probability } from "../likeit/Probability"
+import { Social } from "../social/Social"
 
 
 export const CustomerViews = () => {
@@ -14,7 +15,7 @@ export const CustomerViews = () => {
         <Route path="/home" element={ <Home />} />
         <Route path="/library" element={ <Library/>} />
         <Route path="/library/details/:varietalRegionId" element={ <CardDetails />} />
-
+        <Route path="/social" element={ <Social />} />
         <Route path="/cellar" element={ <CellarContainer />} />
         <Route path="/like" element={ <WillILikeItSearchContainer />} />
        

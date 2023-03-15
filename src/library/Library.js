@@ -81,8 +81,8 @@ useEffect(
 
 
     return <>
-    <h2 className="text-center text-4xl bg-slate-200">The Library</h2>
-    <div className="grid-cols-2 p-10 bg-slate-200 font-body">
+    <h2 className="text-center p-6 text-secondary font-semibold text-4xl">The Library</h2>
+    <div className="grid-cols-2 p-10  font-body">
     <div className="flex row justify-evenly">
     <div className="">
     <label>Filter by type: </label>
@@ -114,7 +114,8 @@ useEffect(
 
     </div>
     </div>
-    <div className="flex row flex-wrap">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        
     {filteredWines.map(wine => <LibraryCard 
     wine={wine}/>)
                 

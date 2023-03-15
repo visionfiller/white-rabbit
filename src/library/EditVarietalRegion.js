@@ -71,7 +71,7 @@ if(varietalRegionId) {
 }
 
     return(<>
-     <form className="text-center float-center" border>
+     <form className="text-center border">
             <h2 >Update Information for {varietalRegion.varietal?.name} in {varietalRegion.region?.location}</h2>
 
             <fieldset>
@@ -80,7 +80,7 @@ if(varietalRegionId) {
                     <select name="bodyId" value={varietalRegion.bodyId} onChange={HandleControlledInputChange}>
                         <option value="0">Select a new body type</option>
 {bodies.map((body) => {
-    return <option value={body.id}>{body.density}</option>
+    return <option key={body.id} value={body.id}>{body.density}</option>
 })}
                     </select>
                    
@@ -93,7 +93,7 @@ if(varietalRegionId) {
                     <select name="acidityId" value={varietalRegion.acidityId} onChange={HandleControlledInputChange}>
                         <option value="0">Select a new acidity level</option>
 {acidities.map((acidity) => {
-    return <option value={acidity.id}>{acidity.style}</option>
+    return <option key={acidity.id}value={acidity.id}>{acidity.style}</option>
 })}
                     </select>
                    
@@ -105,7 +105,7 @@ if(varietalRegionId) {
                     <select name="drynessId" value={varietalRegion.drynessId} onChange={HandleControlledInputChange}>
                         <option value="0">Select a new dryness level</option>
 {drynesses.map((dryness) => {
-    return <option value={dryness.id}>{dryness.level}</option>
+    return <option key={dryness.id} value={dryness.id}>{dryness.level}</option>
 })}
                     </select>
                    

@@ -39,7 +39,7 @@ const rabbitUserObject = JSON.parse(localRabbitUser)
     
     
     return (<>
-    <h2 className="text-center text-4xl">{user.fullName}'s Favorites</h2>
+    <h2 className="text-center p-6 text-secondary font-semibold text-4xl">{user.fullName}'s Favorites</h2>
     <WineCellar 
     rabbitUserObject={rabbitUserObject}
     

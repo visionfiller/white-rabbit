@@ -17,7 +17,7 @@ return (
             }}>logout</Link>
             </li>
         
-        
+         
             <li className="transform hover:scale-125  transition ease-out duration-300" ><button onClick={() => navigate("/social")}>social</button></li>
         <li className="transform hover:scale-125  transition ease-out duration-300" ><button onClick={() => navigate("/like")}>will I like it?</button>
         </li>
@@ -27,6 +27,7 @@ return (
             <img className="h-auto border-secondary border-8 w-24 text-center rounded-full" src="https://i.pinimg.com/originals/9d/ea/ac/9deaacacdbc7066962eb35f4e513190a.jpg"/>
          </Link>
          <ul className=" flex flex-row-reverse justify-evenly w-full p-10 pl-5 ml-5" >
+         <li><button className="transform hover:scale-125  transition ease-out duration-300" onClick={() => navigate("/chat")}>chat with us</button></li>
         <li className="transform hover:scale-125  transition ease-out duration-300" ><button onClick={() => navigate("/cellar")}>wine cellar</button>
         </li>
         <li><button className="transform hover:scale-125  transition ease-out duration-300" onClick={() => navigate("/library")}>library</button>

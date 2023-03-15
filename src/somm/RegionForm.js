@@ -51,6 +51,19 @@ if(region.location && region.country) {
             className="pl-2" name="country" id="country" type="text" placeholder=" e.g. Spain or France"/>
             </div>
         </fieldset>
+        <fieldset>
+            <div>
+            <label>City for Map</label>
+            <input 
+            onChange={
+                (evt) => {
+                    const copy = { ...region }
+                    copy.geoCodeCity = evt.target.value
+                    setRegion(copy)
+                }}
+            className="pl-2" name="geoCodeCity" id="country" type="text" placeholder=" e.g. Madrid or Paris"/>
+            </div>
+        </fieldset>
     </form>
     <button onClick={(clickEvent) => HandleClickSaveRegion(clickEvent)}>Add Region</button>
     </div>

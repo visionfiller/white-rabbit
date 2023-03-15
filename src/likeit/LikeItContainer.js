@@ -8,7 +8,7 @@ export const WillILikeItSearchContainer = () => {
     const [searchTermsRegion, setSearchTermsRegion] = useState("")
 
     return(<>
-<div className="text-center text-4xl">Will I Like this Wine?</div>
+<div className="text-center p-6 text-secondary font-semibold text-4xl">Will I Like this Wine?</div>
 
      <div className="flex row p-20">
     <LikeItSearchBar

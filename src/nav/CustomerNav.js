@@ -7,25 +7,30 @@ export const CustomerNav = () => {
 return (
    
 <>
-   <div className="flex row w-screen">
-   <Link className="pr-10 pl-10 pt-2 border-b border-r border-black" to="/home">
-            <img className="h-auto w-20" src="https://i.pinimg.com/originals/9d/ea/ac/9deaacacdbc7066962eb35f4e513190a.jpg"/>
-            </Link>
-            <ul className=" flex flex-row-reverse justify-between w-full p-10 pl-5 ml-5" >
-        <li>
+   <div className="font-semibold flex flex-row-reverse w-screen text-white text-2xl justify-evenly">
+    <div className="bg-fourth absolute top-5 w-full p-10 -z-10"></div>
+            <ul className=" flex flex-row-reverse justify-evenly w-full p-10 pl-5 ml-5 " >
+        <li className="transform hover:scale-125  transition ease-out duration-300">
             <Link to="" onClick={() => {
                 localStorage.removeItem("rabbit_user")
                 navigate("/", {replace: true})
-            }}>Logout</Link>
+            }}>logout</Link>
             </li>
         
+         
+            <li className="transform hover:scale-125  transition ease-out duration-300" ><button onClick={() => navigate("/social")}>social</button></li>
+        <li className="transform hover:scale-125  transition ease-out duration-300" ><button onClick={() => navigate("/like")}>will I like it?</button>
+        </li>
+        </ul>
         
-       
-        <li ><button onClick={() => navigate("/like")}>Will I Like it?</button>
+        <Link className="w-1/5 text-center transform hover:scale-125  transition ease-out duration-300" to="/home">
+            <img className="h-auto border-secondary border-8 w-24 text-center rounded-full" src="https://i.pinimg.com/originals/9d/ea/ac/9deaacacdbc7066962eb35f4e513190a.jpg"/>
+         </Link>
+         <ul className=" flex flex-row-reverse justify-evenly w-full p-10 pl-5 ml-5" >
+         <li><button className="transform hover:scale-125  transition ease-out duration-300" onClick={() => navigate("/chat")}>chat with us</button></li>
+        <li className="transform hover:scale-125  transition ease-out duration-300" ><button onClick={() => navigate("/cellar")}>wine cellar</button>
         </li>
-        <li ><button onClick={() => navigate("/cellar")}>Wine Cellar</button>
-        </li>
-        <li><button className="" onClick={() => navigate("/library")}>Library</button>
+        <li><button className="transform hover:scale-125  transition ease-out duration-300" onClick={() => navigate("/library")}>library</button>
         </li>
         
     </ul>

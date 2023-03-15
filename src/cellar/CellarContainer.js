@@ -39,21 +39,21 @@ const rabbitUserObject = JSON.parse(localRabbitUser)
     
     
     return (<>
-    <h2 className="text-center text-4xl">{user.fullName}'s Favorite Wines</h2>
+    <h2 className="text-center p-6 text-secondary font-semibold text-4xl">{user.fullName}'s Favorites</h2>
     <WineCellar 
     rabbitUserObject={rabbitUserObject}
     
      />
-     <div className="flex row">
-     <div className="flex flex-col">
+     <div className="flex flex-row-reverse w-full">
+     <div className="flex flex-col w-full">
     <Recommendations 
      favorites={favorites}
      varietalRegions={varietalRegions}/>
     <MatchedWineBottles
     rabbitUserObject={rabbitUserObject} />
     </div>
-    <div className="mx-auto my-auto">
-    <img className="w-3/5 h-auto bg-none"src="https://cdn3.iconfinder.com/data/icons/special-unusual-odd-jobs/237/weird-job-005-512.png"/>
+    <div className=" ">
+    <img className="w-4/5 h-auto bg-none text-center opacity-60 blur-sm"src="https://i.etsystatic.com/5331662/r/il/663d10/250251863/il_794xN.250251863.jpg"/>
   </div>
   </div>
   

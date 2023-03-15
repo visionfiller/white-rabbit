@@ -63,7 +63,7 @@ const StarButton = (wine) => {
 
 
     return (<>
-    <div className="card w-64 h-64 bg-slate-100 shadow-xl m-2">
+    <div className="card w-64 h-64 bg-slate-100 shadow-xl m-4 ">
         
     <div className="absolute">
             {rabbitUserObject.staff ?  <button className="btn" onClick={()=> navigate(`/library/edit/${wine.id}`) }>Edit Details</button>
@@ -85,7 +85,7 @@ const StarButton = (wine) => {
         <Link className="" to={`/library/details/${wine.id}`}>
             <img className="h-36 w-full mx-auto object-cover" src={wine?.varietal?.image}/>
             </Link>
-            <div className="card-title  m-2">
+            <div className="card-title m-2 flex flex-col w-full">
                 <div>{wine?.region?.location} {wine.varietal?.name}</div>
                 <div className="text-sm">Country: {wine?.region?.country}</div>
                 

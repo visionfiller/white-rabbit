@@ -1,8 +1,758 @@
 @import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
 
-/*
-! tailwindcss v3.2.7 | MIT License | https://tailwindcss.com
-*/
+/* required styles */
+
+.leaflet-pane,
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-tile-container,
+.leaflet-pane > svg,
+.leaflet-pane > canvas,
+.leaflet-zoom-box,
+.leaflet-image-layer,
+.leaflet-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.leaflet-container {
+  overflow: hidden;
+}
+
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Prevents IE11 from highlighting tiles in blue */
+
+.leaflet-tile::selection {
+  background: transparent;
+}
+
+/* Safari renders non-retina tile on retina better with this, but Chrome is worse */
+
+.leaflet-safari .leaflet-tile {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* hack that prevents hw layers "stretching" when loading new tiles */
+
+.leaflet-safari .leaflet-tile-container {
+  width: 1600px;
+  height: 1600px;
+  -webkit-transform-origin: 0 0;
+}
+
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+  display: block;
+}
+
+/* .leaflet-container svg: reset svg max-width decleration shipped in Joomla! (joomla.org) 3.x */
+
+/* .leaflet-container img: map is broken in FF if you have max-width: 100% on tiles */
+
+.leaflet-container .leaflet-overlay-pane svg {
+  max-width: none !important;
+  max-height: none !important;
+}
+
+.leaflet-container .leaflet-marker-pane img,
+.leaflet-container .leaflet-shadow-pane img,
+.leaflet-container .leaflet-tile-pane img,
+.leaflet-container img.leaflet-image-layer,
+.leaflet-container .leaflet-tile {
+  max-width: none !important;
+  max-height: none !important;
+  width: auto;
+  padding: 0;
+}
+
+.leaflet-container.leaflet-touch-zoom {
+  touch-action: pan-x pan-y;
+}
+
+.leaflet-container.leaflet-touch-drag {
+  /* Fallback for FF which doesn't support pinch-zoom */
+  touch-action: none;
+  touch-action: pinch-zoom;
+}
+
+.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
+  touch-action: none;
+}
+
+.leaflet-container {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.leaflet-container a {
+  -webkit-tap-highlight-color: rgba(51, 181, 229, 0.4);
+}
+
+.leaflet-tile {
+  -webkit-filter: inherit;
+          filter: inherit;
+  visibility: hidden;
+}
+
+.leaflet-tile-loaded {
+  visibility: inherit;
+}
+
+.leaflet-zoom-box {
+  width: 0;
+  height: 0;
+  box-sizing: border-box;
+  z-index: 800;
+}
+
+/* workaround for https://bugzilla.mozilla.org/show_bug.cgi?id=888319 */
+
+.leaflet-overlay-pane svg {
+  -moz-user-select: none;
+}
+
+.leaflet-pane         {
+  z-index: 400;
+}
+
+.leaflet-tile-pane    {
+  z-index: 200;
+}
+
+.leaflet-overlay-pane {
+  z-index: 400;
+}
+
+.leaflet-shadow-pane  {
+  z-index: 500;
+}
+
+.leaflet-marker-pane  {
+  z-index: 600;
+}
+
+.leaflet-tooltip-pane   {
+  z-index: 650;
+}
+
+.leaflet-popup-pane   {
+  z-index: 700;
+}
+
+.leaflet-map-pane canvas {
+  z-index: 100;
+}
+
+.leaflet-map-pane svg    {
+  z-index: 200;
+}
+
+.leaflet-vml-shape {
+  width: 1px;
+  height: 1px;
+}
+
+.lvml {
+  behavior: url(#default#VML);
+  display: inline-block;
+  position: absolute;
+}
+
+/* control positioning */
+
+.leaflet-control {
+  position: relative;
+  z-index: 800;
+  pointer-events: visiblePainted;
+  /* IE 9-10 doesn't have auto */
+  pointer-events: auto;
+}
+
+.leaflet-top,
+.leaflet-bottom {
+  position: absolute;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.leaflet-top {
+  top: 0;
+}
+
+.leaflet-right {
+  right: 0;
+}
+
+.leaflet-bottom {
+  bottom: 0;
+}
+
+.leaflet-left {
+  left: 0;
+}
+
+.leaflet-control {
+  float: left;
+  clear: both;
+}
+
+.leaflet-right .leaflet-control {
+  float: right;
+}
+
+.leaflet-top .leaflet-control {
+  margin-top: 10px;
+}
+
+.leaflet-bottom .leaflet-control {
+  margin-bottom: 10px;
+}
+
+.leaflet-left .leaflet-control {
+  margin-left: 10px;
+}
+
+.leaflet-right .leaflet-control {
+  margin-right: 10px;
+}
+
+/* zoom and fade animations */
+
+.leaflet-fade-anim .leaflet-popup {
+  opacity: 0;
+  transition: opacity 0.2s linear;
+}
+
+.leaflet-fade-anim .leaflet-map-pane .leaflet-popup {
+  opacity: 1;
+}
+
+.leaflet-zoom-animated {
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+svg.leaflet-zoom-animated {
+  will-change: transform;
+}
+
+.leaflet-zoom-anim .leaflet-zoom-animated {
+  transition:         -webkit-transform 0.25s cubic-bezier(0,0,0.25,1);
+  transition:         transform 0.25s cubic-bezier(0,0,0.25,1);
+  transition:         transform 0.25s cubic-bezier(0,0,0.25,1), -webkit-transform 0.25s cubic-bezier(0,0,0.25,1);
+}
+
+.leaflet-zoom-anim .leaflet-tile,
+.leaflet-pan-anim .leaflet-tile {
+  transition: none;
+}
+
+.leaflet-zoom-anim .leaflet-zoom-hide {
+  visibility: hidden;
+}
+
+/* cursors */
+
+.leaflet-interactive {
+  cursor: pointer;
+}
+
+.leaflet-grab {
+  cursor:         grab;
+}
+
+.leaflet-crosshair,
+.leaflet-crosshair .leaflet-interactive {
+  cursor: crosshair;
+}
+
+.leaflet-popup-pane,
+.leaflet-control {
+  cursor: auto;
+}
+
+.leaflet-dragging .leaflet-grab,
+.leaflet-dragging .leaflet-grab .leaflet-interactive,
+.leaflet-dragging .leaflet-marker-draggable {
+  cursor: move;
+  cursor:         grabbing;
+}
+
+/* marker & overlays interactivity */
+
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-image-layer,
+.leaflet-pane > svg path,
+.leaflet-tile-container {
+  pointer-events: none;
+}
+
+.leaflet-marker-icon.leaflet-interactive,
+.leaflet-image-layer.leaflet-interactive,
+.leaflet-pane > svg path.leaflet-interactive,
+svg.leaflet-image-layer.leaflet-interactive path {
+  pointer-events: visiblePainted;
+  /* IE 9-10 doesn't have auto */
+  pointer-events: auto;
+}
+
+/* visual tweaks */
+
+.leaflet-container {
+  background: #ddd;
+  outline-offset: 1px;
+}
+
+.leaflet-container a {
+  color: #0078A8;
+}
+
+.leaflet-zoom-box {
+  border: 2px dotted #38f;
+  background: rgba(255,255,255,0.5);
+}
+
+/* general typography */
+
+.leaflet-container {
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+/* general toolbar styles */
+
+.leaflet-bar {
+  box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+  border-radius: 4px;
+}
+
+.leaflet-bar a {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+.leaflet-bar a,
+.leaflet-control-layers-toggle {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  display: block;
+}
+
+.leaflet-bar a:hover,
+.leaflet-bar a:focus {
+  background-color: #f4f4f4;
+}
+
+.leaflet-bar a:first-child {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.leaflet-bar a:last-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom: none;
+}
+
+.leaflet-bar a.leaflet-disabled {
+  cursor: default;
+  background-color: #f4f4f4;
+  color: #bbb;
+}
+
+.leaflet-touch .leaflet-bar a {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.leaflet-touch .leaflet-bar a:first-child {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.leaflet-touch .leaflet-bar a:last-child {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+/* zoom control */
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  font: bold 18px 'Lucida Console', Monaco, monospace;
+  text-indent: 1px;
+}
+
+.leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out  {
+  font-size: 22px;
+}
+
+/* layers control */
+
+.leaflet-control-layers {
+  box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+  background: #fff;
+  border-radius: 5px;
+}
+
+.leaflet-control-layers-toggle {
+  background-image: url(images/layers.png);
+  width: 36px;
+  height: 36px;
+}
+
+.leaflet-retina .leaflet-control-layers-toggle {
+  background-image: url(images/layers-2x.png);
+  background-size: 26px 26px;
+}
+
+.leaflet-touch .leaflet-control-layers-toggle {
+  width: 44px;
+  height: 44px;
+}
+
+.leaflet-control-layers .leaflet-control-layers-list,
+.leaflet-control-layers-expanded .leaflet-control-layers-toggle {
+  display: none;
+}
+
+.leaflet-control-layers-expanded .leaflet-control-layers-list {
+  display: block;
+  position: relative;
+}
+
+.leaflet-control-layers-expanded {
+  padding: 6px 10px 6px 6px;
+  color: #333;
+  background: #fff;
+}
+
+.leaflet-control-layers-scrollbar {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-right: 5px;
+}
+
+.leaflet-control-layers-selector {
+  margin-top: 2px;
+  position: relative;
+  top: 1px;
+}
+
+.leaflet-control-layers label {
+  display: block;
+  font-size: 13px;
+  font-size: 1.08333em;
+}
+
+.leaflet-control-layers-separator {
+  height: 0;
+  border-top: 1px solid #ddd;
+  margin: 5px -10px 5px -6px;
+}
+
+/* Default icon URLs */
+
+.leaflet-default-icon-path {
+  /* used only in path-guessing heuristic, see L.Icon.Default */
+  background-image: url(images/marker-icon.png);
+}
+
+/* attribution and scale controls */
+
+.leaflet-container .leaflet-control-attribution {
+  background: #fff;
+  background: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.leaflet-control-attribution,
+.leaflet-control-scale-line {
+  padding: 0 5px;
+  color: #333;
+  line-height: 1.4;
+}
+
+.leaflet-control-attribution a {
+  text-decoration: none;
+}
+
+.leaflet-control-attribution a:hover,
+.leaflet-control-attribution a:focus {
+  text-decoration: underline;
+}
+
+.leaflet-attribution-flag {
+  display: inline !important;
+  vertical-align: baseline !important;
+  width: 1em;
+  height: 0.6669em;
+}
+
+.leaflet-left .leaflet-control-scale {
+  margin-left: 5px;
+}
+
+.leaflet-bottom .leaflet-control-scale {
+  margin-bottom: 5px;
+}
+
+.leaflet-control-scale-line {
+  border: 2px solid #777;
+  border-top: none;
+  line-height: 1.1;
+  padding: 2px 5px 1px;
+  white-space: nowrap;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.8);
+  text-shadow: 1px 1px #fff;
+}
+
+.leaflet-control-scale-line:not(:first-child) {
+  border-top: 2px solid #777;
+  border-bottom: none;
+  margin-top: -2px;
+}
+
+.leaflet-control-scale-line:not(:first-child):not(:last-child) {
+  border-bottom: 2px solid #777;
+}
+
+.leaflet-touch .leaflet-control-attribution,
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+  box-shadow: none;
+}
+
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+  border: 2px solid rgba(0,0,0,0.2);
+  background-clip: padding-box;
+}
+
+/* popup */
+
+.leaflet-popup {
+  position: absolute;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.leaflet-popup-content-wrapper {
+  padding: 1px;
+  text-align: left;
+  border-radius: 12px;
+}
+
+.leaflet-popup-content {
+  margin: 13px 24px 13px 20px;
+  line-height: 1.3;
+  font-size: 13px;
+  font-size: 1.08333em;
+  min-height: 1px;
+}
+
+.leaflet-popup-content p {
+  margin: 17px 0;
+  margin: 1.3em 0;
+}
+
+.leaflet-popup-tip-container {
+  width: 40px;
+  height: 20px;
+  position: absolute;
+  left: 50%;
+  margin-top: -1px;
+  margin-left: -20px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.leaflet-popup-tip {
+  width: 17px;
+  height: 17px;
+  padding: 1px;
+  margin: -10px auto 0;
+  pointer-events: auto;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: white;
+  color: #333;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  text-align: center;
+  width: 24px;
+  height: 24px;
+  font: 16px/24px Tahoma, Verdana, sans-serif;
+  color: #757575;
+  text-decoration: none;
+  background: transparent;
+}
+
+.leaflet-container a.leaflet-popup-close-button:hover,
+.leaflet-container a.leaflet-popup-close-button:focus {
+  color: #585858;
+}
+
+.leaflet-popup-scrolled {
+  overflow: auto;
+}
+
+.leaflet-oldie .leaflet-popup-content-wrapper {
+  -ms-zoom: 1;
+}
+
+.leaflet-oldie .leaflet-popup-tip {
+  width: 24px;
+  margin: 0 auto;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)";
+  filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678);
+}
+
+.leaflet-oldie .leaflet-control-zoom,
+.leaflet-oldie .leaflet-control-layers,
+.leaflet-oldie .leaflet-popup-content-wrapper,
+.leaflet-oldie .leaflet-popup-tip {
+  border: 1px solid #999;
+}
+
+/* div icon */
+
+.leaflet-div-icon {
+  background: #fff;
+  border: 1px solid #666;
+}
+
+/* Tooltip */
+
+/* Base styles for the element that has a tooltip */
+
+.leaflet-tooltip {
+  position: absolute;
+  padding: 6px;
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  color: #222;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.leaflet-tooltip.leaflet-interactive {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.leaflet-tooltip-top:before,
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+  position: absolute;
+  pointer-events: none;
+  border: 6px solid transparent;
+  background: transparent;
+  content: "";
+}
+
+/* Directions */
+
+.leaflet-tooltip-bottom {
+  margin-top: 6px;
+}
+
+.leaflet-tooltip-top {
+  margin-top: -6px;
+}
+
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-top:before {
+  left: 50%;
+  margin-left: -6px;
+}
+
+.leaflet-tooltip-top:before {
+  bottom: 0;
+  margin-bottom: -12px;
+  border-top-color: #fff;
+}
+
+.leaflet-tooltip-bottom:before {
+  top: 0;
+  margin-top: -12px;
+  margin-left: -6px;
+  border-bottom-color: #fff;
+}
+
+.leaflet-tooltip-left {
+  margin-left: -6px;
+}
+
+.leaflet-tooltip-right {
+  margin-left: 6px;
+}
+
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+  top: 50%;
+  margin-top: -6px;
+}
+
+.leaflet-tooltip-left:before {
+  right: 0;
+  margin-right: -12px;
+  border-left-color: #fff;
+}
+
+.leaflet-tooltip-right:before {
+  left: 0;
+  margin-left: -12px;
+  border-right-color: #fff;
+}
+
+/* Printing */
+
+@media print {
+  /* Prevent printers from removing background-images of controls. */
+
+  .leaflet-control {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* ! tailwindcss v3.2.7 | MIT License | https://tailwindcss.com */
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -1830,33 +2580,6 @@ html{
   justify-content: center;
 }
 
-.badge{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, -webkit-transform, -webkit-filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-transform, -webkit-filter, -webkit-backdrop-filter;
-  transition-duration: 200ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  height: 1.25rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding-left: 0.563rem;
-  padding-right: 0.563rem;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--n) / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--n) / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: hsl(var(--nc) / var(--tw-text-opacity));
-  border-radius: var(--rounded-badge, 1.9rem);
-}
-
 .btn{
   display: inline-flex;
   flex-shrink: 0;
@@ -1983,13 +2706,6 @@ html{
 
 .card-body :where(p){
   flex-grow: 1;
-}
-
-.card-actions{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 0.5rem;
 }
 
 .card figure{
@@ -2219,31 +2935,6 @@ html{
   border-radius: var(--rounded-btn, 0.5rem);
 }
 
-.btn-outline .badge{
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--nf, var(--n)) / var(--tw-border-opacity));
-  --tw-text-opacity: 1;
-  color: hsl(var(--nc) / var(--tw-text-opacity));
-}
-
-.btn-outline.btn-primary .badge{
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--p) / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--p) / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: hsl(var(--pc) / var(--tw-text-opacity));
-}
-
-.btn-outline.btn-secondary .badge{
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--s) / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--s) / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: hsl(var(--sc) / var(--tw-text-opacity));
-}
-
 .btn-outline.btn-accent .badge{
   --tw-border-opacity: 1;
   border-color: hsl(var(--a) / var(--tw-border-opacity));
@@ -2253,70 +2944,12 @@ html{
   color: hsl(var(--ac) / var(--tw-text-opacity));
 }
 
-.btn-outline .badge.outline{
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--nf, var(--n)) / var(--tw-border-opacity));
-  background-color: transparent;
-}
-
 .btn-outline.btn-accent .badge-outline{
   --tw-border-opacity: 1;
   border-color: hsl(var(--a) / var(--tw-border-opacity));
   background-color: transparent;
   --tw-text-opacity: 1;
   color: hsl(var(--a) / var(--tw-text-opacity));
-}
-
-.btn-outline:hover .badge{
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--b2, var(--b1)) / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--b2, var(--b1)) / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: hsl(var(--bc) / var(--tw-text-opacity));
-}
-
-.btn-outline:hover .badge.outline{
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--b2, var(--b1)) / var(--tw-border-opacity));
-  --tw-text-opacity: 1;
-  color: hsl(var(--nc) / var(--tw-text-opacity));
-}
-
-.btn-outline.btn-primary:hover .badge{
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--pc) / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--pc) / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: hsl(var(--p) / var(--tw-text-opacity));
-}
-
-.btn-outline.btn-primary:hover .badge.outline{
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--pc) / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--pf, var(--p)) / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: hsl(var(--pc) / var(--tw-text-opacity));
-}
-
-.btn-outline.btn-secondary:hover .badge{
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--sc) / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--sc) / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: hsl(var(--s) / var(--tw-text-opacity));
-}
-
-.btn-outline.btn-secondary:hover .badge.outline{
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--sc) / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--sf, var(--s)) / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: hsl(var(--sc) / var(--tw-text-opacity));
 }
 
 .btn-outline.btn-accent:hover .badge{
@@ -2909,12 +3542,25 @@ html{
   }
 }
 
-.badge-lg{
-  height: 1.5rem;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  padding-left: 0.688rem;
-  padding-right: 0.688rem;
+.btn-sm{
+  height: 2rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  min-height: 2rem;
+  font-size: 0.875rem;
+}
+
+.btn-square:where(.btn-sm){
+  height: 2rem;
+  width: 2rem;
+  padding: 0px;
+}
+
+.btn-circle:where(.btn-sm){
+  height: 2rem;
+  width: 2rem;
+  border-radius: 9999px;
+  padding: 0px;
 }
 
 .input-md{
@@ -2985,20 +3631,56 @@ html{
   margin-bottom: 0.75rem;
 }
 
+.absolute{
+  position: absolute;
+}
+
+.relative{
+  position: relative;
+}
+
+.bottom-32{
+  bottom: 8rem;
+}
+
+.bottom-4{
+  bottom: 1rem;
+}
+
+.bottom-64{
+  bottom: 16rem;
+}
+
+.left-0{
+  left: 0px;
+}
+
+.left-6{
+  left: 1.5rem;
+}
+
 .right-0{
   right: 0px;
 }
 
-.m-0{
-  margin: 0px;
+.right-10{
+  right: 2.5rem;
+}
+
+.right-24{
+  right: 6rem;
+}
+
+.top-0{
+  top: 0px;
+}
+
+.top-60{
+  top: 15rem;
 }
 
 .m-10{
   margin: 2.5rem;
-}
-
-.m-14{
-  margin: 3.5rem;
 }
 
 .m-2{
@@ -3013,8 +3695,12 @@ html{
   margin: 0.75rem;
 }
 
-.m-4{
-  margin: 1rem;
+.m-6{
+  margin: 1.5rem;
+}
+
+.m-auto{
+  margin: auto;
 }
 
 .mx-auto{
@@ -3025,10 +3711,6 @@ html{
 .my-auto{
   margin-top: auto;
   margin-bottom: auto;
-}
-
-.mb-3{
-  margin-bottom: 0.75rem;
 }
 
 .ml-10{
@@ -3063,12 +3745,12 @@ html{
   display: table;
 }
 
-.hidden{
-  display: none;
-}
-
 .h-3\/5{
   height: 60%;
+}
+
+.h-36{
+  height: 9rem;
 }
 
 .h-6{
@@ -3091,16 +3773,12 @@ html{
   height: 100vh;
 }
 
-.h-24{
-  height: 6rem;
+.w-1\/2{
+  width: 50%;
 }
 
-.w-1\/5{
-  width: 20%;
-}
-
-.w-2\/5{
-  width: 40%;
+.w-16{
+  width: 4rem;
 }
 
 .w-20{
@@ -3109,6 +3787,10 @@ html{
 
 .w-3\/5{
   width: 60%;
+}
+
+.w-36{
+  width: 9rem;
 }
 
 .w-4\/5{
@@ -3160,8 +3842,8 @@ html{
   flex-wrap: wrap;
 }
 
-.justify-end{
-  justify-content: flex-end;
+.justify-start{
+  justify-content: flex-start;
 }
 
 .justify-between{
@@ -3172,12 +3854,28 @@ html{
   justify-content: space-evenly;
 }
 
+.gap-10{
+  gap: 2.5rem;
+}
+
+.gap-4{
+  gap: 1rem;
+}
+
 .overflow-x-auto{
   overflow-x: auto;
 }
 
+.rounded-full{
+  border-radius: 9999px;
+}
+
 .border{
   border-width: 1px;
+}
+
+.border-2{
+  border-width: 2px;
 }
 
 .border-4{
@@ -3186,6 +3884,10 @@ html{
 
 .border-b{
   border-bottom-width: 1px;
+}
+
+.border-b-2{
+  border-bottom-width: 2px;
 }
 
 .border-r{
@@ -3201,11 +3903,6 @@ html{
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
-.bg-green-500{
-  --tw-bg-opacity: 1;
-  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
-}
-
 .bg-slate-100{
   --tw-bg-opacity: 1;
   background-color: rgb(241 245 249 / var(--tw-bg-opacity));
@@ -3216,66 +3913,21 @@ html{
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
-.bg-white{
+.bg-yellow-500{
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-red-200{
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
-}
-
-.bg-\[url\$\(\)\]{
-  background-color: url$();
-}
-
-.bg-\[url\(\'https\:\/\/images\.unsplash\.com\/photo-1494621930069-4fd4b2e24a11\?ixlib\=rb-1\.2\.1\&ixid\=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8\&auto\=format\&fit\=crop\&w\=715\&q\=80\'\)\]{
-  background-image: url('https://images.unsplash.com/photo-1494621930069-4fd4b2e24a11?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715&q=80');
-}
-
-.bg-\[url\(\'https\:\/\/ih1\.redbubble\.net\/image\.1766637530\.4219\/flat\2c 750x\2c 075\2c f-pad\2c 750x1000\2c f8f8f8\.u1\.jpg\'\)\]{
-  background-image: url('https://ih1.redbubble.net/image.1766637530.4219/flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg');
+  background-color: rgb(234 179 8 / var(--tw-bg-opacity));
 }
 
 .bg-\[url\(\'https\:\/\/th\.bing\.com\/th\/id\/R\.8a3385dee3d63c5dd977705abf4cad84\?rik\=NaXhHe9JUTk9Zw\&riu\=http\%3a\%2f\%2fwp\.production\.patheos\.com\%2fblogs\%2funcommongodcommongood\%2ffiles\%2f2014\%2f07\%2fiStock_000036147510Small\.jpg\&ehk\=N5mDs7Sa8pDyw5lExQhvswZwotK290GhnV9dVlS9Wh0\%3d\&risl\=\&pid\=ImgRaw\&r\=0\'\)\]{
   background-image: url('https://th.bing.com/th/id/R.8a3385dee3d63c5dd977705abf4cad84?rik=NaXhHe9JUTk9Zw&riu=http%3a%2f%2fwp.production.patheos.com%2fblogs%2funcommongodcommongood%2ffiles%2f2014%2f07%2fiStock_000036147510Small.jpg&ehk=N5mDs7Sa8pDyw5lExQhvswZwotK290GhnV9dVlS9Wh0%3d&risl=&pid=ImgRaw&r=0');
 }
 
-.bg-\[url\(\"\"\)\]{
-  background-image: url("");
-}
-
-.bg-\[url\(\)\]{
-  background-image: url();
-}
-
-.bg-\[url\(\"\{wine\.varietal\?\.image\}\"\)\]{
-  background-image: url("{wine.varietal?.image}");
-}
-
-.bg-\[url\(\{wine\.varietal\?\.image\}\)\]{
-  background-image: url({wine.varietal?.image});
+.bg-none{
+  background-image: none;
 }
 
 .bg-cover{
   background-size: cover;
-}
-
-.fill-yellow-500{
-  fill: #eab308;
-}
-
-.fill-yellow-300{
-  fill: #fde047;
-}
-
-.fill-yellow-200{
-  fill: #fef08a;
-}
-
-.object-contain{
-  object-fit: contain;
 }
 
 .object-cover{
@@ -3304,6 +3956,26 @@ html{
 
 .p-5{
   padding: 1.25rem;
+}
+
+.px-10{
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.px-2{
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.px-24{
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+
+.py-10{
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 .pb-10{
@@ -3350,10 +4022,6 @@ html{
   padding-top: 1rem;
 }
 
-.pt-6{
-  padding-top: 1.5rem;
-}
-
 .pt-8{
   padding-top: 2rem;
 }
@@ -3364,6 +4032,10 @@ html{
 
 .text-center{
   text-align: center;
+}
+
+.text-right{
+  text-align: right;
 }
 
 .font-body{
@@ -3385,9 +4057,19 @@ html{
   line-height: 1;
 }
 
+.text-8xl{
+  font-size: 6rem;
+  line-height: 1;
+}
+
 .text-lg{
   font-size: 1.125rem;
   line-height: 1.75rem;
+}
+
+.text-sm{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .text-xl{
@@ -3403,6 +4085,10 @@ html{
   font-weight: 800;
 }
 
+.lowercase{
+  text-transform: lowercase;
+}
+
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -3412,6 +4098,12 @@ html{
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.blur{
+  --tw-blur: blur(8px);
+  -webkit-filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+          filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .filter{
@@ -3425,10 +4117,6 @@ html{
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-transform, -webkit-filter, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-}
-
-.duration-500{
-  transition-duration: 500ms;
 }
 
 .duration-300{
@@ -3450,64 +4138,15 @@ code {
     monospace;
 }
 
+.leaflet-container {
+  width: 50vw;
+  height: 60vh;
+}
+
 .hover\:scale-125:hover{
   --tw-scale-x: 1.25;
   --tw-scale-y: 1.25;
   -webkit-transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
           transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-
-.hover\:bg-red-200:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-primary:hover{
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--p) / var(--tw-bg-opacity));
-}
-
-.hover\:bg-red-300:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-opacity-50:hover{
-  --tw-bg-opacity: 0.5;
-}
-
-.hover\:text-white:hover{
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.hover\:shadow-inner:hover{
-  --tw-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
-  --tw-shadow-colored: inset 0 2px 4px 0 var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.hover\:shadow-lg:hover{
-  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-@media (min-width: 1024px){
-  .lg\:block{
-    display: block;
-  }
-
-  .lg\:w-2\/5{
-    width: 40%;
-  }
-
-  .lg\:w-3\/5{
-    width: 60%;
-  }
-}
-
-
-
-
 

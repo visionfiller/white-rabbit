@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import { WineCellar } from "../cellar/WineCellar"
+import { ChatWine } from "../chat/Chat"
 import { Home } from "../home/Home"
 import { SearchedContainer } from "../home/SearchContainer"
 import { CardDetails } from "../library/CardDetails"
@@ -17,6 +18,7 @@ export const EmployeeViews = () => {
        <Route path="/home" element={ <Home />} />
        <Route path="/library/details/:varietalRegionId" element={ <CardDetails />} />
         <Route path="/library" element={ <Library/>} />
+        <Route path="/chat" element={ <ChatWine/>} />
         <Route path="/library/edit/:varietalRegionId" element={ <EditVarietalRegion />} />
         <Route path="/cellar" element={ <WineCellar />} />
         <Route path="/somm" element={ <Somm />} />

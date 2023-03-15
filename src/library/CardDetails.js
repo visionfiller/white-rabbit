@@ -3,11 +3,12 @@ import { MapContainer, TileLayer, Marker } from 'react-leaflet'
 import markerIconPng from "leaflet/dist/images/marker-icon.png"
 import { Icon } from 'leaflet/src/layer/marker/Icon'
 import { useNavigate, useParams } from "react-router-dom"
-import { getVarietalRegionsById } from "../cellar/CellarProvider"
+import { getFavorites, getVarietalRegionsById } from "../cellar/CellarProvider"
 import { addToFavorites, Geocoding } from "./LibraryProvider"
 
 export const CardDetails = () => {
     const { varietalRegionId } = useParams()
+    const [favorites, setFavorites] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [wine, setWine] = useState({})
     const localRabbitUser = localStorage.getItem("rabbit_user")
@@ -26,9 +27,22 @@ export const CardDetails = () => {
                 .then((detail) => {
                     setWine(detail)
                 })
+            getFavorites()
+            .then((data) => {
+                setFavorites(data)
+            })
         }, []
     )
-   
+   const ButtonOrNO = () => {
+    favorites.map((favorite) => {
+        if (favorite.varietalRegionId === varietalRegionId){
+            return ""
+        }
+        else {
+            
+        }
+    })
+   }
 
 useEffect(
     ()=>{

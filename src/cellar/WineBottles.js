@@ -90,13 +90,15 @@ useEffect(
   };
 
 return (<>
-<h2 className="text-2xl">Some Wines You May Like...</h2>
+<div className="flex flex-col w-full ">
+<h2 className="text-2xl text-secondary font-semibold">Some Wines You May Like...</h2>
 <div className="flex row justify-start">
 {wineBottles ? wineBottles.map(wine => wine.map(bottle => {
-return <Link href="#" onClick = {() => openInNewTab(bottle?.link)} key={bottle?.id} className="card m-6" ><div>{bottle?.name}</div><img className="h-36 w-16 px-2"src={bottle?.image} /></Link>}))
-: "No bottles of wine to recommend"}
+return <Link href="#" onClick = {() => openInNewTab(bottle?.link)} key={bottle?.id} className="card text-secondary m-6 ransform hover:scale-125  transition ease-out duration-300" ><div className="text-center ">{bottle?.name}</div><img className="h-48 w-auto px-2"src={bottle?.image} /></Link>}))
+: "No bottles of wine to recommend"} 
 
 
+</div>
 </div>
 
 </>)

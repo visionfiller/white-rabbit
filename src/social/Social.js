@@ -34,8 +34,8 @@ useEffect(
     
    <h2 className="text-center p-6 text-secondary font-semibold text-4xl">The White Rabbit Community.</h2>
    <div className="w-full text-center p-10 flex row justify-center gap-10">
-     <button onClick={()=> navigate("/social/updateProfile")} className="btn">Update Profile</button>
-     <button onClick={()=> navigate("messages")} className="btn">My Messages ( {messages.length} )</button>
+     <button onClick={()=> navigate("/social/updateProfile")} className="btn bg-secondary">Update Profile</button>
+     <button onClick={()=> navigate("messages")} className="btn bg-secondary">My Messages ( {messages.length} )</button>
      </div>
     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
     {customers.map((customer) => {

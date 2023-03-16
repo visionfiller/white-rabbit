@@ -83,9 +83,9 @@ return(<>
                 <label className="input-group input-group-md" htmlFor="picture">
                     <input onChange={HandleControlledInputChange}
                       
-                        type="file" id="password" className="input input-bordered input-md"
-                        placeholder="new password" name="profilePicture"required />
-                        <span>password</span>
+                        type="text" id="profilePicture" className="input input-bordered input-md"
+                        placeholder="URL" name="profilePicture"required />
+                        <span>profile picture</span>
                         </label>
                 </fieldset>
                 <button className="btn m-4" disabled={isLoading}

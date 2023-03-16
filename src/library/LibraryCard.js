@@ -63,13 +63,13 @@ const StarButton = (wine) => {
 
 
     return (<>
-    <div className="card w-64 h-64 bg-slate-100 shadow-xl m-4 ">
+    <div className="card w-64 h-64 bg-slate-100 shadow-2xl shadow-secondary m-4 ">
         
     <div className="absolute">
-            {rabbitUserObject.staff ?  <button className="btn" onClick={()=> navigate(`/library/edit/${wine.id}`) }>Edit Details</button>
+            {rabbitUserObject.staff ?  <button className="btn btn-sm bg-secondary" onClick={()=> navigate(`/library/edit/${wine.id}`) }>Edit Details</button>
             : ""
              } 
-             {!rabbitUserObject.staff && favorites.every(favorite => favorite.varietalRegionId !== wine.id)? <button className="btn btn-sm " onClick={()=> addToFavorites(wineObject).then(()=>navigate("/cellar")) }> Add to Favorites
+             {!rabbitUserObject.staff && favorites.every(favorite => favorite.varietalRegionId !== wine.id)? <button className="btn btn-sm bg-secondary " onClick={()=> addToFavorites(wineObject).then(()=>navigate("/cellar")) }> Add to Favorites
             </button> 
             :""
 
@@ -81,13 +81,13 @@ const StarButton = (wine) => {
             { isLoading? ""
             : StarButton(wine)}
         </div>
-        <div className="card-body p-2 m-2 h-full ">
+        <div className="card-body p-1 mb-4 h-full ">
         <Link className="" to={`/library/details/${wine.id}`}>
             <img className="h-36 w-full mx-auto object-cover" src={wine?.varietal?.image}/>
             </Link>
-            <div className="card-title m-2 flex flex-col w-full">
+            <div className="card-title m-2 flex flex-col w-full ">
                 <div>{wine?.region?.location} {wine.varietal?.name}</div>
-                <div className="text-sm">Country: {wine?.region?.country}</div>
+                <div className="text-sm ">Country: {wine?.region?.country}</div>
                 
             </div>
             

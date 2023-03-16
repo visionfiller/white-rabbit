@@ -44,8 +44,8 @@ const rabbitUserObject = JSON.parse(localRabbitUser)
     rabbitUserObject={rabbitUserObject}
     
      />
-     <div className="flex flex-row-reverse w-full">
-     <div className="flex flex-col w-full">
+     <div className="flex flex-row-reverse w-full pt-8">
+     <div className="flex row w-full">
     <Recommendations 
      favorites={favorites}
      varietalRegions={varietalRegions}/>

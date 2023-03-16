@@ -104,30 +104,30 @@ useEffect(
     return (<>
         <div className="text-center">
             {rabbitUserObject.staff ? ""
-                : <button className="btn btn-accent" onClick={() => addToFavorites(wineObject)}>Add to favorites</button>}
+                : <button className="btn bg-secondary m-6" onClick={() => addToFavorites(wineObject)}>Add to favorites</button>}
 
-            <h2 className="text-4xl font-bold">{wine?.region?.location} {wine.varietal?.name}</h2>
+            <h2 className="text-4xl font-bold text-secondary">{wine?.region?.location} {wine.varietal?.name}</h2>
             <div>Country: {wine?.region?.country}</div>
         <div className="px-24">
                 <div className="flex row justify-evenly py-10">
-                <div>Body: {wine?.body?.density}</div>
-                <div>Acidity: {wine?.acidity?.style}</div>
-                <div>Dryness: {wine?.dryness?.level}</div>
+                <div className="badge uppercase p-4 bg-third"> {wine?.body?.density}</div>
+                <div className="badge uppercase p-4 bg-third"> {wine?.acidity?.style}</div>
+                <div className="badge uppercase p-4 bg-third">{wine?.dryness?.level}</div>
         </div>
-                <div>About this wine: {wine?.varietal?.description}</div>
+                <div className="p-10 font-bold">About this wine: {wine?.varietal?.description}</div>
         </div>
 
 
 
 
-            <div className="flex row h-full p-10 gap-10">
+            <div className="flex row h-full p-4">
 
-            <div>
+            <div className="border-2 border-secondary">
             <img className="w-full h-full ml-auto mr-auto" src={wine?.varietal?.image} /> 
             </div>
 
             <div className="">
-                <div id="map" className="mr-auto object-cover">
+                <div id="map" className="mr-auto object-cover border-2 border-secondary">
                     { isLoading ? ""
                     : MyMapComponent()}</div>
             </div>

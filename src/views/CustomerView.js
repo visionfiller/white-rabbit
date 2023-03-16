@@ -13,6 +13,7 @@ import { UpdateProfile } from "../social/UpdateProfile"
 import { ChatWine } from "../chat/Chat"
 import { Messages } from "../social/Messages"
 import { MessageForm } from "../social/MessageForm"
+import { ReplyForm } from "../social/ReplyForm"
 
 
 export const CustomerViews = () => {
@@ -26,6 +27,7 @@ export const CustomerViews = () => {
         <Route path="/social/details/:customerId" element={ <CustomerDetails />} />
         <Route path="/social/messages" element={<Messages />} />
         <Route path="/social/messageForm/:customerId" element={<MessageForm />} />
+        <Route path="/social/reply/:customerId" element={<ReplyForm />} />
         <Route path="/cellar" element={ <CellarContainer />} />
         <Route path="/like" element={ <WillILikeItSearchContainer />} />
        

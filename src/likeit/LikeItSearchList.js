@@ -80,7 +80,7 @@ const HandleSaveSearch = (event) => {
 const HandleCardClick = (event,wine) => {
     event.preventDefault()
     setCardDetails(true)
-    setFoundDetails(foundWine)
+    setFoundDetails(wine)
 }
 const HandleCardClose = (event) => {
     event.preventDefault()

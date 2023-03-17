@@ -7,7 +7,7 @@ export const SearchedContainer = () => {
     
     return (
         <>
-        <div className=" text-center">
+        <div className=" w-full mx-auto text-center">
         <WineSearch setterFunction={setSearchTerms}/> 
         <SearchedVarietalRegionList searchTermState={searchTerms} /> 
         </div>

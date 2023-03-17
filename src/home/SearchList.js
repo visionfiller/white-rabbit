@@ -28,34 +28,21 @@ export const SearchedVarietalRegionList = ({ searchTermState }) => {
     )
 
 
-
-
-
-
-
     useEffect(
         () => {
             getVarietalRegions()
                 .then((wineArray) => {
                     setVarietalRegions(wineArray)
                 })
-
-
-
-            // View the initial state of tickets
         },
         [] // When this array is empty, you are observing initial component state
     )
 
-
-
-
-
     return <>
 
 
-        <h2>Varietal Regions</h2>
-        <article className="flex row">
+        
+        <article className="grid grid-cols-3 gap-10">
 
           
 {

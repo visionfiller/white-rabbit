@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { getFavorites } from "../cellar/CellarProvider"
+import { CardDetails } from "../library/CardDetails"
 import { getVarietalRegions } from "../library/LibraryProvider"
 import { getRegions, getVarietals } from "../somm/SommProvider"
 import { createFoundWineSearch } from "./LikeItProvider"
@@ -15,6 +16,8 @@ export const LikeItSearchedList =({searchTermStateVarietal, searchTermStateRegio
     const localRabbitUser = localStorage.getItem("rabbit_user")
     const rabbitUserObject = JSON.parse(localRabbitUser)
     const navigate = useNavigate()
+    const [cardDetails, setCardDetails] = useState(false)
+    const [foundDetails, setFoundDetails] = useState({})
 useEffect(
     () => {
 getVarietalRegions()
@@ -74,6 +77,16 @@ const HandleSaveSearch = (event) => {
     }
    
 }
+const HandleCardClick = (event,wine) => {
+    event.preventDefault()
+    setCardDetails(true)
+    setFoundDetails(foundWine)
+}
+const HandleCardClose = (event) => {
+    event.preventDefault()
+    setCardDetails(false)
+}
+
 
 
 const calculatePercentage =(foundWine) => {
@@ -114,11 +127,11 @@ return(<div className="h-full p-10">
         
    
                 {
-                    foundWine ? <> <Link className="card w-64 h-64 bg-slate-100 shadow-xl p-4 m-2" to={`/library/details/${foundWine.id}`}>
+                    foundWine ? <> <div className="card w-64 h-64 bg-slate-100 shadow-xl p-4 m-2">
                     <div>{foundWine?.region?.location} {foundWine.varietal?.name}</div>
                     <div>{foundWine?.region?.country}</div>
                     <img className="h-3/5 object-cover"src={foundWine?.varietal?.image}/>
-                    <button onClick={(event) => HandleSaveSearch(event)}>See Results</button></Link> 
+                    <button onClick={(event) => HandleSaveSearch(event)}>See Results</button></div> 
                     </>
 
                     : "Wine not found in our library"}
@@ -129,6 +142,11 @@ return(<div className="h-full p-10">
     
     {probability && foundWine ? calculatePercentage(foundWine)
     : ""}
-    
+    {probability && foundWine? <button onClick={(event) => HandleCardClick(event, foundWine)} className=""><img src="https://cdn-icons-png.flaticon.com/512/3698/3698569.png"/><span>Tell me more!</span>
+
+</button>
+    : ""}
+    {cardDetails ? <CardDetails HandleCardClose={HandleCardClose} wineDetails={foundDetails}/>
+    :""}
     </>)
 }

@@ -3,32 +3,39 @@ import { useNavigate, useParams } from "react-router-dom"
 import { getUserById } from "../nav/NavProvider"
 import { CreateNewMessage } from "./SocialProvider"
 
-export const ReplyForm = () => {
-    const {customerId} = useParams()
+export const ReplyForm = ({messageObject,closeButton}) => {
+    const[isLoading, setIsLoading] = useState(true)
     const[foundUser, setFoundUser] = useState({})
     const localRabbitUser = localStorage.getItem("rabbit_user")
     const rabbitUserObject = JSON.parse(localRabbitUser)
     const [message, setMessage] = useState({
-        receiverUserId: parseInt(customerId),
+        receiverUserId: messageObject.senderUserId,
         senderUserId: rabbitUserObject.id,
         timeStamp: new Date().toLocaleString()
     })
+   
 const navigate = useNavigate()
 useEffect(
     () => {
-        getUserById(customerId)
+        getUserById(messageObject.senderUserId)
         .then((data) => {
             setFoundUser(data)
+            setIsLoading(false)
+          
         })
-    }
+    },[messageObject]
 )
 
 return(<>
- <div className="w-full h-screen">
+ <div className="fixed inset-0 z-20  backdrop-blur-sm">
          
- <form className="w-1/2 h-1/2 mx-auto my-10 border-black border-2 p-8">
- <h2 className="text-center text-2xl text-secondary font-semibold">Reply to {foundUser.fullName}</h2>
-         
+ <form className="bg-white w-1/2 h-1/2 mx-auto my-10 border-black border-2 p-8">
+ <div className="text-right">
+        <button type="button" className="text-right" onClick={(event) => closeButton(event)}>Close</button>
+        </div>
+   {isLoading ? ""
+       :  <h2 className="text-center text-2xl text-secondary font-semibold">Reply to {foundUser.fullName}</h2>
+}
  <div className="relative z-0 w-full mb-6 group p-8 m-8">
                 
                 <input onChange={

@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import { CardDetails } from "../library/CardDetails"
 import { getVarietalRegions } from "../library/LibraryProvider"
 
 export const Recommendations =({favorites }) => {
     const [varietalRegions, setVarietalRegions]= useState([])
+    const [cardDetails, setCardDetails] = useState(false)
+    const[wineObject, setWineObject] = useState({})
     useEffect(
         () => {
             getVarietalRegions()
@@ -12,7 +15,16 @@ export const Recommendations =({favorites }) => {
             })
         },[]
     )
-
+    const HandleCardClick = (event,wine) => {
+        event.preventDefault()
+        setCardDetails(true)
+        setWineObject(wine)
+    }
+    const HandleCardClose = (event) => {
+        event.preventDefault()
+        setCardDetails(false)
+    }
+    
 
 
 
@@ -32,9 +44,11 @@ export const Recommendations =({favorites }) => {
   newArray.map((wine) => {
     return (<>
     
-    <Link key={wine.id} id={wine.id}  className="badge bg-secondary font-semibold p-8  m-4 w-full ransform hover:scale-125  transition ease-out duration-300" to={`/library/details/${wine.id}`}>
+    <button onClick={(event) => HandleCardClick(event,wine)}key={wine.id} id={wine.id}  className="badge bg-secondary font-semibold p-8  m-4 w-full ransform hover:scale-125  transition ease-out duration-300">
     <div  className="inline-block">{wine.region?.location} {wine.varietal?.name}</div>
-    </Link>
+    </button>
+    {cardDetails ? <CardDetails wineDetails={wineObject} HandleCardClose={HandleCardClose}/>
+            : "" }
         </>)
   })
   : <div>Please add more favorites</div>}

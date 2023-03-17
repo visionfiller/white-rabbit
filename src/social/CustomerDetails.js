@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { getVarietalRegions } from "../library/LibraryProvider"
+import { MessageForm } from "./MessageForm"
 import { getCustomerById } from "./SocialProvider"
 
 export const CustomerDetails = ({}) => {
@@ -8,6 +9,7 @@ export const CustomerDetails = ({}) => {
     const [ varietalRegions, setVarietalRegions] = useState([])
     const[foundCustomer, setFoundCustomer] = useState({})
     const navigate = useNavigate()
+    const [messageForm, setMessageForm] = useState(false)
 useEffect(
     () => {
         if (customerId) {
@@ -30,11 +32,22 @@ useEffect(
         }
     },[foundCustomer]
 )
+const HandleMessageClick = (event) => {
+    event.preventDefault()
+    setMessageForm(true)
+}
+const HandleMessageClose=() => {
+   
+    setMessageForm(false)
+}
 // const customerFavorites= varietalRegions.filter((varietalRegion) => foundCustomer.favorites.find((favorite) => favorite.varietalRegionId === varietalRegion.id))
     return(<>
     <div className="text-4xl text-center">{foundCustomer.fullName}'s Favorite Wines</div>
     <div className="w-full text-center p-10 flex row justify-center gap-10">
-    <Link className="btn" to={`/social/messageForm/${customerId}`}>Send a Message</Link>
+    {/* <Link className="btn" to={`/social/messageForm/${customerId}`}>Send a Message</Link> */}
+    <button onClick={(event) => HandleMessageClick(event)} className="btn">Send {foundCustomer.fullName} a message</button>
+        {messageForm ? <MessageForm foundCustomer={foundCustomer} closeButton={HandleMessageClose}/>
+        : ""}
     </div>
     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
     {varietalRegions.map((wine) => {

@@ -7,6 +7,8 @@ export const WineCellar =({ rabbitUserObject}) => {
 const navigate= useNavigate()
 const [varietalRegions, setVarietalRegions] = useState([])
 const [favorites, setFavorites] = useState([])
+
+
 useEffect(
   ()=> {
       getFavorites(rabbitUserObject.id)
@@ -46,6 +48,7 @@ const handleDelete = (rabbitUserObject, wine) => {
       
       })
   })}
+ 
 
 
 

@@ -38,7 +38,7 @@ useEffect(
      <button onClick={()=> navigate("/social/updateProfile")} className="btn bg-secondary">Update Profile</button>
      <button onClick={()=> navigate("messages")} className="btn bg-secondary">My Messages ( {messages.length} )</button>
      </div>
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-center mx-auto">
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-center mx-auto px-10">
     {customers.map((customer) => {
     return <Customer key={customer.id} customer={customer}/>})}
     </div>

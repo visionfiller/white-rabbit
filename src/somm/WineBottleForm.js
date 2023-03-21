@@ -22,7 +22,7 @@ export const WineBottleForm = () => {
     if(wineBottle.name && wineBottle.vintage && wineBottle.varietalRegionId && wineBottle.image && wineBottle.link) {
         createWineBottle(wineBottle)
         .then(() => {
-            navigate("/somm/createVarietalRegion")
+            navigate("/somm")
         })
     }
         else{
@@ -34,9 +34,9 @@ export const WineBottleForm = () => {
 
 
     return(<>
-     <div className="text-center border-4 border-dashed ml-10 mr-10 m-20 w-auto">
-        <h2>Add a New Wine Bottle</h2>
-    <form>
+     <h2 className="text-center p-6 text-secondary font-semibold text-4xl">Add a New Wine Bottle</h2>
+       <div className="w-full h-screen flex row px-10  ">
+        <form className="rounded text-center w-1/2 h-3/4 mx-auto my-10 border-primary border-2 p-16 flex flex-col justify-evenly items-center ">
     <fieldset>
             <label>Name of Wine</label>
             <input 
@@ -107,9 +107,9 @@ export const WineBottleForm = () => {
                         )}
                     </select>
         </fieldset>
-        
+        <button onClick={(event) => HandleClickSaveWineBottle(event) }className="btn" >Add Wine Bottle</button>
     </form>
-    <button onClick={(event) => HandleClickSaveWineBottle(event) }className="btn" >Add Wine Bottle</button>
+    
     </div>
     </>)
 }

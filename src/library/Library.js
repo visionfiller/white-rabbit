@@ -103,7 +103,7 @@ const loadMoreOnClick = () => {
     return <>
     <h2 className="text-center p-6 text-secondary font-semibold text-4xl">The Library</h2>
     <div className="grid-cols-2 p-10  font-body">
-    <div className="flex row justify-between bg-secondary text-white p-2 rounded">
+    <div className="flex row justify-between bg-primary text-white p-2 rounded">
     <div id="typeFilter" className="">
     <label className="">Filter by type: </label>
     <select className="text-black"

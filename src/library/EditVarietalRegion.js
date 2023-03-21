@@ -71,48 +71,50 @@ if(varietalRegionId) {
 }
 
     return(<>
-     <form className="text-center border">
-            <h2 >Update Information for {varietalRegion.varietal?.name} in {varietalRegion.region?.location}</h2>
+     <h2 className="text-center p-6 text-secondary font-semibold text-4xl">Edit Varietal Region</h2>
+       <div className="w-full h-screen flex row px-10  ">
+        <form className="rounded text-center w-1/2 h-3/4 mx-auto my-10 border-primary border-2 p-16 flex flex-col justify-evenly items-center ">
+            <h2 className="text-2xl font-semibold" >Update Information for {varietalRegion.varietal?.name} in {varietalRegion.region?.location}</h2>
 
-            <fieldset>
-                <div className="flex row p-4">
-                    <label className="pr-5" htmlFor="body">Body Type</label>
-                    <select name="bodyId" value={varietalRegion.bodyId} onChange={HandleControlledInputChange}>
+            <fieldset className="">
+                
+                 
+                    <select className="block py-2.5 px-0 text-center w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"name="bodyId" value={varietalRegion.bodyId} onChange={HandleControlledInputChange}>
                         <option value="0">Select a new body type</option>
 {bodies.map((body) => {
     return <option key={body.id} value={body.id}>{body.density}</option>
 })}
                     </select>
                    
-                </div>
+                
             </fieldset>
 
             <fieldset>
-                <div className="flex row p-4">
-                    <label className="pr-5" htmlFor="acidity">Acidity Level</label>
-                    <select name="acidityId" value={varietalRegion.acidityId} onChange={HandleControlledInputChange}>
+               
+                  
+                    <select className="block py-2.5 px-0 text-center w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer" name="acidityId" value={varietalRegion.acidityId} onChange={HandleControlledInputChange}>
                         <option value="0">Select a new acidity level</option>
 {acidities.map((acidity) => {
     return <option key={acidity.id}value={acidity.id}>{acidity.style}</option>
 })}
                     </select>
                    
-                </div>
+               
             </fieldset>
             <fieldset>
-                <div className="flex row p-4">
-                    <label className="pr-5" htmlFor="dryness">Dryness Level</label>
-                    <select name="drynessId" value={varietalRegion.drynessId} onChange={HandleControlledInputChange}>
+              
+                  
+                    <select className="block py-2.5 px-0 w-full text-sm text-center text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer" name="drynessId" value={varietalRegion.drynessId} onChange={HandleControlledInputChange}>
                         <option value="0">Select a new dryness level</option>
 {drynesses.map((dryness) => {
     return <option key={dryness.id} value={dryness.id}>{dryness.level}</option>
 })}
                     </select>
                    
-                </div>
+               
             </fieldset>
 
-            <button  disabled={isLoading}
+            <button className="btn bg-primary" disabled={isLoading}
           onClick={event => {
             event.preventDefault() // Prevent browser from submitting the form and refreshing the page
             HandleSaveButton()
@@ -120,7 +122,7 @@ if(varietalRegionId) {
                Submit Changes to Varietal Region
             </button>
         </form>
-
+</div>
     </>)
 
 

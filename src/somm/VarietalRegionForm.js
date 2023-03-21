@@ -14,7 +14,9 @@ export const VarietalRegionForm = () => {
     const [drynesses, setDryness] = useState([])
     const [displayDrynessHTML, setDisplayDryness] = useState([])
     const [newVarietalRegion, update] = useState({})
+    const [isLoading, setIsLoading] = useState(true)
     const navigate = useNavigate()
+
 
 useEffect(
     () => {
@@ -31,13 +33,13 @@ DisplayDryness()
         if( newVarietalRegion.varietalId) {
             getVarietalById(newVarietalRegion.varietalId)
             .then((varietal) => {
-               console.log(varietal)
                setDisplayVarietal (<>
-                <div>{varietal.name}</div>
-                <img src={varietal.image}/>
+                <div className="text-center text-2xl text-secondary font-semibold">{varietal.name}</div>
+                <img className="mx-auto w-auto h-3/5 object-cover p-6" src={varietal.image}/>
                 </>)
             
             })
+            setIsLoading(false)
         }
         else {
             setDisplayVarietal("")
@@ -66,7 +68,7 @@ DisplayDryness()
             .then((body) => {
                 setDisplayBody
                (<>
-                <div>{body.density}</div>
+                <div className="badge">{body.density}</div>
                 </>)
             
             })
@@ -82,7 +84,7 @@ DisplayDryness()
             .then((acidity) => {
                 setDisplayAcidity
                (<>
-                <div>{acidity.style}</div>
+                <div className="badge">{acidity.style}</div>
                 </>)
             
             })
@@ -98,7 +100,7 @@ DisplayDryness()
             .then((dryness) => {
                 setDisplayDryness
                (<>
-                <div>{dryness.level}</div>
+                <div className="badge">{dryness.level}</div>
                 </>)
             
             })
@@ -145,12 +147,13 @@ else {
     }
 
     return <>
-        <div className="flex row justify-evenly p-10 m-10">
-        <form className="form-control">
-            <h2 className="text-center font-extrabold text-lg">Assign a new Varietal Region</h2>
-            <fieldset className="p-1 pt-4">
-                <div className="input-group" >
-                    <select className=""
+     <h2 className="text-center p-6 text-secondary font-semibold text-4xl">New Varietal Region</h2>
+       <div className="w-full h-screen flex row px-10  ">
+        <form className="text-center w-1/2 h-3/4 mx-auto my-10 border-primary border-2 p-16 ">
+            
+            <fieldset className="p-1 pt-4 flex row justify-start gap-10">
+           
+                    <select className="block py-2.5 px-0 w-1/2 text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
                         id="varietal"
                         onChange={
                             (evt) => {
@@ -172,12 +175,12 @@ else {
                     <button
                     onClick={() => navigate("/somm/createVarietalRegion/createVarietal")}
                     >+ New Varietal</button>
-                </div>
+                
             </fieldset>
-            <fieldset className="p-1">
-                <div className="input-group" >
+            <fieldset className="p-1 pt-4 flex row justify-start gap-10">
+                
                     <select
-                    className=""
+                    className="block py-2.5 px-0 w-1/2 text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
                         id="region"
                         onChange={
                             (evt) => {
@@ -199,11 +202,12 @@ else {
                     <button
                     onClick={() => navigate("/somm/createVarietalRegion/createRegion")}
                     >+ New Region</button>
-                </div>
+                
             </fieldset>
-            <fieldset className="p-1">
-                <div >
+            <fieldset className="p-1 pt-4 ">
+                
                     <select
+                        className="block py-2.5 px-0 w-1/2 text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
                         id="body"
                         onChange={
                             (evt) => {
@@ -222,11 +226,12 @@ else {
                             }
                         )}
                     </select>
-                </div>
+                
             </fieldset>
-            <fieldset className="p-1">
-                <div >
+            <fieldset className="p-1 pt-4">
+                
                     <select
+                    className="block py-2.5 px-0 w-1/2 text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
                         id="dryness"
                         onChange={
                             (evt) => {
@@ -245,11 +250,12 @@ else {
                             }
                         )}
                     </select>
-                </div>
+                
             </fieldset>
-            <fieldset className="p-1">
-                <div >
+            <fieldset className="p-1 pt-4 ">
+                
                     <select
+                    className="block py-2.5 px-0 w-1/2 text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
                         id="acidity"
                         onChange={
                             (evt) => {
@@ -268,13 +274,13 @@ else {
                             }
                         )}
                     </select>
-                </div>
+                
             </fieldset>
             <button className="btn m-2" onClick={(clickEvent) => handleSaveButton(clickEvent)}>Create New Varietal Region</button>
-        </form>
         
-
-<div className="card w-64 h-64 bg-slate-100 shadow-xl m-2">
+        </form>
+{isLoading ? "" 
+: <div className="text-center w-1/5 h-1/2 mx-auto my-10 p-2 ml-5 ">
     {newVarietalRegion ? displayVarietalHTML
 : "" }
  {newVarietalRegion ? displayRegionHTML
@@ -285,7 +291,8 @@ else {
 : "" }
 {newVarietalRegion ? displayAcidityHTML
 : "" }
-</div>
+</div> }
+
 </div>
     </>
 }

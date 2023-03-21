@@ -28,7 +28,7 @@ export const CardDetails = ({wineDetails,HandleCardClose}) => {
                 .then((detail) => {
                     setWine(detail)
                 })
-            getFavorites()
+            getFavorites(rabbitUserObject.id)
             .then((data) => {
                 setFavorites(data)
             })
@@ -56,7 +56,7 @@ useEffect(
         return (<>
        { isLoading ? "" 
        :
-            <MapContainer center={[lat, lng]} zoom={10} scrollWheelZoom={false}>
+            <MapContainer center={[lat, lng]} zoom={8} scrollWheelZoom={false}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -88,7 +88,7 @@ useEffect(
         <button onClick={HandleCardClose}>Close</button>
     </div>
             {rabbitUserObject.staff ? ""
-                : <button className="btn-sm btn bg-secondary " onClick={() => addToFavorites(wineObject).then(()=>navigate("/cellar"))}>Add to favorites</button>}
+                : <button className="btn-sm btn bg-secondary " onClick={() => addToFavorites(wineObject).then(()=> getFavorites(rabbitUserObject.id).then((data) => setFavorites(data)))}>Add to favorites</button>}
 
             <h2 className="text-xl font-bold text-secondary">{wine?.region?.location} {wine.varietal?.name}</h2>
             <div>Country: {wine?.region?.country}</div>

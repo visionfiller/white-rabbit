@@ -39,7 +39,7 @@ export const getDrynesses = () => {
     .then(response => response.json())
 }
 export const getDrynessById = (id) => {
-    return fetch(`http://localhost:8088/drynesses`)
+    return fetch(`http://localhost:8088/drynesses/${id}`)
     .then(response => response.json())
 }
 

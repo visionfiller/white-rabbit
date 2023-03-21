@@ -21,36 +21,48 @@ getUserById(rabbitUserObject.id)
 
 return (
    
-<>
-   <div className="font-semibold flex flex-row-reverse w-screen text-white text-2xl justify-evenly">
-    <div className="bg-fourth absolute top-5 w-full p-10 -z-10"></div>
-            <ul className=" flex row justify-evenly w-full p-10 pl-5 ml-5 " >
-       <li className="transform hover:scale-125  transition ease-out duration-300" ><button onClick={() => navigate("/social")}>social</button></li>
-        <li className="transform hover:scale-125  transition ease-out duration-300" ><button onClick={() => navigate("/like")}>will I like it?</button>
-        </li>
-        <li className="transform hover:scale-125  transition ease-out duration-300">
-            <Link to="" onClick={() => {
+<nav className="bg-white  w-screen flex items-center border-t-8 border-b-8 border-primary ">
+<Link className="w-1/6 h-full flex flex-col items-center " to="/home">
+      <img src="https://i.pinimg.com/originals/9d/ea/ac/9deaacacdbc7066962eb35f4e513190a.jpg" className="h-24  mr-3 " alt="Flowbite Logo" />
+      <span className=" text-left text-secondary text-2xl font-semibold whitespace-nowrap dark:text-white">white rabbit</span>
+  </Link>
+<div className="container flex justify-between   pr-2">
+
+  <div className=" bg-white  w-1/6 mx-auto flex items-center md:order-2">
+    
+        <img className="w-16 h-16 rounded-full mx-auto " src={foundUser.profilePicture} alt="user photo"/>
+    </div>
+    
+    <div className=" bg-third   items-center justify-evenly flex w-full order-1" id="mobile-menu-2">
+    <ul className="w-full flex row p-8 my-6 gap-10 rounded-lg space-x-8 ">
+      
+      <li className="transform hover:scale-125  transition ease-out duration-300 ">
+      <Link to="/library" className=" block py-2  text-white font-semibold text-lg  hover:text-primary md:p-0" aria-current="page">Library</Link>
+      </li>
+     <li className="transform hover:scale-125  transition ease-out duration-300">
+      <Link to="/cellar" className="block py-2  text-white font-semibold text-lg hover:text-primary md:p-0"  aria-current="page">Wine Cellar</Link>
+      </li>
+     <li className="transform hover:scale-125  transition ease-out duration-300">
+      <Link to="/chat" className="block py-2  text-white font-semibold text-lg hover:text-primary md:p-0"  aria-current="page">Chat With Us</Link>
+      </li>
+     <li className="transform hover:scale-125  transition ease-out duration-300">
+      <Link to="/social" className="block py-2  text-white font-semibold text-lg hover:text-primary md:p-0"  aria-current="page">Social</Link>
+      </li>
+     <li className="transform hover:scale-125  transition ease-out duration-300">
+      <Link to="/like" className="block py-2  text-white font-semibold text-lg hover:text-primary md:p-0"  aria-current="page">Will I Like it?</Link>
+      </li>
+     <li className="transform hover:scale-125  transition ease-out duration-300">
+        <Link className="block py-2  text-white font-semibold text-lg hover:text-primary md:p-0"  aria-current="page" onClick={() => {
                 localStorage.removeItem("rabbit_user")
                 navigate("/", {replace: true})
-            }}>logout</Link>
-            </li>
-            <li></li>
-        </ul>
-        
-        <Link className="w-1/5 text-center transform hover:scale-125  transition ease-out duration-300" to="/home">
-            <img className="h-auto border-secondary border-8 w-24 text-center rounded-full" src="https://i.pinimg.com/originals/9d/ea/ac/9deaacacdbc7066962eb35f4e513190a.jpg"/>
-         </Link>
-         <ul className=" flex flex-row-reverse justify-evenly w-full p-10 pl-5 ml-5" >
-         <li><button className="transform hover:scale-125  transition ease-out duration-300" onClick={() => navigate("/chat")}>chat with us</button></li>
-        <li className="transform hover:scale-125  transition ease-out duration-300" ><button onClick={() => navigate("/cellar")}>wine cellar</button>
-        </li>
-        <li><button className="transform hover:scale-125  transition ease-out duration-300" onClick={() => navigate("/library")}>library</button>
-        </li>
-        
+            }}>Logout</Link></li>
+      
     </ul>
+  </div>
    </div>
-   <img className="w-14 border-secondary border-4 right-2 top-6 object-cover absolute h-auto" src={foundUser.profilePicture}/>
+   
+
+    </nav>
     
-    </>
 )
         }

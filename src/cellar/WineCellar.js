@@ -57,9 +57,9 @@ return (<>
 
     
     <div className="w-full mr-auto ml-auto h-full m-8  border-secondary border-b-8 border-t-8">
-    <div className="carousel p-6 gap-10 h-full bg-primary">
+    <div className="carousel p-6 gap-10 h-full bg-third">
    {varietalRegions.map((wine) => {
-    return  <div key={wine.id} className="card carousel-item w-64 h-64 bg-slate-100 shadow-inner p-4 m-2">
+    return  <div key={wine.id} className="card carousel-item w-64 h-64 rounded-sm bg-slate-100 shadow-inner p-4 m-2">
     <div className="text-center text-secondary font-semibold">{wine?.region?.location} {wine.varietal?.name}</div>
     <div className="text-sm text-secondary text-center m-1">{wine?.region?.country}</div>
     <img className="h-3/5 object-cover"src={wine?.varietal?.image}/>

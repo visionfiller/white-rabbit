@@ -50,45 +50,42 @@ const HandleSaveButton = () => {
     
     
 return(<>
-<div className="text-center border-4 border-dashed ml-10 mr-10 m-20 w-auto">
-        <h2>Update your profile</h2>
-<form className="p-6">
-<fieldset className="pt-2">
-                <label className="input-group input-group-md" htmlFor="fullName">
+<div className="w-full h-screen ">
+        <form className="text-center w-1/2 h-auto mx-auto my-10 border-black border-2 p-10 ">
+            <h2 className="text-center text-2xl text-secondary font-semibold">Update your profile</h2>
+<fieldset className=" p-4 mx-auto flex row">
+                <label className= "mx-auto" htmlFor="fullName">Name</label>
                     <input onChange={HandleControlledInputChange}
                            type="text" id="fullName" className="form-control input input-bordered input-md"
                            defaultValue={user.fullName} name="fullName" required autoFocus />
-                           <span>name</span>
-                           </label>
+                          
+                          
                 </fieldset>
-                <fieldset className="pt-2 form-control">
-                <label className="input-group input-group-md" htmlFor="inputEmail">
+                <fieldset className="p-4 mx-auto flex row">
+                <label className="mx-auto" htmlFor="inputEmail">Email</label>
                     <input onChange={HandleControlledInputChange}
                         type="email" id="email" className="input input-bordered input-md"
                         defaultValue={user.email} name="email" required />
-                        <span className="">email</span>
-                        </label>
+                        
                 </fieldset>
-                <fieldset className="pt-2">
-                <label className="input-group input-group-md" htmlFor="password">
+                <fieldset className="p-4 mx-auto flex row">
+                <label className="mx-auto" htmlFor="password">Password</label>
                     <input onChange={HandleControlledInputChange}
                         defaultValue={user.password}
                         type="text" id="password" className="input input-bordered input-md"
                         placeholder="new password" name="password"required />
-                        <span>password</span>
-                        </label>
+                       
                 </fieldset>
 
-                <fieldset className="pt-2">
-                <label className="input-group input-group-md" htmlFor="picture">
+                <fieldset className="p-4 mx-auto flex row">
+                <label className="mx-auto" htmlFor="picture">Profile Picture URL</label>
                     <input onChange={HandleControlledInputChange}
                       
                         type="text" id="profilePicture" className="input input-bordered input-md"
                         placeholder="URL" name="profilePicture"required />
-                        <span>profile picture</span>
-                        </label>
+                       
                 </fieldset>
-                <button className="btn m-4" disabled={isLoading}
+                <button className="btn bg-secondary m-4" disabled={isLoading}
           onClick={event => {
             event.preventDefault() // Prevent browser from submitting the form and refreshing the page
             HandleSaveButton()

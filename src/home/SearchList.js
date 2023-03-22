@@ -42,7 +42,7 @@ export const SearchedVarietalRegionList = ({ searchTermState }) => {
 
 
         
-        <article className="grid grid-cols-3 gap-10">
+        <article className="grid grid-cols-2 gap-10 w-1/2 p-10">
 
           
 {

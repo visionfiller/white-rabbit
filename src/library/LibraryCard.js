@@ -74,7 +74,7 @@ const HandleCardClose = (event) => {
 
     return (
        
-    <div key={wine.id} className="card w-60 h-64  bg-slate-200 hover:bg-third hover:cursor-pointer rounded-none shadow-lg">
+    <div key={wine.id} className="card w-60 h-64 m-6 bg-slate-200 hover:bg-third hover:cursor-pointer rounded-none shadow-lg">
         
     <div className="absolute top-2 right-2">
             {rabbitUserObject.staff ?  <button className="btn btn-sm bg-secondary" onClick={()=> navigate(`/library/edit/${wine.id}`) }>Edit Details</button>

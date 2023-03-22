@@ -7,8 +7,11 @@ export const SearchedContainer = () => {
     
     return (
         <>
-        <div className=" w-full mx-auto text-center">
+        <div className=" w-full mx-auto text-center flex row">
+        <div className="flex flex-col p-10">
+        <h2 className="text-8xl text-left text-secondary p-20">Let's talk wine!</h2>
         <WineSearch setterFunction={setSearchTerms}/> 
+        </div>
         <SearchedVarietalRegionList searchTermState={searchTerms} /> 
         </div>
     </>

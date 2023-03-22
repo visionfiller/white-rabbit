@@ -7,7 +7,7 @@ export const getAllFavorites = () => {
     .then(response => response.json())
 }
 export const getVarietalRegionsToPaginate = (currentPage) => {
-    return fetch(`http://localhost:8088/varietalRegions?_page=${currentPage}&_limit=10_expand=dryness&_expand=body&_expand=acidity&_expand=varietal&_expand=region`)
+    return fetch(`http://localhost:8088/varietalRegions?_page=${currentPage}&_limit=20_expand=dryness&_expand=body&_expand=acidity&_expand=varietal&_expand=region`)
     .then(response => response.json())
 }
 export const getWineTypes = () => {

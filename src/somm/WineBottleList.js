@@ -8,7 +8,7 @@ export const WineList =({wineBottles, varietalRegions,findVarietal, findRegion, 
         <div className="fixed inset-0 z-20  backdrop-blur-sm ">
            
     <div className="w-3/4 h-3/4 my-10 mx-auto bg-white border-2 border-secondary overflow-y-auto scroll-smooth ">
-    <div className="text-right pt-2 pr-2 ">
+    <div className="text-right text-2xl p-2">
         <button type="button" className="font-semibold" onClick={(event) => HandleWineClose(event)}>X</button>
         </div>
     <h2 className="pb-6 text-3xl text-center font-bold leading-none text-secondary dark:text-white">Wines In Our Cellar</h2>
@@ -21,7 +21,7 @@ export const WineList =({wineBottles, varietalRegions,findVarietal, findRegion, 
     
     </blockquote>
     <figcaption className="flex items-center justify-center space-x-3">
-        <img className="rounded-full w-12 h-12" src={bottle.image} alt="wine bottle"/>
+        <img className="rounded-full w-12 h-12 object-contain" src={bottle.image} alt="wine bottle"/>
         <div className="space-y-0.5 font-medium dark:text-white text-left">
         <div className="my-4 font-light">{varietalRegions.length ? findVarietal(bottle)
     : ""}</div>

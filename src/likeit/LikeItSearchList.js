@@ -106,14 +106,14 @@ const calculatePercentage =(foundWine) => {
     let wineAverage = (bodyPercentage + drynessPercentage + acidityPercentage)/3
     console.log(wineAverage)
     
-return(<div className="h-full p-10">
+return(<div className="h-full p-10 text-secondary">
 <div className="text-2xl">{foundWine.region.location},{foundWine.region.country} - {foundWine.varietal.name}</div>
 <h2>Matched percentage to your favorites</h2>
 <div>Body: {parseFloat(bodyPercentage *100).toFixed(0)}% </div>
 <div>Dryness: {parseFloat(drynessPercentage *100).toFixed(0)}% </div>
 <div>Acidity:{parseFloat(acidityPercentage *100).toFixed(0) }% </div>
-{wineAverage > .5 ? <div className="text-2xl font-extrabold">YES! I think you'll like this wine</div>
-: <div className="text-2xl font-extrabold">No, it might not be for you :(</div>
+{wineAverage > .5 ? <div className="text-2xl font-extrabold text-secondary">YES! I think you'll like this wine</div>
+: <div className="text-2xl font-extrabold text-secondary">No, it might not be for you :(</div>
 }
 </div>)
 
@@ -127,11 +127,11 @@ return(<div className="h-full p-10">
         
    
                 {
-                    foundWine ? <> <div className="card w-64 h-64 bg-slate-100 shadow-xl p-4 m-2">
+                    foundWine ? <> <div className="card w-64 h-64 bg-slate-100 shadow-xl p-4 m-2 text-secondary">
                     <div>{foundWine?.region?.location} {foundWine.varietal?.name}</div>
                     <div>{foundWine?.region?.country}</div>
                     <img className="h-3/5 object-cover"src={foundWine?.varietal?.image}/>
-                    <button onClick={(event) => HandleSaveSearch(event)}>See Results</button></div> 
+                    <button className="btn btn-xs bg-primary text-white m-2"onClick={(event) => HandleSaveSearch(event)}>See Results</button></div> 
                     </>
 
                     : "Wine not found in our library"}
@@ -142,7 +142,7 @@ return(<div className="h-full p-10">
     
     {probability && foundWine ? calculatePercentage(foundWine)
     : ""}
-    {probability && foundWine? <button onClick={(event) => HandleCardClick(event, foundWine)} className=""><img src="https://cdn-icons-png.flaticon.com/512/3698/3698569.png"/><span>Tell me more!</span>
+    {probability && foundWine? <button onClick={(event) => HandleCardClick(event, foundWine)} className=""><img src="https://cdn-icons-png.flaticon.com/512/3698/3698569.png"/><span className="btn btn-xs bg-primary text-white m-2">Tell me more!</span>
 
 </button>
     : ""}

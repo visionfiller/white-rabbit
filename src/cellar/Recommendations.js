@@ -45,10 +45,10 @@ export const Recommendations =({favorites }) => {
   newArray.map((wine) => {
     return (<div key={wine.id}>
     
-    <button onClick={(event) => HandleCardClick(event,wine)}key={wine.id} id={wine.id}  className="badge bg-white border-none  font-semibold p-8  m-4 w-full transform hover:scale-125  transition ease-out duration-300">
-    <div  className="inline-block absolute w-full mx-auto">{wine.region?.location} {wine.varietal?.name}</div>
-    {wine.varietal.wineTypeId === 2 ? <img src="https://www.onlygfx.com/wp-content/uploads/2017/04/yellow-paint-brush-stroke-9-300x122.png" className="w-full" />
-    : <img src="https://th.bing.com/th/id/OIP.xw5RUOkCJuQNxKkQw8YVHQHaC2?pid=ImgDet&rs=1" className="w-full" />
+    <button onClick={(event) => HandleCardClick(event,wine)}key={wine.id} id={wine.id}  className="badge badge-sm bg-white border-none  font-semibold p-8  m-4 w-full transform hover:scale-125  transition ease-out duration-300">
+    
+    {wine.varietal.wineTypeId === 2 ?<><div className="inline-block absolute w-full mx-auto text-lg text-secondary">{wine.region?.location} {wine.varietal?.name}</div><img src="https://www.onlygfx.com/wp-content/uploads/2017/04/yellow-paint-brush-stroke-9-300x122.png" className="w-full" /></>
+    :<> <div className="inline-block absolute w-full mx-auto text-lg">{wine.region?.location} {wine.varietal?.name}</div><img src="https://th.bing.com/th/id/OIP.xw5RUOkCJuQNxKkQw8YVHQHaC2?pid=ImgDet&rs=1" className="w-full" /></>
   }
     </button>
     {cardDetails ? <CardDetails wineDetails={wineObject} HandleCardClose={HandleCardClose}/>

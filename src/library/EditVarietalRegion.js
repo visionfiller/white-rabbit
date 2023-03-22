@@ -64,7 +64,7 @@ if(varietalRegionId) {
         drynessId: varietalRegion.drynessId,
 
     })
-    .then(()=> navigate(`/library/details/${varietalRegionId}`))
+    .then(()=> navigate(`/library`))
 }
 
 

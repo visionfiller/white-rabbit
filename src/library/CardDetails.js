@@ -70,6 +70,14 @@ useEffect(
 
 
     }
+const IsFavorite = (wine) => {
+  let foundFavorite = favorites.find((favorite) => favorite.varietalRegionId === wine.id )
+if(foundFavorite){
+    return ""
+}
+else{return <button className="btn-sm btn bg-secondary " onClick={() => addToFavorites(wineObject).then(()=> getFavorites(rabbitUserObject.id).then((data) => setFavorites(data)))}>Add to favorites</button>}
+  
+}
 
 
     return (<>
@@ -88,7 +96,7 @@ useEffect(
         <button onClick={HandleCardClose}>Close</button>
     </div>
             {rabbitUserObject.staff ? ""
-                : <button className="btn-sm btn bg-secondary " onClick={() => addToFavorites(wineObject).then(()=> getFavorites(rabbitUserObject.id).then((data) => setFavorites(data)))}>Add to favorites</button>}
+                : IsFavorite(wine)  }
 
             <h2 className="text-xl font-bold text-secondary">{wine?.region?.location} {wine.varietal?.name}</h2>
             <div>Country: {wine?.region?.country}</div>

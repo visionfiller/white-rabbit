@@ -37,7 +37,7 @@ return (
     <ul className="w-full flex row p-8 my-6 gap-10 rounded-lg space-x-8 ">
       
       <li className="transform hover:scale-125  transition ease-out duration-300 ">
-      <Link to="/library" className=" block py-2  text-white font-semibold text-lg  hover:text-primary md:p-0" aria-current="page">Library</Link>
+      <Link to="/library" className=" block py-2  text-white font-semibold text-lg  hover:text-primary  md:p-0" aria-current="page">Library</Link>
       </li>
      <li className="transform hover:scale-125  transition ease-out duration-300">
       <Link to="/cellar" className="block py-2  text-white font-semibold text-lg hover:text-primary md:p-0"  aria-current="page">Wine Cellar</Link>

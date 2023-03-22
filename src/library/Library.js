@@ -158,7 +158,7 @@ const loadMoreOnClick = () => {
     <div className="text-center p-10">
     {errorMsg && <p className="error-msg">{errorMsg}</p>}
         {hasMore && (
-          <button className=" loading-more-btn btn hover:shadow-inner transform hover:scale-125 hover:bg-opacity-50 transition ease-out duration-300" onClick={loadMoreOnClick}>
+          <button className=" loading-more-btn btn bg-secondary hover:bg-primary hover:shadow-inner transform hover:scale-125 hover:bg-opacity-50 transition ease-out duration-300" onClick={loadMoreOnClick}>
             {loading ? "Loading..." : "Load More"}
           </button>
         )}

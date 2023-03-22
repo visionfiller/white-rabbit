@@ -74,7 +74,7 @@ const HandleCardClose = (event) => {
 
     return (
        
-    <div key={wine.id} className="card w-60 h-64  bg-slate-200  border-secondary rounded-none shadow-lg">
+    <div key={wine.id} className="card w-60 h-64  bg-slate-200 hover:bg-third hover:cursor-pointer rounded-none shadow-lg">
         
     <div className="absolute top-2 right-2">
             {rabbitUserObject.staff ?  <button className="btn btn-sm bg-secondary" onClick={()=> navigate(`/library/edit/${wine.id}`) }>Edit Details</button>
@@ -92,12 +92,12 @@ const HandleCardClose = (event) => {
             { isLoading? ""
             : StarButton(wine)}
         </div>
-        <div className="card-body p-1 mb-4 h-full ">
+        <div className="card-body p-1 mb-4 h-full">
        <button type="button" onClick={(event) => HandleCardClick(event)}>
             <img className="h-36 w-full mx-auto object-cover" src={wine?.varietal?.image}/>
             </button>
            
-            <div className="card-title m-2 flex flex-col w-full ">
+            <div className="card-title m-2 flex flex-col w-full hover:text-white ">
                 <div>{wine?.region?.location} {wine.varietal?.name}</div>
                 <div className="text-sm ">Country: {wine?.region?.country}</div>
                 

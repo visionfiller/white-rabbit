@@ -5,8 +5,10 @@ import { Register } from "./auth/Register";
 import { NavBar } from "./nav/NavBar";
 import { ApplicationViews } from "./views/ApplicationViews";
 import './index.css';
+import { Home } from "./home/Home";
+import { useState } from "react";
+import { LoginVideo } from "./auth/LoginVideo";
 export const WhiteRabbit = () => {
-
 
 	return (
 
@@ -18,9 +20,12 @@ export const WhiteRabbit = () => {
 				<Route path="*" element={
 				<Authorized>
 					<>
+				
+ 
 					
                     <NavBar />
                     <ApplicationViews />
+					
 					
 					</>
 				</Authorized>

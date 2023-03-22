@@ -5,6 +5,7 @@ import { getVarietalRegions } from "../library/LibraryProvider"
 import { MessageForm } from "../social/MessageForm"
 import { getMessagesById } from "../social/SocialProvider"
 import { getCustomers, getWineBottles } from "./SommProvider"
+import { WineList } from "./WineBottleList"
 
 export const Somm = () => {
 const [wineBottles, setWineBottles] = useState([])
@@ -13,7 +14,7 @@ const [customers, setCustomers] = useState([])
 const [messages, setMessages] = useState([])
 const [messageForm, setMessageForm] = useState(false)
 const [foundCustomer, setFoundCustomer] =useState({})
-const navigate = useNavigate()
+const [wineButton, setWineButton] = useState(false)
 const localRabbitUser = localStorage.getItem("rabbit_user")
     const rabbitUserObject = JSON.parse(localRabbitUser)
 
@@ -47,6 +48,15 @@ useEffect(
     const HandleMessageClose=() => {
        
         setMessageForm(false)
+    }
+    const HandleWineClick = (event) => {
+        event.preventDefault()
+        setWineButton(true)
+       
+    }
+    const HandleWineClose=() => {
+       
+        setWineButton(false)
     }
 
    
@@ -83,31 +93,22 @@ const openInNewTab = (url) => {
 
 
     return <>
-    <div className="w-full text-center h-screen p-6 ">
+    <h2 className="text-center p-6 text-secondary font-semibold text-4xl">What would you like to do today?</h2>
+    <div className="w-full flex row justify-between text-center h-full p-8 ">
         
   
-
-<div className=" flex row w-full p-4 justify-evenly">
-        <Link className="btn  bg-secondary" to="/somm/createVarietalRegion">Assign a new Varietal Region</Link>
-        <Link className="btn bg-secondary "to="/somm/createWineBottle">Add new Wine Bottle</Link>
-        <Link className="btn bg-secondary" to="/sommMessages">My Messages ( {messages.length} )</Link>
-     </div>
-   
-<div className="flex row w-full h-full justify-between">
-    
-
     <div className="flex flex-col h-full ml-0">
-<h2 className="pb-6 text-3xl text-center font-bold leading-none text-secondary dark:text-white">White Rabbit Customers</h2>
-    <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow-secondary shadow-xl sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+   
+    <div className="w-full max-w-md p-4 bg-primary border border-gray-200 rounded sm:p-8 dark:bg-gray-800 dark:border-gray-700">
     
-    
+    <h2 className="text-xl font-semibold text-gray-100">WR Customers</h2>
     <div className="flow-root">
     <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
         
        
         {
         customers.map((customer) => {
-        return <li key={customer.id} className="py-3 px-4 sm:py-4   w-full">
+        return <li key={customer.id} className="py-3 px-4  w-full">
             <div className="flex items-center space-x-4">
             <div className="flex-shrink-0">
             <button onClick={(event) => HandleMessageClick(event, customer)} className=""> <img className="w-16 h-16 rounded-full" src={customer.profilePicture}/></button>
@@ -116,14 +117,14 @@ const openInNewTab = (url) => {
                        
                     </div>
             <div className="flex-1 min-w-0">
-                        <p className=" font-medium text-gray-900  truncate dark:text-white">
+                        <p className=" font-medium text-gray-100  truncate dark:text-white">
                            {customer.fullName}
                         </p>
-                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                        <p className="text-sm text-gray-100 truncate dark:text-gray-400">
                             {customer.email}
                         </p>
                     </div>
-                 <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                 <div className="inline-flex items-center text-base font-semibold text-gray-100 dark:text-white">
                         {customer.favorites?.length}
                     </div>
                     </div>
@@ -135,40 +136,30 @@ const openInNewTab = (url) => {
     </div>
     </div>
      </div>
+{wineButton ? <WineList varietalRegions={varietalRegions} wineBottles={wineBottles} findRegion={findRegion} findVarietal={findVarietal} openInNewTab={openInNewTab} HandleWineClose={HandleWineClose} />
+: ""}
 
-        <div className="  pt-6 h-full">
-        <h2 className="pb-6 text-3xl text-center font-bold leading-none text-secondary dark:text-white">Wines In Our Cellar</h2>
-        <div className="grid mb-8 w-full  p-4 bg-white border border-gray-200 rounded-lg shadow-secondary shadow-xl sm:p-8 dark:bg-gray-800 dark:border-gray-700 md:mb-12 md:grid-cols-2">
- 
-        {wineBottles.map((bottle) => {
-            return  <Link className="flex flex-col items-center justify-center p-8 text-center bg-white border-b border-gray-200 rounded-t-lg md:rounded-t-none md:rounded-tl-lg md:border-r dark:bg-gray-800 dark:border-gray-700" href="#" onClick = {() => openInNewTab(bottle?.link)}><figure key={bottle.id} className="">
-        <blockquote className="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
-        <div key={bottle?.id} className="text-lg font-semibold text-gray-900 dark:text-white">{bottle.name}</div>
-        
-        </blockquote>
-        <figcaption className="flex items-center justify-center space-x-3">
-            <img className="rounded-full w-12 h-12" src={bottle.image} alt="wine bottle"/>
-            <div className="space-y-0.5 font-medium dark:text-white text-left">
-            <div className="my-4 font-light">{varietalRegions.length ? findVarietal(bottle)
-        : ""}</div>
-         <div className="text-sm font-light text-gray-500 dark:text-gray-400">{varietalRegions.length ? findRegion(bottle)
-                : ""}</div>
-                
-            </div>
-        </figcaption>    
-    </figure>
-    </Link>
-    })
-     
-    
-        }
-        
+<div className="grid grid-cols-2 p-24">
+        <Link className="border-b-2 border-r-2 border-secondary" to="/somm/createVarietalRegion">
+            <img className=" w-3/4 h-3/4 mx-auto"src="https://th.bing.com/th/id/R.9bacebdd9ed8ea8b3f3b8fe496bbec67?rik=xYCoMrSb3nMLDA&riu=http%3a%2f%2fwww.clker.com%2fcliparts%2f4%2f2%2f1%2fe%2f1197104269542805265PanamaG_French_outline.svg.hi.png&ehk=87yZWE1OvqaEcmAJT4KRka80DBEBxrsZsvF8joayECc%3d&risl=&pid=ImgRaw&r=0" />
+            <div className="text-center p-4 font-semibold">Assign a new varietal region</div>
+        </Link>
+        <Link className="border-b-2 border-secondary"to="/somm/createWineBottle">
+            <img className="object-cover w-3/4 h-3/4 mx-auto"src="https://i.etsystatic.com/36867827/r/il/0d3bb3/4194436403/il_1588xN.4194436403_qmza.jpg"/>
+            <div className="text-center p-4 font-semibold">Add a new bottle</div>
+        </Link>
+        <Link className="border-r-2 border-secondary pt-8" to="/sommMessages">
+            <img className="object-cover h-3/4 w-3/4 mx-auto"src="https://logodix.com/logo/447066.png" />
+            <div className="text-center p-4 font-semibold">Check messages ( {messages.length} )</div>
+        </Link>
+        <Link onClick={(event) => HandleWineClick(event)} className="mt-8" to="">
+            <img className="object-cover h-3/4 w-3/4 mx-auto "src="https://th.bing.com/th/id/R.db5809040703e9d5323ee0d78fcc7cdd?rik=dC1X4XBIPeA17Q&riu=http%3a%2f%2fgetdrawings.com%2fimages%2fbottle-of-wine-drawing-7.png&ehk=fqUGNoLeF%2f5bDoTf8At5yNTgwNZj6Uss0xfxU4%2bkgJI%3d&risl=&pid=ImgRaw&r=0"/>
+            <div className="text-center p-4 font-semibold">See WR's wines</div>
+            </Link>
+     </div>
+   
 
-        
-        
-            </div>
-        </div>
-        </div>
+       
        </div>
         </>
 }

@@ -10,9 +10,11 @@ export const WineBottleForm = () => {
 
     useEffect(
         () => {
+            
             getVarietalRegions()
             .then((data) => {
-                setVarietalRegions(data)
+                let sortedVarietalRegions = data.sort((a, b) => (a.region.country > b.region.country ? 1 : (a === b ? 0 : -1)))
+                setVarietalRegions(sortedVarietalRegions)
             })
         },[]
     )
@@ -99,7 +101,7 @@ export const WineBottleForm = () => {
                         <option name="varietalRegionId"> Choose Varietal Region...</option>
                         {varietalRegions.map(
                             (varietalRegion) => {
-                                return (<option
+                                return (<option key={varietalRegion.id}
                                     value={varietalRegion.id}>
 
                                     {varietalRegion.region?.location}, {varietalRegion.region?.country} - {varietalRegion.varietal.name} </option>)

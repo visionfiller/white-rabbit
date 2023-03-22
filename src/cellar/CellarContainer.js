@@ -45,16 +45,16 @@ const rabbitUserObject = JSON.parse(localRabbitUser)
     
      />
      <div className="flex flex-row-reverse w-full pt-8">
-     <div className="flex row w-full">
+     <div className="flex row w-full p-8">
     <Recommendations 
      favorites={favorites}
      varietalRegions={varietalRegions}/>
     <MatchedWineBottles
     rabbitUserObject={rabbitUserObject} />
     </div>
-    <div className=" ">
+    {/* <div className=" ">
     <img className="w-4/5 h-auto bg-none text-center opacity-60 blur-sm"src="https://i.etsystatic.com/5331662/r/il/663d10/250251863/il_794xN.250251863.jpg"/>
-  </div>
+  </div> */}
   </div>
   
     </>)

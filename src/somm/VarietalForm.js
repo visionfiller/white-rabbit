@@ -96,6 +96,7 @@ export const VarietalForm = () => {
                             copy.wineTypeId= parseInt(evt.target.value)
                             setVarietal(copy)
                         }}>
+                        <option  value="0">Please select a wine type</option>
                     {wineTypes.map((type) => {
                         return <option id={type.id} value={type.id}>{type.type}</option>
                     })}

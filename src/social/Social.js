@@ -34,13 +34,14 @@ useEffect(
     return(<>
     
    <h2 className="text-center p-6 text-secondary font-semibold text-4xl">The White Rabbit Community.</h2>
-   <div className="w-full text-center p-10 flex row justify-center gap-10 mx-auto ">
+   <div className="w-full text-center p-10 flex row justify-center gap-10 mx-auto  ">
      <button onClick={()=> navigate("/social/updateProfile")} className="btn bg-secondary">Update Profile</button>
      <button onClick={()=> navigate("messages")} className="btn bg-secondary">My Messages ( {messages.length} )</button>
      </div>
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-center mx-auto px-10">
+    <div className="flex row flex-wrap justify-evenly p-10">
     {customers.map((customer) => {
     return <Customer key={customer.id} customer={customer}/>})}
     </div>
-    </>)
+    </>
+    )
 }

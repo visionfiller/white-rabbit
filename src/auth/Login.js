@@ -41,7 +41,7 @@ export const Login = () => {
             <div className="border border-white-10 bg-cover blur w-screen h-full bg-[url('https://th.bing.com/th/id/R.8a3385dee3d63c5dd977705abf4cad84?rik=NaXhHe9JUTk9Zw&riu=http%3a%2f%2fwp.production.patheos.com%2fblogs%2funcommongodcommongood%2ffiles%2f2014%2f07%2fiStock_000036147510Small.jpg&ehk=N5mDs7Sa8pDyw5lExQhvswZwotK290GhnV9dVlS9Wh0%3d&risl=&pid=ImgRaw&r=0')]">
                 
                 </div>
-                <div className="absolute bottom-4 left-6  text-white lowercase text-xl opacity-60">take a trip down the rabbit hole</div>
+              
             <div className="text-8xl top-60 text-white absolute right-10 lowercase opacity-80" >White Rabbit.</div>
             <section className="w-screen">
                 <form className="absolute bottom-32 right-10 m-auto form-control text-right" onSubmit={handleLogin}>
@@ -69,11 +69,11 @@ export const Login = () => {
                             <span>password</span>
                             </label>
                     </fieldset>
-                    <fieldset className="pt-8 flex row">
-                        <button className="btn mr-auto ml-auto" type="submit">
+                    <fieldset className="pt-8 flex row items-center">
+                        <button className="btn bg-secondary mr-auto ml-auto" type="submit">
                             Sign in
                         </button>
-                        <Link className="w-full inline-block pl-8 text-white"to="/register">Not a member yet?</Link>
+                        <Link className="w-full inline-block pl-8 text-white"to="/register">Is this your first visit?</Link>
                     </fieldset>
                 </form>
                 

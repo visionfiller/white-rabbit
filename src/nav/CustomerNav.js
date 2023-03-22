@@ -26,11 +26,11 @@ return (
       <img src="https://i.pinimg.com/originals/9d/ea/ac/9deaacacdbc7066962eb35f4e513190a.jpg" className="h-24  mr-3 " alt="Flowbite Logo" />
       <span className=" text-left text-secondary text-2xl font-semibold whitespace-nowrap dark:text-white">white rabbit</span>
   </Link>
-<div className="container flex justify-between   pr-2">
+<div className="container flex justify-between   ">
 
-  <div className=" bg-white  w-1/6 mx-auto flex items-center md:order-2">
+  <div className=" bg-third  w-1/6 mx-auto flex items-center md:order-2">
     
-        <img className="w-16 h-16 rounded-full mx-auto " src={foundUser.profilePicture} alt="user photo"/>
+        <img className="w-24 h-24 object-cover rounded-full mx-auto " src={foundUser.profilePicture} alt="user photo"/>
     </div>
     
     <div className=" bg-third   items-center justify-evenly flex w-full order-1" id="mobile-menu-2">

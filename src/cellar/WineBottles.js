@@ -91,10 +91,10 @@ useEffect(
 
 return (<>
 <div className="flex flex-col w-full ">
-<h2 className="text-2xl text-secondary font-semibold">Some Wines You May Like...</h2>
-<div className="flex row justify-start">
+<h2 className="text-2xl text-secondary font-semibold">Some wines you may like...</h2>
+<div className="flex row flex-wrap justify-start ">
 {wineBottles ? wineBottles.map(wine => wine.map(bottle => {
-return <Link href="#" onClick = {() => openInNewTab(bottle?.link)} key={bottle?.id} className="card text-secondary m-6 ransform hover:scale-125  transition ease-out duration-300" ><div className="text-center ">{bottle?.name}</div><img className="h-48 w-auto px-2"src={bottle?.image} /></Link>}))
+return <Link href="#" onClick = {() => openInNewTab(bottle?.link)} key={bottle?.id} className="card  text-secondary m-6 ransform hover:scale-125  transition ease-out duration-300" ><div className="text-center ">{bottle?.name}</div><img className="h-48 w-auto object-contain px-2"src={bottle?.image} /></Link>}))
 : "No bottles of wine to recommend"} 
 
 

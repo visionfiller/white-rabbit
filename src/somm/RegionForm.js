@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { createRegion } from "./SommProvider"
 
-export const RegionForm = () => {
+export const RegionForm = ({HandleRegionFormClose}) => {
 const [region, setRegion] = useState({})
 const navigate = useNavigate()
 
@@ -11,7 +11,7 @@ const HandleClickSaveRegion =(event) => {
 if(region.location && region.country) {
     createRegion(region)
     .then(() => {
-        navigate("/somm/createVarietalRegion")
+        HandleRegionFormClose(event)
     })
 }
     else{
@@ -23,24 +23,32 @@ if(region.location && region.country) {
 
 
     return (<>
-    <div className="text-center border-4 border-dashed ml-10 mr-10 m-20 w-auto">
-        <h2>Add a New Wine Region</h2>
-    <form>
-        <fieldset>
-            <div>
-            <label>New Region Location</label>
+     <div className="fixed inset-0 z-20  backdrop-blur-sm ">
+          
+          <form className=" bg-white w-1/2 h-2/3 mx-auto my-10  border-black border-2 p-10   ">
+           <div className="flex row justify-between">
+           <h2 className="text-3xl font-semibold text-right">New Region</h2>
+          <button type="button" className="text-right text-2xl" onClick={(event) => HandleRegionFormClose(event)}>X</button>
+          </div>
+          <div className="flex row h-full pt-0 p-6">
+           <div className="flex flex-col justify-evenly items-center h-full text-secondary">
+              
+            
+        <fieldset className="p-1 pt-4 flex row justify-start gap-14">
+            
+            <label className="w-1/2">New Region Location</label>
             <input onChange={
                             (evt) => {
                                 const copy = { ...region }
                                 copy.location = evt.target.value
                                 setRegion(copy)
                             }}
-            className="pl-2" name="location" id="location" type="text" placeholder=" e.g. Rioja or Chablis"/>
-            </div>
+            className="block py-2.5 px-0 w-1/2 text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer" 
+            name="location" id="location" type="text" placeholder=" e.g. Rioja or Chablis"/>
+            
         </fieldset>
-        <fieldset>
-            <div>
-            <label>Country of Region</label>
+        <fieldset className="p-1 pt-4 flex row justify-start gap-14">
+            <label className="w-1/2">Country of Region</label>
             <input 
             onChange={
                 (evt) => {
@@ -48,12 +56,12 @@ if(region.location && region.country) {
                     copy.country = evt.target.value
                     setRegion(copy)
                 }}
-            className="pl-2" name="country" id="country" type="text" placeholder=" e.g. Spain or France"/>
-            </div>
+                className="block py-2.5 px-0 w-1/2 text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer" 
+            name="country" id="country" type="text" placeholder=" e.g. Spain or France"/>
+            
         </fieldset>
-        <fieldset>
-            <div>
-            <label>City for Map</label>
+        <fieldset className="p-1 pt-4 flex row justify-start gap-14">
+            <label className="w-1/2">City for Map</label>
             <input 
             onChange={
                 (evt) => {
@@ -61,12 +69,20 @@ if(region.location && region.country) {
                     copy.geoCodeCity = evt.target.value
                     setRegion(copy)
                 }}
-            className="pl-2" name="geoCodeCity" id="country" type="text" placeholder=" e.g. Madrid or Paris"/>
-            </div>
+                className="block py-2.5 px-0 w-1/2text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer" 
+             name="geoCodeCity" id="country" type="text" placeholder=" e.g. Madrid or Paris"/>
+            
         </fieldset>
-    </form>
-    <button onClick={(clickEvent) => HandleClickSaveRegion(clickEvent)}>Add Region</button>
-    </div>
+        </div>
+            
+            <div className="mx-auto my-auto ">
+            <button className="btn bg-secondary " onClick={(clickEvent) => HandleClickSaveRegion(clickEvent)}>Add Region</button>
+            </div>
+            </div>
+        </form>
+        <div>
+       </div>
+        </div>
     
     
     

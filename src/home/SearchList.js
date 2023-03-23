@@ -12,7 +12,6 @@ export const SearchedVarietalRegionList = ({ searchTermState }) => {
 
     useEffect(
         () => {
-
                 if (searchTermState) {
                     const searchedWines = varietalRegions.filter(varietalRegion => {
                         return varietalRegion.varietal?.name.toLowerCase().includes(searchTermState.toLowerCase()) && searchTermState.length > 2 || varietalRegion.region?.location.toLowerCase().includes(searchTermState.toLowerCase()) && searchTermState.length > 2 || varietalRegion.region?.country.toLowerCase().includes(searchTermState.toLowerCase()) && searchTermState.length > 2
@@ -22,7 +21,6 @@ export const SearchedVarietalRegionList = ({ searchTermState }) => {
                 else{
                     setFiltered ([])
                 }
-           
         },
         [searchTermState]
     )
@@ -40,25 +38,13 @@ export const SearchedVarietalRegionList = ({ searchTermState }) => {
 
     return <>
 
-
-        
         <article className="grid grid-cols-2 gap-10 w-1/2 p-10">
-
-          
-{
-                filteredWines?.map(wine => {
+{filteredWines?.map(wine => {
                        return <Wine
                         wine={wine}
-                        currentUser={rabbitUserObject}/>}
-
-
-                    
+                        currentUser={rabbitUserObject}/>} 
                 )
-                    
-
-            
                 }
-
         </article>
     </>
 }

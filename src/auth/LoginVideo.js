@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 
 export const LoginVideo = ({HandleClose}) => {
-    const navigate = useNavigate()
+   
     return  <div className="fixed inset-0 z-20  backdrop-blur-sm ">
      <div className="h-full w-full object-cover">
       

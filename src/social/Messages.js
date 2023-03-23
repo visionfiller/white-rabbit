@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { getUsers } from "../cellar/CellarProvider"
 import { ReplyForm } from "./ReplyForm"
 import { deleteMessage, getMessagesById } from "./SocialProvider"
@@ -11,6 +11,7 @@ export const Messages =()=> {
     const rabbitUserObject = JSON.parse(localRabbitUser)
     const [messageForm, setMessageForm] = useState(false)
     const[messageReply, setMessageReply] = useState({})
+    const navigate = useNavigate()
 useEffect(
     () => {
         getUsers()
@@ -54,7 +55,8 @@ const findSender = (message) => {
 
     return(<>
         <img className="h-screen w-full object-cover opacity-5 absolute right-0  b-blur-xl -z-10 " src="https://i.pinimg.com/originals/49/c3/06/49c306154adc0a4ae7f45b7a68dd4d69.jpg"/>
-
+{rabbitUserObject.staff ?    <div className="text-right p-3"><button className="btn bg-secondary" onClick={() => navigate("/somm")}>Back to Mad Hatter</button></div>
+:    <div className="text-right p-3"><button className="btn bg-secondary" onClick={() => navigate("/social")}>Back to WR Community</button></div>}
     <h2 className="text-center p-6 text-secondary font-semibold text-4xl">Your Messages</h2>
     <ul className="flex row justify-evenly border-8 p-8 border-black bg-third w-3/5 mx-auto">
 {receivedMessages.map((message) => {

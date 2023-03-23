@@ -93,6 +93,7 @@ const openInNewTab = (url) => {
 
 
     return <>
+       <img className="h-screen w-full object-cover opacity-5 absolute right-0  b-blur-xl -z-10 " src="https://i.pinimg.com/originals/49/c3/06/49c306154adc0a4ae7f45b7a68dd4d69.jpg"/>
     <h2 className="text-center p-6 text-secondary font-semibold text-4xl">What would you like to do today?</h2>
     <div className="w-full flex row justify-between text-center h-full p-8 ">
         
@@ -145,7 +146,7 @@ const openInNewTab = (url) => {
             <div className="text-center p-4 font-semibold">Assign a new varietal region</div>
         </Link>
         <Link className="border-b-2 border-secondary"to="/somm/createWineBottle">
-            <img className="object-cover w-3/4 h-3/4 mx-auto"src="https://i.etsystatic.com/36867827/r/il/0d3bb3/4194436403/il_1588xN.4194436403_qmza.jpg"/>
+            <img className="object-contain w-3/4 h-3/4 mx-auto "src="https://static.thenounproject.com/png/26597-200.png"/>
             <div className="text-center p-4 font-semibold">Add a new bottle</div>
         </Link>
         <Link className="border-r-2 border-secondary pt-8" to="/sommMessages">

@@ -72,6 +72,7 @@ if(varietalRegionId) {
 
     return(<>
      <h2 className="text-center p-6 text-secondary font-semibold text-4xl">Edit Varietal Region</h2>
+    
        <div className="w-full h-screen flex row px-10  ">
         <form className="rounded text-center w-1/2 h-3/4 mx-auto my-10 border-primary border-2 p-16 flex flex-col justify-evenly items-center ">
             <h2 className="text-2xl font-semibold" >Update Information for {varietalRegion.varietal?.name} in {varietalRegion.region?.location}</h2>

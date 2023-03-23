@@ -18,6 +18,7 @@ const[favorites, setFavorites] = useState([])
 const localRabbitUser = localStorage.getItem("rabbit_user")
  const rabbitUserObject = JSON.parse(localRabbitUser)
 
+
 useEffect(
     () => {
         setLoading(true)
@@ -79,6 +80,8 @@ useEffect(
     },
 [varietalRegions, wineTypeId, sorted, showFavorites, showMyFavorites]   
 )
+
+
 const loadMoreOnClick = () => {
     // prevent click if the state is loading
     if (loading) return;
@@ -101,6 +104,8 @@ const loadMoreOnClick = () => {
   }
 
     return <>
+           
+
     <h2 className="text-center p-6 text-secondary font-semibold text-4xl">The Library</h2>
     <div className="grid-cols-2 p-10  font-body">
     <div className="flex row justify-between bg-primary text-white p-2 rounded">

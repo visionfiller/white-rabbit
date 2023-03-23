@@ -21,8 +21,17 @@ export const ChatWine =() => {
 
     return(<>
     <img className="h-screen w-full object-cover opacity-5 absolute right-0  b-blur-xl -z-10 " src="https://i.pinimg.com/originals/49/c3/06/49c306154adc0a4ae7f45b7a68dd4d69.jpg"/>
-    <div className="w-full h-screen ">
-        <form className="w-1/2 h-1/2 mx-auto my-10 border-black border-2 p-8">
+    <div className="w-full h-screen flex row ">
+<div className="w-1/4 mx-auto p-8">
+    <h2 className="text-2xl font-semibold text-secondary underline text-center">Contact Me!</h2>
+    <div className="flex row p-8 justify-evenly">
+    <img className="h-10 w-10"src="https://cdn-icons-png.flaticon.com/512/717/717392.png"/>
+    <img className="h-10 w-10" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"/>
+    <img className="h-10 w-10" src="https://www.freepnglogos.com/uploads/linkedin-in-logo-png-1.png" />
+   
+    </div>
+</div>
+        <form className="w-1/2 h-1/2 mx-auto my-10 border-black border-2 p-8 bg-white">
             <h2 className="text-center text-2xl text-secondary font-semibold">Send us a message!</h2>
             <div className="relative z-0 w-full mb-6 group p-8 m-8">
       <input 

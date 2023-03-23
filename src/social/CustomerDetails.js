@@ -54,10 +54,13 @@ const HandleCardClose = (event) => {
 }
 // const customerFavorites= varietalRegions.filter((varietalRegion) => foundCustomer.favorites.find((favorite) => favorite.varietalRegionId === varietalRegion.id))
     return(<>
-    <div className="text-4xl text-center">{foundCustomer.fullName}'s Favorite Wines</div>
+        <img className="h-screen w-full object-cover opacity-5 absolute right-0  b-blur-xl -z-10 " src="https://i.pinimg.com/originals/49/c3/06/49c306154adc0a4ae7f45b7a68dd4d69.jpg"/>
+        <div className="text-right p-3"><button className="btn bg-secondary" onClick={() => navigate("/social")}>Back to WR Community</button></div>
+    <div className="text-4xl text-center p-8">{foundCustomer.fullName}'s Favorite Wines</div>
+    
     <div className="w-full text-center p-10 flex row justify-center gap-10">
     {/* <Link className="btn" to={`/social/messageForm/${customerId}`}>Send a Message</Link> */}
-    <button onClick={(event) => HandleMessageClick(event)} className="btn">Send {foundCustomer.fullName} a message</button>
+    <button onClick={(event) => HandleMessageClick(event)} className="btn bg-secondary">Send {foundCustomer.fullName} a message</button>
         {messageForm ? <MessageForm foundCustomer={foundCustomer} closeButton={HandleMessageClose}/>
         : ""}
     </div>

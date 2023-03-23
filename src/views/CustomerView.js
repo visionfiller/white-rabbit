@@ -27,8 +27,8 @@ export const CustomerViews = () => {
         <Route path="/social/updateProfile" element={ <UpdateProfile/>} />
         <Route path="/social/details/:customerId" element={ <CustomerDetails />} />
         <Route path="/social/messages" element={<Messages />} />
-        <Route path="/social/messageForm/:customerId" element={<MessageForm />} />
-        <Route path="/social/reply/:customerId" element={<ReplyForm />} />
+        {/* <Route path="/social/messageForm/:customerId" element={<MessageForm />} /> */}
+        {/* <Route path="/social/reply/:customerId" element={<ReplyForm />} /> */}
         <Route path="/cellar" element={ <CellarContainer />} />
         <Route path="/like" element={ <WillILikeItSearchContainer />} />
        

@@ -30,8 +30,8 @@ export const EmployeeViews = () => {
         <Route path="/social/reply/:customerId" element={<ReplyForm />} />
         <Route path="/somm/createVarietalRegion" element={ <VarietalRegionForm />} />
         <Route path="/somm/createWineBottle" element={ <WineBottleForm />} />
-        <Route path="/somm/createVarietalRegion/createRegion" element={ <RegionForm />} />
-        <Route path="/somm/createVarietalRegion/createVarietal" element={<VarietalForm />} />
+        {/* <Route path="/somm/createVarietalRegion/createRegion" element={ <RegionForm />} /> */}
+        {/* <Route path="/somm/createVarietalRegion/createVarietal" element={<VarietalForm />} /> */}
      
         
        

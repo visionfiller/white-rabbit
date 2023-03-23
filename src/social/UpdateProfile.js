@@ -51,6 +51,7 @@ const HandleSaveButton = () => {
     
 return(<>
 <div className="w-full h-screen ">
+<div className="text-right p-3"><button className="btn bg-secondary" onClick={() => navigate("/social")}>Back to WR Community</button></div>
         <form className="text-center w-1/2 h-auto mx-auto my-10 border-black border-2 p-10 ">
             <h2 className="text-center text-2xl text-secondary font-semibold">Update your profile</h2>
 <fieldset className=" p-4 mx-auto flex row">

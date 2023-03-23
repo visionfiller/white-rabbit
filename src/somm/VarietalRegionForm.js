@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { RegionForm } from "./RegionForm"
 import { createNewVarietalRegion, getAcidities, getAcidityById, getBodies, getBodiesById, getDrynessById, getDrynesses, getRegions, getRegionsById, getVarietalById, getVarietals } from "./SommProvider"
+import { VarietalForm } from "./VarietalForm"
 
 export const VarietalRegionForm = () => {
     const [varietals, setVarietals] = useState([])
@@ -16,20 +18,22 @@ export const VarietalRegionForm = () => {
     const [newVarietalRegion, update] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const navigate = useNavigate()
+    const [varietalForm, setVarietalForm] = useState(false)
+    const [regionForm, setRegionForm] = useState(false)
 
 
 useEffect(
     () => {
-DisplayVarietal()
-DisplayRegion()
-DisplayBody()
-DisplayAcidity()
-DisplayDryness()
+DisplayPreview()
+// DisplayRegion()
+// DisplayBody()
+// DisplayAcidity()
+// DisplayDryness()
 
     },[newVarietalRegion]
 )
 
-    const DisplayVarietal =() => {
+    const DisplayPreview =() => {
         if( newVarietalRegion.varietalId) {
             getVarietalById(newVarietalRegion.varietalId)
             .then((varietal) => {
@@ -41,12 +45,6 @@ DisplayDryness()
             })
             setIsLoading(false)
         }
-        else {
-            setDisplayVarietal("")
-        }
-
-    }
-    const DisplayRegion =() => {
         if( newVarietalRegion.regionId) {
             getRegionsById(newVarietalRegion.regionId)
             .then((region) => {
@@ -57,12 +55,6 @@ DisplayDryness()
             
             })
         }
-        else {
-            setDisplayRegion("")
-        }
-
-    }
-    const DisplayBody =() => {
         if( newVarietalRegion.bodyId) {
             getBodiesById(newVarietalRegion.bodyId)
             .then((body) => {
@@ -73,12 +65,6 @@ DisplayDryness()
             
             })
         }
-        else {
-            setDisplayBody("")
-        }
-
-    }
-    const DisplayAcidity =() => {
         if( newVarietalRegion.acidityId) {
             getAcidityById(newVarietalRegion.acidityId)
             .then((acidity) => {
@@ -89,12 +75,6 @@ DisplayDryness()
             
             })
         }
-        else {
-            setDisplayAcidity("")
-        }
-
-    }
-    const DisplayDryness =() => {
         if( newVarietalRegion.drynessId) {
             getDrynessById(newVarietalRegion.drynessId)
             .then((dryness) => {
@@ -105,11 +85,76 @@ DisplayDryness()
             
             })
         }
-        else {
-            setDisplayDryness("")
-        }
+        // else {
+        //     setDisplayVarietal("")
+        //     setDisplayRegion("")
+        // }
 
     }
+    // const DisplayRegion =() => {
+    //     if( newVarietalRegion.regionId) {
+    //         getRegionsById(newVarietalRegion.regionId)
+    //         .then((region) => {
+              
+    //            setDisplayRegion (<>
+    //             <div>{region.location}, {region.country}</div>
+    //             </>)
+            
+    //         })
+    //     }
+    //     else {
+    //         setDisplayRegion("")
+    //     }
+
+    // }
+    // const DisplayBody =() => {
+    //     if( newVarietalRegion.bodyId) {
+    //         getBodiesById(newVarietalRegion.bodyId)
+    //         .then((body) => {
+    //             setDisplayBody
+    //            (<>
+    //             <div className="badge">{body.density}</div>
+    //             </>)
+            
+    //         })
+    //     }
+    //     else {
+    //         setDisplayBody("")
+    //     }
+
+    // }
+    // const DisplayAcidity =() => {
+    //     if( newVarietalRegion.acidityId) {
+    //         getAcidityById(newVarietalRegion.acidityId)
+    //         .then((acidity) => {
+    //             setDisplayAcidity
+    //            (<>
+    //             <div className="badge">{acidity.style}</div>
+    //             </>)
+            
+    //         })
+    //     }
+    //     else {
+    //         setDisplayAcidity("")
+    //     }
+
+    // }
+    // const DisplayDryness =() => {
+    //     if( newVarietalRegion.drynessId) {
+    //         getDrynessById(newVarietalRegion.drynessId)
+    //         .then((dryness) => {
+    //             setDisplayDryness
+    //            (<>
+    //             <div className="badge">{dryness.level}</div>
+    //             </>)
+            
+    //         })
+    //     }
+    //     else {
+    //         setDisplayDryness("")
+    //     }
+
+    // }
 
 
 
@@ -145,8 +190,33 @@ else {
       
 
     }
+    const HandleVarietalForm = (event) => {
+        event.preventDefault()
+        setVarietalForm(true)
+    }
+    const HandleVarietalFormClose =(event) => {
+        event.preventDefault()
+        setVarietalForm(false)
+        getVarietals()
+        .then((data) => {
+         setVarietals(data)
+    })}
+    const HandleRegionForm = (event) => {
+        event.preventDefault()
+        setRegionForm(true)
+    }
+    const HandleRegionFormClose =(event) => {
+        event.preventDefault()
+        setRegionForm(false)
+        getRegions()
+        .then((data) => {
+         setRegions(data)
+    })}
+
 
     return <>
+       <img className="h-screen w-full object-cover opacity-5 absolute right-0  b-blur-xl -z-10 " src="https://i.pinimg.com/originals/49/c3/06/49c306154adc0a4ae7f45b7a68dd4d69.jpg"/>
+    <div className="text-right p-3"><button className="btn bg-secondary" onClick={() => navigate("/somm")}>Back to Mad Hatter</button></div>
      <h2 className="text-center p-6 text-secondary font-semibold text-4xl">New Varietal Region</h2>
        <div className="w-full h-screen flex row px-10  ">
         <form className="text-center w-1/2 h-3/4 mx-auto my-10 border-primary border-2 p-16 ">
@@ -166,6 +236,7 @@ else {
                         {varietals.map(
                             (varietal) => {
                                 return (<option
+                                key={varietal.id}
                                     value={varietal.id}>
 
                                     {varietal.name} </option>)
@@ -173,10 +244,11 @@ else {
                         )}
                     </select>
                     <button
-                    onClick={() => navigate("/somm/createVarietalRegion/createVarietal")}
+                    onClick={(evt) => HandleVarietalForm(evt) }
                     >+ New Varietal</button>
-                
             </fieldset>
+            {varietalForm ? <VarietalForm HandleVarietalFormClose={HandleVarietalFormClose} />
+            : ""}
             <fieldset className="p-1 pt-4 flex row justify-start gap-10">
                 
                     <select
@@ -193,6 +265,7 @@ else {
                         {regions.map(
                             (region) => {
                                 return (<option
+                                key={region.id}
                                     value={region.id}>
 
                                     {region.location}, {region.country} </option>)
@@ -200,10 +273,12 @@ else {
                         )}
                     </select>
                     <button
-                    onClick={() => navigate("/somm/createVarietalRegion/createRegion")}
+                     onClick={(evt) => HandleRegionForm(evt)}
                     >+ New Region</button>
                 
             </fieldset>
+            {regionForm ? <RegionForm HandleRegionFormClose={HandleRegionFormClose} />
+            : ""}
             <fieldset className="p-1 pt-4 ">
                 
                     <select
@@ -220,6 +295,7 @@ else {
                         {bodies.map(
                             (body) => {
                                 return (<option
+                                key={body.id}
                                     value={body.id}>
 
                                     {body.density} </option>)
@@ -244,6 +320,7 @@ else {
                         {drynesses.map(
                             (dryness) => {
                                 return (<option
+                                key={dryness.id}
                                     value={dryness.id}>
 
                                     {dryness.level} </option>)
@@ -268,6 +345,7 @@ else {
                         {acidities.map(
                             (acidity) => {
                                 return (<option
+                                key={acidity.id}
                                     value={acidity.id}>
 
                                     {acidity.style} </option>)
@@ -276,7 +354,7 @@ else {
                     </select>
                 
             </fieldset>
-            <button className="btn m-2" onClick={(clickEvent) => handleSaveButton(clickEvent)}>Create New Varietal Region</button>
+            <button className="btn bg-secondary mt-6" onClick={(clickEvent) => handleSaveButton(clickEvent)}>Create New Varietal Region</button>
         
         </form>
 {isLoading ? "" 

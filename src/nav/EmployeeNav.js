@@ -37,16 +37,16 @@ return (
     <ul className="w-full flex row p-8 my-6 gap-10 rounded-lg justify-evenly">
       
       <li className="transform hover:scale-125  transition ease-out duration-300 ">
-      <Link to="/library" className=" block py-2  text-white font-semibold text-lg  hover:text-primary md:p-0" aria-current="page">Library</Link>
+      <Link to="/library" className=" block py-2  text-white font-semibold text-2xl  hover:text-primary md:p-0" aria-current="page">Library</Link>
       </li>
       <li className="transform hover:scale-125  transition ease-out duration-300 ">
-      <Link to="/somm" className=" block py-2  text-white font-semibold text-lg  hover:text-primary md:p-0" aria-current="page">Mad Hatter
+      <Link to="/somm" className=" block py-2  text-white font-semibold text-2xl  hover:text-primary md:p-0" aria-current="page">Mad Hatter
       </Link>
       </li>
      
     
      <li className="transform hover:scale-125  transition ease-out duration-300">
-        <Link className="block py-2  text-white font-semibold text-lg hover:text-primary md:p-0"  aria-current="page" onClick={() => {
+        <Link className="block py-2  text-white font-semibold text-2xl hover:text-primary md:p-0"  aria-current="page" onClick={() => {
                 localStorage.removeItem("rabbit_user")
                 navigate("/", {replace: true})
             }}>Logout</Link></li>

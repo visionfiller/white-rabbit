@@ -25,14 +25,8 @@ export const VarietalRegionForm = () => {
 useEffect(
     () => {
 DisplayPreview()
-// DisplayRegion()
-// DisplayBody()
-// DisplayAcidity()
-// DisplayDryness()
-
     },[newVarietalRegion]
 )
-
     const DisplayPreview =() => {
         if( newVarietalRegion.varietalId) {
             getVarietalById(newVarietalRegion.varietalId)
@@ -41,18 +35,15 @@ DisplayPreview()
                 <div className="text-center text-2xl text-secondary font-semibold">{varietal.name}</div>
                 <img className="mx-auto w-auto h-3/5 object-cover p-6" src={varietal.image}/>
                 </>)
-            
             })
             setIsLoading(false)
         }
         if( newVarietalRegion.regionId) {
             getRegionsById(newVarietalRegion.regionId)
             .then((region) => {
-              
                setDisplayRegion (<>
                 <div>{region.location}, {region.country}</div>
                 </>)
-            
             })
         }
         if( newVarietalRegion.bodyId) {
@@ -62,7 +53,6 @@ DisplayPreview()
                (<>
                 <div className="badge">{body.density}</div>
                 </>)
-            
             })
         }
         if( newVarietalRegion.acidityId) {
@@ -72,7 +62,6 @@ DisplayPreview()
                (<>
                 <div className="badge">{acidity.style}</div>
                 </>)
-            
             })
         }
         if( newVarietalRegion.drynessId) {
@@ -82,96 +71,17 @@ DisplayPreview()
                (<>
                 <div className="badge">{dryness.level}</div>
                 </>)
-            
             })
         }
-        // else {
-        //     setDisplayVarietal("")
-        //     setDisplayRegion("")
-        // }
-
     }
-    // const DisplayRegion =() => {
-    //     if( newVarietalRegion.regionId) {
-    //         getRegionsById(newVarietalRegion.regionId)
-    //         .then((region) => {
-              
-    //            setDisplayRegion (<>
-    //             <div>{region.location}, {region.country}</div>
-    //             </>)
-            
-    //         })
-    //     }
-    //     else {
-    //         setDisplayRegion("")
-    //     }
-
-    // }
-    // const DisplayBody =() => {
-    //     if( newVarietalRegion.bodyId) {
-    //         getBodiesById(newVarietalRegion.bodyId)
-    //         .then((body) => {
-    //             setDisplayBody
-    //            (<>
-    //             <div className="badge">{body.density}</div>
-    //             </>)
-            
-    //         })
-    //     }
-    //     else {
-    //         setDisplayBody("")
-    //     }
-
-    // }
-    // const DisplayAcidity =() => {
-    //     if( newVarietalRegion.acidityId) {
-    //         getAcidityById(newVarietalRegion.acidityId)
-    //         .then((acidity) => {
-    //             setDisplayAcidity
-    //            (<>
-    //             <div className="badge">{acidity.style}</div>
-    //             </>)
-            
-    //         })
-    //     }
-    //     else {
-    //         setDisplayAcidity("")
-    //     }
-
-    // }
-    // const DisplayDryness =() => {
-    //     if( newVarietalRegion.drynessId) {
-    //         getDrynessById(newVarietalRegion.drynessId)
-    //         .then((dryness) => {
-    //             setDisplayDryness
-    //            (<>
-    //             <div className="badge">{dryness.level}</div>
-    //             </>)
-            
-    //         })
-    //     }
-    //     else {
-    //         setDisplayDryness("")
-    //     }
-
-    // }
 
 
-
-    useEffect(
-        () => {
-            getVarietals()
-                .then((data) => setVarietals(data))
-            getRegions()
-                .then((data) => setRegions(data))
-            getBodies()
-                .then((data) => setBody(data))
-            getAcidities()
-                .then((data) => setAcidity(data))
-            getDrynesses()
-                .then((data) => setDryness(data))
-
-
+    useEffect(() => {
+            getVarietals() .then((data) => setVarietals(data))
+            getRegions().then((data) => setRegions(data))
+            getBodies() .then((data) => setBody(data))
+            getAcidities() .then((data) => setAcidity(data))
+            getDrynesses().then((data) => setDryness(data))
         }, []
     )
   
@@ -188,7 +98,6 @@ else {
     window.alert("Please select all fields.")
 }
       
-
     }
     const HandleVarietalForm = (event) => {
         event.preventDefault()
@@ -215,7 +124,6 @@ else {
 
 
     return <>
-       <img className="h-screen w-full object-cover opacity-5 absolute right-0  b-blur-xl -z-10 " src="https://i.pinimg.com/originals/49/c3/06/49c306154adc0a4ae7f45b7a68dd4d69.jpg"/>
     <div className="text-right p-3"><button className="btn bg-secondary" onClick={() => navigate("/somm")}>Back to Mad Hatter</button></div>
      <h2 className="text-center p-6 text-secondary font-semibold text-4xl">New Varietal Region</h2>
        <div className="w-full h-screen flex row px-10  ">

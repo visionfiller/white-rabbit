@@ -12,39 +12,28 @@ const rabbitUserObject = JSON.parse(localRabbitUser)
 const [foundWineSearches, setFoundWineSearches] = useState([])
 const navigate = useNavigate()
 
-useEffect(
-    () => {
+useEffect(() => {
         getFavorites(rabbitUserObject.id)
         .then((data) => {
             setFavorites(data)
         })
-       
-       
-        
     },[]
 )
 
-useEffect(
-    () => { 
-       
+useEffect( () => { 
         getVarietalRegions()
         .then((varietalRegionsArray) => {
             let favoriteRegions = varietalRegionsArray.filter(region => favorites.find((favorite) => favorite.varietalRegionId === region.id))
             setVarietalRegions(favoriteRegions)
         })
-            
-            
-            
     },[favorites]
 )
 
-useEffect(
-    () => {
+useEffect( () => {
         getFoundWineSearches()
         .then((data) => {
             setFoundWineSearches(data)
-        })
-        
+        })  
     },[varietalRegions]
 )
 
@@ -78,13 +67,6 @@ const handleDeleteFound = (id) => {
         navigate("/like")
     })
 }
-
-
-
-
-
-
-
     return(<>
     <div className="flex row">
 {foundWineSearches.map((foundWine) => {
@@ -97,7 +79,5 @@ return <>
     </>
 })}
 </div>
-
-
     </>)
 }

@@ -1,18 +1,21 @@
-import { useNavigate } from "react-router-dom"
+
 
 export const LoginVideo = ({HandleClose}) => {
    
     return  <div className="fixed inset-0 z-20  backdrop-blur-sm ">
      <div className="h-full w-full object-cover">
-      
-      <button className="absolute text-4xl h-screen w-screen object-cover" onClick={(HandleClose)}><span className="text-4xl w-2/5 h-auto text-white font-bold lowercase  rounded-none animate-pulse hover:animate-none ">follow the white rabbit...</span></button>
-      <iframe className=" h-screen w-screen object-cover" src='https://www.youtube.com/embed/wVcLmjFxFf0?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&?modestbranding=1&fs=0&playlist=wVcLmjFxFf0'
+      <button className="absolute text-4xl h-screen w-screen object-cover z-10 animate-pulse hover:animate-none" onClick={(HandleClose)}><span className="text-6xl w-2/5 h-auto opacity-50 text-white font-bold lowercase  rounded-none  hover:opacity-100 ">follow the white rabbit...</span></button>
+      <video loop autoPlay className=" h-screen w-screen object-cover" src='http://localhost:3000/videos/video.mp4'
       frameBorder='0'
       allow='autoplay; loop; encrypted-media'
       allowFullScreen
+      allowLoop
       
       title='video'
   />
+      {/* <iframe autoPlay muted src="./videos/video.mp4" type="video/mp4"className="h-screen w-screen object-cover"/> */}
+
+  
   </div>
 </div>
 }

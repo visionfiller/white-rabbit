@@ -14,6 +14,8 @@ export const WhiteRabbit = () => {
 
 
 		<>
+		            <img className="h-screen w-full object-cover opacity-5 fixed right-0  b-blur-xl -z-10 " src="https://i.pinimg.com/originals/49/c3/06/49c306154adc0a4ae7f45b7a68dd4d69.jpg" />
+
 			<Routes>
 				<Route path="/login" element={<Login />} />
 				<Route path="/register" element={<Register />} />

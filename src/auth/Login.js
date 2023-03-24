@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react"
-
 import { useNavigate, Link } from "react-router-dom"
 import { LoginVideo } from "./LoginVideo";
-
 import { getUserByEmailAndPassword } from "./UserProvider";
 
 export const Login = () => {
@@ -11,11 +9,8 @@ export const Login = () => {
     const navigate = useNavigate()
     const [video, setVideo] = useState(false)
 
-
-
     const handleLogin = (e) => {
         e.preventDefault()
-
         return getUserByEmailAndPassword(email, password)
             .then(foundUsers => {
                 if (foundUsers.length === 1) {
@@ -26,30 +21,21 @@ export const Login = () => {
                     }))
                     if (user.isStaff) {
                         setVideo(false)
-                        navigate("/home")
+                        navigate("/somm")
                     }
-                    else {
-                        setVideo(true)
-                    }
+                    else { setVideo(true) }
                 }
-                else {
-                    window.alert("Invalid login")
-                }
+                else { window.alert("Invalid login") }
             })
     }
     const HandleClose = () => {
         setVideo(false)
         navigate("/home")
-
-
-
     }
     return (
         <main className="h-screen w-screen ">
             <div className="border border-white-10 bg-cover blur w-screen h-full bg-[url('https://th.bing.com/th/id/R.8a3385dee3d63c5dd977705abf4cad84?rik=NaXhHe9JUTk9Zw&riu=http%3a%2f%2fwp.production.patheos.com%2fblogs%2funcommongodcommongood%2ffiles%2f2014%2f07%2fiStock_000036147510Small.jpg&ehk=N5mDs7Sa8pDyw5lExQhvswZwotK290GhnV9dVlS9Wh0%3d&risl=&pid=ImgRaw&r=0')]">
-
             </div>
-
             <div className="text-8xl top-60 text-white absolute right-10 lowercase opacity-80" >White Rabbit.</div>
             <section className="w-screen">
                 <form className="absolute bottom-32 right-10 m-auto form-control text-right" onSubmit={handleLogin}>
@@ -60,12 +46,10 @@ export const Login = () => {
                                 onChange={evt => set(evt.target.value)}
                                 className="input input-bordered input-md"
                                 placeholder=""
-
                                 required autoFocus />
                             <span className="">email</span>
                         </label>
                     </fieldset>
-
                     <fieldset className="form-control pt-8">
                         <label className="input-group input-group-md" htmlFor="password">
                             <input type="password"
@@ -84,13 +68,9 @@ export const Login = () => {
                         <Link className="w-full inline-block pl-8 text-white" to="/register">Is this your first visit?</Link>
                     </fieldset>
                 </form>
-
             </section>
             {video ? <LoginVideo HandleClose={HandleClose} />
                 : ""}
-
-
-
         </main>
     )
 }

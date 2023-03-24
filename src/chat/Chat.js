@@ -1,9 +1,8 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { CreateNewMessage } from "../social/SocialProvider"
 
-export const ChatWine =() => {
-
+export const ChatWine = () => {
     const navigate = useNavigate()
     const localRabbitUser = localStorage.getItem("rabbit_user")
     const rabbitUserObject = JSON.parse(localRabbitUser)
@@ -12,44 +11,41 @@ export const ChatWine =() => {
         senderUserId: rabbitUserObject.id,
         timeStamp: new Date().toLocaleString()
     })
+    const openInNewTab = (url) => {
+        const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+        if (newWindow) newWindow.opener = null;
+      };
+    return (<>
+        <div className="w-full h-screen flex row ">
 
+            <div className="w-1/4 mx-auto p-8">
+                <h2 className="text-2xl font-semibold text-secondary underline text-center">Check these guys out for more wine info!</h2>
+                <div className="flex flex-col p-8 items-center justify-evenly">
+    
+                    <Link href="#" onClick = {() => openInNewTab("https://winefolly.com/")}> <img className="h-24 w-24" src="https://ww1.prweb.com/prfiles/2021/02/24/18071870/wine-folly-classic-logo.png" /></Link>
+                    <Link href="#" onClick = {() => openInNewTab("https://www.wineenthusiast.com/")}><img className="h-24 w-auto m-8 text-center" src="https://www.freemanwinery.com/assets/upload/images/logos/.thumbs/publications-Wine-Enthusiast-logo-800.0.0.png" /></Link>
+                    <Link href="#" onClick = {() => openInNewTab("https://www.wine-searcher.com/")}><img className="h-24 w-auto m-8 text-center" src="https://www.openimagination.co.uk/sites/default/files/styles/partner_logo/public/wine-searcher-logo.png?itok=t9NmDzy9" /></Link>
+                </div>
 
+            </div>
+            <form className="w-1/2 h-1/2 mx-auto my-10 border-black border-2 p-8 bg-white">
+                <h2 className="text-center text-2xl text-secondary font-semibold">Send us a message!</h2>
+                <div className="relative z-0 w-full mb-6 group p-8 m-8">
+                    <input
+                        onChange={
+                            (evt) => {
+                                const copy = { ...message }
+                                copy.body = evt.target.value
+                                setMessage(copy)
+                            }}
+                        type="text" name="body" id="body" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                    <label htmlFor="body" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Your Message</label>
+                </div>
+                <div className="relative z-0 w-full mb-6 group text-center"><button onClick={() => CreateNewMessage(message).then(navigate("/home"))} className="btn bg-secondary mx-auto">Send</button></div>
 
+            </form>
 
-
-
-
-    return(<>
-    <img className="h-screen w-full object-cover opacity-5 absolute right-0  b-blur-xl -z-10 " src="https://i.pinimg.com/originals/49/c3/06/49c306154adc0a4ae7f45b7a68dd4d69.jpg"/>
-    <div className="w-full h-screen flex row ">
-<div className="w-1/4 mx-auto p-8">
-    <h2 className="text-2xl font-semibold text-secondary underline text-center">Contact Me!</h2>
-    <div className="flex row p-8 justify-evenly">
-    <img className="h-10 w-10"src="https://cdn-icons-png.flaticon.com/512/717/717392.png"/>
-    <img className="h-10 w-10" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"/>
-    <img className="h-10 w-10" src="https://www.freepnglogos.com/uploads/linkedin-in-logo-png-1.png" />
-   
-    </div>
-</div>
-        <form className="w-1/2 h-1/2 mx-auto my-10 border-black border-2 p-8 bg-white">
-            <h2 className="text-center text-2xl text-secondary font-semibold">Send us a message!</h2>
-            <div className="relative z-0 w-full mb-6 group p-8 m-8">
-      <input 
-      onChange={
-        (evt) => {
-            const copy = { ...message }
-            copy.body= evt.target.value
-            setMessage(copy)
-           
-        }}
-      type="text" name="body" id="body" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-      <label htmlFor="body" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Your Message</label>
-  </div>
-  <div className="relative z-0 w-full mb-6 group text-center"><button onClick={()=> CreateNewMessage(message).then(navigate("/home"))}className="btn bg-secondary mx-auto">Send</button></div>
-  
-        </form>
-
-    </div>
+        </div>
 
     </>)
 }

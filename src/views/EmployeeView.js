@@ -6,6 +6,7 @@ import { SearchedContainer } from "../home/SearchContainer"
 import { CardDetails } from "../library/CardDetails"
 import { EditVarietalRegion } from "../library/EditVarietalRegion"
 import { Library } from "../library/Library"
+import { CustomerDetails } from "../social/CustomerDetails"
 import { Messages } from "../social/Messages"
 import { ReplyForm } from "../social/ReplyForm"
 import { RegionForm } from "../somm/RegionForm"
@@ -30,6 +31,7 @@ export const EmployeeViews = () => {
         <Route path="/social/reply/:customerId" element={<ReplyForm />} />
         <Route path="/somm/createVarietalRegion" element={ <VarietalRegionForm />} />
         <Route path="/somm/createWineBottle" element={ <WineBottleForm />} />
+        <Route path="/social/details/:customerId" element={ <CustomerDetails />} />
         {/* <Route path="/somm/createVarietalRegion/createRegion" element={ <RegionForm />} /> */}
         {/* <Route path="/somm/createVarietalRegion/createVarietal" element={<VarietalForm />} /> */}
      

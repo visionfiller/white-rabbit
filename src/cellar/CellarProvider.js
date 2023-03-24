@@ -24,7 +24,3 @@ export const getMatchedWineBottlesbyVarietalRegionId = (id) => {
 }
 
 
-// export const getMatchedWineBottles = (name) => {
-//     return fetch(`https://api.spoonacular.com/food/wine/recommendation?wine=${name}&number=3&apiKey=05c00921f46d41cba5aece9c5b74a92f`)
-//     .then(response => response.json())
-// }

@@ -4,44 +4,6 @@ import { Link } from "react-router-dom"
 import { getVarietalRegions } from "../library/LibraryProvider"
 import { getFavorites, getMatchedWineBottlesbyVarietalRegionId } from "./CellarProvider"
 
-// export const WineBottles = ({favorites}) => {
-// const [matchedWineBottles, setMatchedWineBottles] = useState([])
-// const [varietalRegions, setVarietalRegions] = useState([])
-// useEffect(
-// () => {
-//     getVarietalRegions()
-//     .then((data) => {
-//       let foundVarietalRegions = data.filter(varietalRegion => favorites.find((favorite) => favorite.varietalRegionId === varietalRegion.id))
-//         setVarietalRegions(foundVarietalRegions)
-//     })
-
-// },[favorites]
-// )
-
-// useEffect(
-//     () => { 
-
-//         setMatchedWineBottles(MatchedWineBottles(varietalRegions))
-
-//     },[varietalRegions]
-// )
-// const MatchedWineBottles =(varietalRegions) => {
-//     let bottleArray = []
-//     varietalRegions.map((varietalRegion) => {
-//         getMatchedWineBottles(varietalRegion.varietal.name)
-//         .then((data) => {
-//             bottleArray.push(data)
-//         })
-//     })
-//     return bottleArray
-// }
-//     return(<>
-//     {console.log(matchedWineBottles)}
-    
-//     </>)
-// }
-
-
 
 export const MatchedWineBottles = ({rabbitUserObject}) => {
     const [wineBottles, setWineBottles] = useState([])
@@ -52,8 +14,6 @@ export const MatchedWineBottles = ({rabbitUserObject}) => {
             getFavorites(rabbitUserObject.id)
             .then((data)=> {
                 setFavorites(data)
-              
-            
             })
         },[]
       
@@ -91,10 +51,10 @@ useEffect(
 
 return (<>
 <div className="flex flex-col w-full ">
-<h2 className="text-2xl text-secondary font-semibold">Some wines you may like...</h2>
-<div className="flex row flex-wrap justify-start ">
+<h2 className="text-2xl text-secondary font-semibold mx-auto">Some wines you may like...</h2>
+<div className="h-96 w-full carousel carousel-vertical rounded-box mx-auto ">
 {wineBottles ? wineBottles.map(wine => wine.map(bottle => {
-return <Link href="#" onClick = {() => openInNewTab(bottle?.link)} key={bottle?.id} className="card  text-secondary m-6 ransform hover:scale-125  transition ease-out duration-300" ><div className="text-center ">{bottle?.name}</div><img className="h-48 w-auto object-contain px-2"src={bottle?.image} /></Link>}))
+return <Link href="#" onClick = {() => openInNewTab(bottle?.link)} key={bottle?.id} className="card carousel-item text-secondary m-6 " ><img className="h-48 w-auto object-contain px-2"src={bottle?.image} /><div className="text-center ">{bottle?.name}</div></Link>}))
 : "No bottles of wine to recommend"} 
 
 

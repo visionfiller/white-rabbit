@@ -7,11 +7,8 @@ export const Customer = ({customer}) => {
             <div className="card-body w-96 ">
             <div className="card-title text-4xl text-white w-96 bg-primary absolute top-64 left-0"> <span className="mx-auto">{customer.fullName}</span></div>
             </div>
-            
             <img className="h-full w-96 object-cover border-2 border-primary rounded-lg"src={customer?.profilePicture}/>
-       
             </Link>
-            
-            
             )
 }
+

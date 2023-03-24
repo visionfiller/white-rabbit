@@ -9,11 +9,8 @@ export const UpdateProfile = () => {
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate()
 
-    useEffect(
-        () => {
-            if(rabbitUserObject){
-
-            
+    useEffect( () => {
+            if(rabbitUserObject){ 
             getCustomerById(rabbitUserObject.id)
             .then((data) => {
                 updateUser(data)
@@ -46,8 +43,6 @@ const HandleSaveButton = () => {
     
     
     }
-    
-    
     
 return(<>
 <div className="w-full h-screen ">

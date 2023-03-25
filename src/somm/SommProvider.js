@@ -1,50 +1,50 @@
 export const getCustomers = () => {
-    return fetch(`http://localhost:8088/users?isStaff=false&_embed=favorites`)
+    return fetch(`https://white-rabbit-api-k3hmh.ondigitalocean.app/users?isStaff=false&_embed=favorites`)
     .then(response => response.json())
 }
 export const getRegions = () => {
-    return fetch(`http://localhost:8088/regions?_sort=location&_order=asc`)
+    return fetch(`https://white-rabbit-api-k3hmh.ondigitalocean.app/regions?_sort=location&_order=asc`)
     .then(response => response.json())
 }
 export const getRegionsById = (id) => {
-    return fetch(`http://localhost:8088/regions/${id}`)
+    return fetch(`https://white-rabbit-api-k3hmh.ondigitalocean.app/regions/${id}`)
     .then(response => response.json())
 }
 export const getVarietals = () => {
-    return fetch(`http://localhost:8088/varietals?_sort=name&_order=asc`)
+    return fetch(`https://white-rabbit-api-k3hmh.ondigitalocean.app/varietals?_sort=name&_order=asc`)
     .then(response => response.json())
 }
 export const getVarietalById = (id) => {
-    return fetch(`http://localhost:8088/varietals/${id}`)
+    return fetch(`https://white-rabbit-api-k3hmh.ondigitalocean.app/varietals/${id}`)
     .then(response => response.json())
 }
 export const getBodies = () => {
-    return fetch(`http://localhost:8088/bodies`)
+    return fetch(`https://white-rabbit-api-k3hmh.ondigitalocean.app/bodies`)
     .then(response => response.json())
 }
 export const getBodiesById = (id) => {
-    return fetch(`http://localhost:8088/bodies/${id}`)
+    return fetch(`https://white-rabbit-api-k3hmh.ondigitalocean.app/bodies/${id}`)
     .then(response => response.json())
 }
 export const getAcidities = () => {
-    return fetch(`http://localhost:8088/acidities`)
+    return fetch(`https://white-rabbit-api-k3hmh.ondigitalocean.app/acidities`)
     .then(response => response.json())
 }
 export const getAcidityById = (id) => {
-    return fetch(`http://localhost:8088/acidities/${id}`)
+    return fetch(`https://white-rabbit-api-k3hmh.ondigitalocean.app/acidities/${id}`)
     .then(response => response.json())
 }
 export const getDrynesses = () => {
-    return fetch(`http://localhost:8088/drynesses`)
+    return fetch(`https://white-rabbit-api-k3hmh.ondigitalocean.app/drynesses`)
     .then(response => response.json())
 }
 export const getDrynessById = (id) => {
-    return fetch(`http://localhost:8088/drynesses/${id}`)
+    return fetch(`https://white-rabbit-api-k3hmh.ondigitalocean.app/drynesses/${id}`)
     .then(response => response.json())
 }
 
 export const createNewVarietalRegion = (wineObject) => {
-    return fetch(` http://localhost:8088/varietalRegions`, {
+    return fetch(` https://white-rabbit-api-k3hmh.ondigitalocean.app/varietalRegions`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -54,7 +54,7 @@ export const createNewVarietalRegion = (wineObject) => {
         .then(response => response.json())
 }
 export const createRegion = (regionObject) => {
-    return fetch(` http://localhost:8088/regions`, {
+    return fetch(` https://white-rabbit-api-k3hmh.ondigitalocean.app/regions`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -64,7 +64,7 @@ export const createRegion = (regionObject) => {
         .then(response => response.json())
 }
 export const createVarietal = (varietalObject) => {
-    return fetch(` http://localhost:8088/varietals`, {
+    return fetch(` https://white-rabbit-api-k3hmh.ondigitalocean.app/varietals`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -75,7 +75,7 @@ export const createVarietal = (varietalObject) => {
 }
 
 export const createWineBottle = (bottleObject) => {
-    return fetch(` http://localhost:8088/wineBottles`, {
+    return fetch(` https://white-rabbit-api-k3hmh.ondigitalocean.app/wineBottles`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -86,6 +86,6 @@ export const createWineBottle = (bottleObject) => {
 }
 
 export const getWineBottles = () => {
-    return fetch(`http://localhost:8088/wineBottles`)
+    return fetch(`https://white-rabbit-api-k3hmh.ondigitalocean.app/wineBottles`)
     .then(response => response.json())
 }

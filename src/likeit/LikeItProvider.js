@@ -1,5 +1,5 @@
 export const createFoundWineSearch= (foundObject) => {
-    return fetch(` http://localhost:8088/foundWineSearches`, {
+    return fetch(` https://white-rabbit-api-k3hmh.ondigitalocean.app/foundWineSearches`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -10,12 +10,12 @@ export const createFoundWineSearch= (foundObject) => {
 }
 
 export const getFoundWineSearches = () => {
-    return fetch(`http://localhost:8088/foundWineSearches`)
+    return fetch(`https://white-rabbit-api-k3hmh.ondigitalocean.app/foundWineSearches`)
     .then(response => response.json())
 }
 
 export const deleteFoundWineSearch = (id) => {
-    return fetch(`http://localhost:8088/foundWineSearches/${id}`, {
+    return fetch(`https://white-rabbit-api-k3hmh.ondigitalocean.app/foundWineSearches/${id}`, {
         method: "DELETE"
     })
         .then(getFoundWineSearches)

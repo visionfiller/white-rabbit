@@ -1,5 +1,5 @@
 export const getUsersToCreate = ( user ) => {
-    return fetch("http://localhost:8088/users", {
+    return fetch("https://white-rabbit-api-k3hmh.ondigitalocean.app/users", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -9,12 +9,12 @@ export const getUsersToCreate = ( user ) => {
         .then(res => res.json())
 }
 export const getUserByEmailId = (user) => {
-    return fetch(`http://localhost:8088/users?email=${user.email}`)
+    return fetch(`white-rabbit-api-k3hmh.ondigitalocean.app/users?email=${user.email}`)
         .then(res => res.json())
 }
 
 export const createNewCustomer = ({ customerToSend }) => {
-    return fetch(` http://localhost:8088/customers`, {
+    return fetch(`https://white-rabbit-api-k3hmh.ondigitalocean.app/customers`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -25,6 +25,6 @@ export const createNewCustomer = ({ customerToSend }) => {
 }
 
 export const getUserByEmailAndPassword = ( email, password ) => {
-    return fetch(`http://localhost:8088/users?email=${email}&password=${password}`)
+    return fetch(`https://white-rabbit-api-k3hmh.ondigitalocean.app/users?email=${email}&password=${password}`)
         .then(res => res.json())
 }

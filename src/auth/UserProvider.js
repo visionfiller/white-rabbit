@@ -9,7 +9,7 @@ export const getUsersToCreate = ( user ) => {
         .then(res => res.json())
 }
 export const getUserByEmailId = (user) => {
-    return fetch(`white-rabbit-api-k3hmh.ondigitalocean.app/users?email=${user.email}`)
+    return fetch(`https://white-rabbit-api-k3hmh.ondigitalocean.app/users?email=${user.email}`)
         .then(res => res.json())
 }
 

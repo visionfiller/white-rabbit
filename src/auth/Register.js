@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getUsersToCreate, getUserByEmailId, createNewCustomer } from "./UserProvider"
+import { getUsersToCreate, getUserByEmailId} from "./UserProvider"
 
 export const Register = (props) => {
     const [user, setUser] = useState({ isStaff: false })

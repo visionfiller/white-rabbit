@@ -127,7 +127,7 @@ else {
     <div className="text-right p-3"><button className="btn bg-secondary" onClick={() => navigate("/somm")}>Back to Mad Hatter</button></div>
      <h2 className="text-center p-6 text-secondary font-semibold text-4xl">New Varietal Region</h2>
        <div className="w-full h-screen flex row px-10  ">
-        <form className="text-center w-1/2 h-3/4 mx-auto my-10 border-primary border-2 p-16 ">
+        <form className="text-center w-full p-6 md:w-1/2 h-3/4 mx-auto my-10 border-primary border-2 md:p-16 ">
             
             <fieldset className="p-1 pt-4 flex row justify-start gap-10">
            

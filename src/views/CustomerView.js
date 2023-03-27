@@ -18,7 +18,9 @@ import { ReplyForm } from "../social/ReplyForm"
 
 export const CustomerViews = () => {
     
-    return (<Routes>
+    return (<div className="pt-20 md:pt-0">
+
+    <Routes>
         <Route path="/home" element={ <Home />} />
         <Route path="/library" element={ <Library/>} />
         <Route path="/chat" element={ <ChatWine/>} />
@@ -36,5 +38,6 @@ export const CustomerViews = () => {
 
         
     </Routes>
+    </div>
     )
 }

@@ -17,7 +17,7 @@ import { WineBottleForm } from "../somm/WineBottleForm"
 import { WineList } from "../somm/WineBottleList"
 
 export const EmployeeViews = () => {
-    return (
+    return (<div className="pt-20 md:pt-0">
     <Routes>
        <Route path="/home" element={ <Home />} />
        <Route path="/library/details/:varietalRegionId" element={ <CardDetails />} />
@@ -38,5 +38,6 @@ export const EmployeeViews = () => {
         
        
     </Routes>
+    </div>
     )
 }

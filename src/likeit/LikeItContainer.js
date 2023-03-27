@@ -8,7 +8,7 @@ export const WillILikeItSearchContainer = () => {
 
     return (<>
         <div className="text-center p-6 text-secondary font-semibold text-4xl">Will I Like this Wine?</div>
-        <div className="flex row p-20">
+        <div className="flex flex-col md:flex md:flex-row p-20">
             <LikeItSearchBar
                 setterFunctionVarietal={setSearchTermsVarietal}
                 setterFunctionRegion={setSearchTermsRegion} />

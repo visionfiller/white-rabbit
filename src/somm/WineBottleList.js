@@ -7,7 +7,7 @@ export const WineList =({wineBottles, varietalRegions,findVarietal, findRegion, 
     return(
         <div className="fixed inset-0 z-20  backdrop-blur-sm ">
            
-    <div className="w-3/4 h-3/4 my-10 mx-auto bg-white border-2 border-secondary overflow-y-auto scroll-smooth ">
+    <div className="w-full h-full md:w-3/4 md:h-3/4 my-10 mx-auto bg-white border-2 border-secondary overflow-y-auto scroll-smooth ">
     <div className="text-right text-2xl p-2">
         <button type="button" className="font-semibold" onClick={(event) => HandleWineClose(event)}>X</button>
         </div>

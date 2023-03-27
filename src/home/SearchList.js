@@ -38,7 +38,7 @@ export const SearchedVarietalRegionList = ({ searchTermState }) => {
 
     return <>
 
-        <article className="grid grid-cols-2 gap-10 w-1/2 p-10">
+        <article className="flex flex-col md:grid md:grid-cols-2  md:gap-10 w-full p-10">
 {filteredWines?.map(wine => {
                        return <Wine
                         wine={wine}

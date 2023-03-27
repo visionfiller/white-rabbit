@@ -62,7 +62,7 @@ export const Somm = () => {
 
     return <>
         <h2 className="text-center p-6 text-secondary font-semibold text-4xl">What would you like to do today?</h2>
-        <div className="w-full flex row justify-between text-center h-full p-8 ">
+        <div className="w-full flex flex-col-reverse md:flex-row justify-between text-center h-full p-8 ">
             <div className="flex flex-col h-full ml-0">
                 <div className="w-full max-w-md p-4 bg-primary border border-gray-200 rounded sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                     <h2 className="text-xl font-semibold text-gray-100">WR Customers</h2>
@@ -99,16 +99,16 @@ export const Somm = () => {
             </div>
             {wineButton ? <WineList varietalRegions={varietalRegions} wineBottles={wineBottles} findRegion={findRegion} findVarietal={findVarietal} openInNewTab={openInNewTab} HandleWineClose={HandleWineClose} />
                 : ""}
-            <div className="grid grid-cols-2 p-24">
-                <Link className="border-b-2 border-r-2 border-secondary" to="/somm/createVarietalRegion">
+            <div className="md:grid md:grid-cols-2 md:p-24">
+                <Link className="md:border-b-2 md:border-r-2 border-secondary" to="/somm/createVarietalRegion">
                     <img className=" w-3/4 h-3/4 mx-auto" src="https://th.bing.com/th/id/R.9bacebdd9ed8ea8b3f3b8fe496bbec67?rik=xYCoMrSb3nMLDA&riu=http%3a%2f%2fwww.clker.com%2fcliparts%2f4%2f2%2f1%2fe%2f1197104269542805265PanamaG_French_outline.svg.hi.png&ehk=87yZWE1OvqaEcmAJT4KRka80DBEBxrsZsvF8joayECc%3d&risl=&pid=ImgRaw&r=0" />
                     <div className="text-center p-4 font-semibold">Assign a new varietal region</div>
                 </Link>
-                <Link className="border-b-2 border-secondary" to="/somm/createWineBottle">
+                <Link className="md:border-b-2 md:border-secondary" to="/somm/createWineBottle">
                     <img className="object-contain w-3/4 h-3/4 mx-auto " src="https://static.thenounproject.com/png/26597-200.png" />
                     <div className="text-center p-4 font-semibold">Add a new bottle</div>
                 </Link>
-                <Link className="border-r-2 border-secondary pt-8" to="/sommMessages">
+                <Link className="md:border-r-2 md:border-secondary pt-8" to="/sommMessages">
                     <img className="object-cover h-3/4 w-3/4 mx-auto" src="https://logodix.com/logo/447066.png" />
                     <div className="text-center p-4 font-semibold">Check messages ( {messages.length} )</div>
                 </Link>

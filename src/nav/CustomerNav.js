@@ -14,8 +14,8 @@ useEffect( () => {getUserById(rabbitUserObject.id)
 })
     },[]
 )
-return (
-<nav className="bg-white  w-screen flex items-center border-t-8 border-b-8 border-primary ">
+return (<>
+<nav className="bg-white hidden  w-full md:flex items-center border-t-8 border-b-8 border-primary ">
 <Link className="w-1/6 h-full flex flex-col items-center " to="/home">
       <img src="https://i.pinimg.com/originals/9d/ea/ac/9deaacacdbc7066962eb35f4e513190a.jpg" className="h-24  mr-3 " alt="Logo" />
       <span className=" text-left text-secondary text-3xl font-semibold whitespace-nowrap">white rabbit.</span>
@@ -62,5 +62,45 @@ return (
   </div>
    </div>
     </nav>
+
+    <nav className=" md:hidden p-3 border-primary rounded w-full fixed bg-third">
+  <div className="container flex flex-wrap items-center justify-between mx-auto">
+    <Link to="/home" className="flex  items-center">
+    <img src="https://i.pinimg.com/originals/9d/ea/ac/9deaacacdbc7066962eb35f4e513190a.jpg" className="h-16  mr-3 " alt="Logo" />
+        <span className="text-xl font-semibold">white rabbit.</span>
+    </Link>
+    <button data-collapse-toggle="navbar-hamburger" type="button" className="inline-flex items-center  ml-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-hamburger" aria-expanded="false">
+      <span className="sr-only">Open main menu</span>
+      <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
+    </button>
+    <div className="hidden w-full" id="navbar-hamburger">
+      <ul className="flex flex-col mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+        <li>
+        <Link to="/library" className="block py-2 pl-3 pr-4 text-secondary rounded " aria-current="page">Library</Link>
+        </li>
+        <li>
+        <Link to="/cellar" className="block py-2 pl-3 pr-4 text-secondary rounded "  aria-current="page">Wine Cellar</Link> 
+        </li>
+        <li>
+        <li>
+        <Link to="/chat" className="block py-2 pl-3 pr-4 text-secondary rounded " >Chat With Us</Link> 
+        </li>
+        <Link to="/social" className="block py-2 pl-3 pr-4 text-secondary rounded " >Social</Link> 
+        </li>
+        <li>
+        <Link to="/like" className="block py-2 pl-3 pr-4 text-secondary rounded " >Will I Like It?</Link> 
+        </li>
+        <li>
+        <Link onClick={() => {
+                localStorage.removeItem("rabbit_user")
+                navigate("/", {replace: true})
+            }} className="block py-2 pl-3 pr-4 text-secondary rounded " >Logout</Link> 
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    
+</>
 )
         }

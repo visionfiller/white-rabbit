@@ -4,6 +4,7 @@ import { getAllFavorites, getRegions, getVarietalRegions, getVarietalRegionsToPa
 
 export const Library = () => {
     const [varietalRegions, setVarietalRegions] = useState([])
+
     const [filteredWines, setFilteredWines] = useState([])
     const [wineTypeId, setWineTypeId] = useState("")
     const [wineTypes, setWineTypes] = useState([])
@@ -46,7 +47,7 @@ export const Library = () => {
                 .then((data) => {
                     setFavorites(data)
                 })
-             
+
         }, []
     )
     useEffect(() => {
@@ -84,48 +85,52 @@ export const Library = () => {
 
     return <>
         <h2 className="text-center p-6 text-secondary font-semibold text-4xl">The Library</h2>
-        <div className="grid-cols-2 p-10  font-body">
-            <div className="flex row justify-start gap-10 bg-primary text-white p-2 rounded">
-                <div id="typeFilter" className="">
-                    
-                    <select className="text-black rounded-lg"
-                        onChange={(evt) => { setWineTypeId(parseInt(evt.target.value)) }}>
-                        <option className="" value="">All Wines</option>
-                        {wineTypes.map((type) => {
-                            return <option key={type.id} value={type.id} id={type.id}>{type.type}</option>
-                        })}
-                    </select>
-                </div>
-                <div id="sortFilters" className="">
-                  
-                    <select
-                        className="text-black rounded-lg"
-                        onChange={(evt) => { setSorted(evt.target.value) }}>
-                        <option key="none" id="none" value="none">Sort by Ascending</option>
-                        <option key="body" id="Body" value="body">Body</option>
-                        <option key="acidity" id="Acidity" value="acidity">Acidity</option>
-                        <option key="dryness" id="Dryness" value="dryness">Dryness</option>
-                    </select>
-                </div>
-                <div id="favorites" className="flex row gap-2">
-                    <label>Show everyone's favorites</label>
-                    <input type="checkbox" checked={showFavorites} onChange={(evt) => { HandleShowFavorites(evt) }
-                    } />
-                    <label>Only show my favorites</label>
-                    <input type="checkbox" checked={showMyFavorites} onChange={(evt) => { HandleShowMyFavorites(evt) }} />
-                </div>
+        <div className="flex row flex-wrap w-full fixed bottom-0 justify-evenly md:static md:justify-between md:px-10 md:items-center bg-primary text-white rounded ">
+            <div id="typeFilter" className="m-2">
+
+                <select className="text-black rounded-lg"
+                    onChange={(evt) => { setWineTypeId(parseInt(evt.target.value)) }}>
+                    <option className="" value="">All Wines</option>
+                    {wineTypes.map((type) => {
+                        return <option key={type.id} value={type.id} id={type.id}>{type.type}</option>
+                    })}
+                </select>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-2 p-4">
-                {CreateList()}
+            <div id="sortFilters" className="m-2">
+
+                <select
+                    className="text-black rounded-lg"
+                    onChange={(evt) => { setSorted(evt.target.value) }}>
+                    <option key="none" id="none" value="none">Sort by Ascending</option>
+                    <option key="body" id="Body" value="body">Body</option>
+                    <option key="acidity" id="Acidity" value="acidity">Acidity</option>
+                    <option key="dryness" id="Dryness" value="dryness">Dryness</option>
+                </select>
             </div>
-            <div className="text-center p-10">
-                {errorMsg && <p className="error-msg">{errorMsg}</p>}
-                {hasMore && (
-                    <button className=" loading-more-btn btn bg-secondary hover:bg-primary hover:shadow-inner transform hover:scale-125 hover:bg-opacity-50 transition ease-out duration-300" onClick={loadMoreOnClick}>
-                        {loading ? "Loading..." : "Load More"}
-                    </button>
-                )}
+            <div id="favorites" className="flex row gap-2">
+                <label>Show everyone's favorites</label>
+                <input type="checkbox" checked={showFavorites} onChange={(evt) => { HandleShowFavorites(evt) }
+                } />
+            </div>
+            <div className="flex row gap-2">
+                <label>Only show my favorites</label>
+                <input type="checkbox" checked={showMyFavorites} onChange={(evt) => { HandleShowMyFavorites(evt) }} />
+
             </div>
         </div>
+
+        <div className="flex flex-col items-center w-full pb-24 -z-10 absolute md:grid md:grid-cols-5">
+            {CreateList()}
+            <div className="text-center   ">
+            {errorMsg && <p className="error-msg">{errorMsg}</p>}
+            {hasMore && (
+                <button className=" loading-more-btn btn bg-secondary hover:bg-primary hover:shadow-inner transform hover:scale-125 hover:bg-opacity-50 transition ease-out duration-300" onClick={loadMoreOnClick}>
+                    {loading ? "Loading..." : "Load More"}
+                </button>
+            )}
+
+        </div>
+        </div>
+       
     </>
 }

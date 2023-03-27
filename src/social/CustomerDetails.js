@@ -61,7 +61,7 @@ export const CustomerDetails = ({ }) => {
                 : ""}
         </div>
         <div className="w-screen">
-        <div className="grid grid-cols-3 content-around w-screen p-10">
+        <div className=" flex flex-col md:grid md:grid-cols-3 content-around w-screen p-10">
             {varietalRegions.map((wine) => {
                 return <div key={wine.id} className="card w-64 h-64 bg-slate-100 shadow-xl m-4">
                     <div className="card-body p-2 m-2 h-full ">

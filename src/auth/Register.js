@@ -76,6 +76,15 @@ export const Register = (props) => {
                         <span>password</span>
                     </label>
                 </fieldset>
+                <fieldset className="pt-4">
+                <label className="input-group input-group-md" htmlFor="profilepicture">
+                    <input onChange={updateUser}
+                      
+                        type="text" id="profilePicture" className="input input-bordered input-md"
+                        placeholder="URL" name="profilePicture"required />
+                         <span>picture</span>
+                         </label>
+                </fieldset>
                 <div className="flex row justify-start gap-10 pt-4 p-5">
                     <fieldset className="pt-2 ">
                         <label className="flex row gap-4 text-white">

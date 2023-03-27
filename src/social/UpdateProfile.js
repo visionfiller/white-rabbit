@@ -26,6 +26,7 @@ const HandleControlledInputChange = (event) => {
     newUser[event.target.name] = event.target.value
     updateUser(newUser)
 }
+
 const HandleSaveButton = () => {
     setIsLoading(true)
     if(rabbitUserObject) {

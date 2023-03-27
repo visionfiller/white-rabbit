@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { getUserById } from "./NavProvider"
+import {Dropdown} from "flowbite-react"
 
 export const CustomerNav = () => {
     const navigate = useNavigate()
     const localRabbitUser = localStorage.getItem("rabbit_user")
     const rabbitUserObject = JSON.parse(localRabbitUser)
    const [foundUser,setFoundUser] = useState({})
+   const [profilePicture, setProfilePicture] = useState("")
 
 useEffect( () => {getUserById(rabbitUserObject.id)
 .then((data) => {
@@ -14,6 +16,12 @@ useEffect( () => {getUserById(rabbitUserObject.id)
 })
     },[]
 )
+
+useEffect(()=>{
+if(foundUser.profilePicture){
+  setProfilePicture(foundUser.profilePicture)
+}
+},[foundUser])
 return (<>
 <nav className="bg-white hidden  w-full md:flex items-center border-t-8 border-b-8 border-primary ">
 <Link className="w-1/6 h-full flex flex-col items-center " to="/home">
@@ -25,7 +33,7 @@ return (<>
   <div className="group h-24 w-24  [perspective:1000px]">
     <div className="relative h-full w-full rounded-full shadow transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
       <div className="absolute inset-0">
-        <img className="h-full w-full rounded-full object-cover " src={foundUser.profilePicture} alt="user photo"/>
+        <img className="h-full w-full rounded-full object-cover " src={profilePicture} alt="user photo"/>
       </div>
 
       <div className="absolute inset-0 h-24 w-24 rounded-full bg-secondary/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
@@ -67,9 +75,37 @@ return (<>
   <div className="container flex flex-wrap items-center justify-between mx-auto">
     <Link to="/home" className="flex  items-center">
     <img src="https://i.pinimg.com/originals/9d/ea/ac/9deaacacdbc7066962eb35f4e513190a.jpg" className="h-16  mr-3 " alt="Logo" />
-        <span className="text-xl font-semibold">white rabbit.</span>
+        <span className="text-xl text-white font-semibold">white rabbit.</span>
     </Link>
-    <button data-collapse-toggle="navbar-hamburger" type="button" className="inline-flex items-center  ml-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-hamburger" aria-expanded="false">
+    <Dropdown
+    class="bg-none z-40"
+     label={<svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>}
+    >
+   
+    
+    <Dropdown.Item>
+    <Link to="/library" className="block py-2 pl-3 pr-4 text-secondary rounded " aria-current="page">Library</Link>
+  </Dropdown.Item>
+  <Dropdown.Item>
+  <Link to="/cellar" className="block py-2 pl-3 pr-4 text-secondary rounded ">Wine Cellar</Link> 
+  </Dropdown.Item>
+  <Dropdown.Item>
+  <Link to="/chat" className="block py-2 pl-3 pr-4 text-secondary rounded " >Chat With Us</Link> 
+  </Dropdown.Item>
+  <Dropdown.Item>
+  <Link to="/social" className="block py-2 pl-3 pr-4 text-secondary rounded " >Social</Link> 
+  </Dropdown.Item>
+  <Dropdown.Item>
+  <Link to="/like" className="block py-2 pl-3 pr-4 text-secondary rounded " >Will I Like It?</Link> 
+  </Dropdown.Item>
+  <Dropdown.Item>
+  <Link onClick={() => {
+                localStorage.removeItem("rabbit_user")
+                navigate("/", {replace: true})
+            }} className="block py-2 pl-3 pr-4 text-secondary rounded " >Logout</Link> 
+  </Dropdown.Item>
+</Dropdown>
+    {/* <button data-collapse-toggle="navbar-hamburger" type="button" className="inline-flex items-center  ml-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-hamburger" aria-expanded="false">
       <span className="sr-only">Open main menu</span>
       <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
     </button>
@@ -82,9 +118,9 @@ return (<>
         <Link to="/cellar" className="block py-2 pl-3 pr-4 text-secondary rounded "  aria-current="page">Wine Cellar</Link> 
         </li>
         <li>
-        <li>
         <Link to="/chat" className="block py-2 pl-3 pr-4 text-secondary rounded " >Chat With Us</Link> 
         </li>
+        <li>
         <Link to="/social" className="block py-2 pl-3 pr-4 text-secondary rounded " >Social</Link> 
         </li>
         <li>
@@ -97,7 +133,7 @@ return (<>
             }} className="block py-2 pl-3 pr-4 text-secondary rounded " >Logout</Link> 
         </li>
       </ul>
-    </div>
+    </div> */}
   </div>
 </nav>
     

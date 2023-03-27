@@ -12,7 +12,7 @@ export const WhiteRabbit = () => {
 
 		<>
 		            
-			<div className="h-full w-full bg-cover opacity-5 -z-10 fixed  bg-blur-xl bg-[url('https://i.pinimg.com/originals/49/c3/06/49c306154adc0a4ae7f45b7a68dd4d69.jpg')] " ></div>
+			<div className=" h-full w-full bg-cover opacity-5 -z-10 fixed  bg-blur-xl bg-[url('https://i.pinimg.com/originals/49/c3/06/49c306154adc0a4ae7f45b7a68dd4d69.jpg')] " ></div>
 			{/* bg-url[(`https://i.pinimg.com/originals/49/c3/06/49c306154adc0a4ae7f45b7a68dd4d69.jpg`)] */}
 			<Routes>
 				<Route path="/login" element={<Login />} />

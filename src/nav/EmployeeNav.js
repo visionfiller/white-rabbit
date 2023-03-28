@@ -74,17 +74,9 @@ export const EmployeeNav = () => {
     <Link to="/library" className="block py-2 pl-3 pr-4 text-secondary rounded " aria-current="page">Library</Link>
   </Dropdown.Item>
   <Dropdown.Item>
-  <Link to="/cellar" className="block py-2 pl-3 pr-4 text-secondary rounded ">Wine Cellar</Link> 
+    <Link to="/somm" className="block py-2 pl-3 pr-4 text-secondary rounded " aria-current="page">Mad Hatter</Link>
   </Dropdown.Item>
-  <Dropdown.Item>
-  <Link to="/chat" className="block py-2 pl-3 pr-4 text-secondary rounded " >Chat With Us</Link> 
-  </Dropdown.Item>
-  <Dropdown.Item>
-  <Link to="/social" className="block py-2 pl-3 pr-4 text-secondary rounded " >Social</Link> 
-  </Dropdown.Item>
-  <Dropdown.Item>
-  <Link to="/like" className="block py-2 pl-3 pr-4 text-secondary rounded " >Will I Like It?</Link> 
-  </Dropdown.Item>
+ 
   <Dropdown.Item>
   <Link onClick={() => {
                 localStorage.removeItem("rabbit_user")

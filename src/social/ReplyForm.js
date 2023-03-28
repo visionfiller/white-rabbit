@@ -27,7 +27,7 @@ useEffect( () => {
 
 return(<>
  <div className="fixed inset-0 z-20  backdrop-blur-sm">
- <form className="bg-white w-1/2 h-1/2 mx-auto my-10 rounded-lg border-secondary border-2 p-8">
+ <form className="bg-white md:w-1/2 md:h-1/2 mx-auto my-10 rounded-lg border-secondary border-2 p-8">
  <div className="text-right">
         <button type="button" className="text-right" onClick={(event) => closeButton(event)}>Close</button>
         </div>

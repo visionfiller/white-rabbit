@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useNavigate } from "react-router-dom"
 import { Library } from "../library/Library"
 import { WineCellar } from "../cellar/WineCellar"
 import { Home } from "../home/Home"
@@ -14,10 +14,24 @@ import { ChatWine } from "../chat/Chat"
 import { Messages } from "../social/Messages"
 import { MessageForm } from "../social/MessageForm"
 import { ReplyForm } from "../social/ReplyForm"
+import { useEffect, useState } from "react"
 
 
 export const CustomerViews = () => {
-    
+    const [user, setUser] = useState(true)
+    const navigate= useNavigate()
+
+useEffect(
+    () => {
+        if(user){
+            navigate('/home')
+        }
+
+    },[]
+)
+
+
+
     return (<div className="pt-20 md:pt-0">
 
     <Routes>

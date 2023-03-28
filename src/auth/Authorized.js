@@ -1,7 +1,8 @@
-import { Navigate, useLocation } from "react-router-dom"
+import { Navigate, useLocation, useNavigate } from "react-router-dom"
 
 export const Authorized = ({ children }) => {
     const location = useLocation()
+    const navigate = useNavigate()
 
     if (localStorage.getItem("rabbit_user")) {
         return children

@@ -85,7 +85,7 @@ export const Library = () => {
 
     return <>
         <h2 className="text-center p-6 text-secondary font-semibold text-4xl">The Library</h2>
-        <div className="flex row flex-wrap w-full fixed bottom-0 justify-evenly md:static md:justify-between md:px-10 md:items-center bg-primary text-white rounded ">
+        <div className="flex row flex-wrap w-full fixed md:static  bottom-0 justify-evenly  md:justify-between md:px-10 md:items-center bg-primary text-white rounded ">
             <div id="typeFilter" className="m-2">
 
                 <select className="text-black rounded-lg"
@@ -107,7 +107,7 @@ export const Library = () => {
                     <option key="dryness" id="Dryness" value="dryness">Dryness</option>
                 </select>
             </div>
-            <div id="favorites" className="flex row gap-2">
+            <div id="favorites" className="flex row gap-2 p-1">
                 <label>Show everyone's favorites</label>
                 <input type="checkbox" checked={showFavorites} onChange={(evt) => { HandleShowFavorites(evt) }
                 } />
@@ -119,7 +119,7 @@ export const Library = () => {
             </div>
         </div>
 
-        <div className="flex flex-col items-center w-full pb-24 -z-10 absolute md:grid md:grid-cols-5">
+        <div className="flex flex-col items-center w-full pb-24 -z-10 absolute md:static md:grid md:grid-cols-5">
             {CreateList()}
             <div className="text-center   ">
             {errorMsg && <p className="error-msg">{errorMsg}</p>}

@@ -76,7 +76,7 @@ export const Register = (props) => {
                         <span>password</span>
                     </label>
                 </fieldset>
-                <fieldset className="pt-4">
+                <fieldset className=" hidden md:block pt-4">
                 <label className="input-group input-group-md" htmlFor="profilepicture">
                     <input onChange={updateUser}
                       

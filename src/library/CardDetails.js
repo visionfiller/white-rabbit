@@ -68,15 +68,10 @@ export const CardDetails = ({ wineDetails, HandleCardClose }) => {
 
 
     return (<>
-        <div className="fixed inset-0 z-20  backdrop-blur-sm ">
-            <div className="flex row mx-auto my-auto bg-slate-100 w-4/5 h-3/5 rounded-lg border-8 border-slate-100">
-                <div className="w-1/2 my-auto">
-                    <div id="map" className="object-contain w-1/2 ">
-                        {isLoading ? ""
-                            : MyMapComponent()}
-                    </div>
-                </div>
-                <div className="w-1/2 p-4">
+        <div className="fixed inset-0 z-20 backdrop-blur-sm ">
+            <div className="md:mt-[50px] mt-[100px] overflow-y-auto flex flex-col md:flex md:flex-row mx-auto bg-slate-100 w-full h-1/2 md:h-3/4 md:w-3/4 rounded-lg border-8 border-slate-100">
+               
+                <div className="flex flex-col w-full md:w-1/2 p-4">
                     <div className="text-right">
                         <button onClick={HandleCardClose}>Close</button>
                     </div>
@@ -90,6 +85,12 @@ export const CardDetails = ({ wineDetails, HandleCardClose }) => {
                         <p className="badge bg-fifth ">{wine?.body?.density}</p>
                         <p className="badge  bg-fifth ">{wine?.acidity?.style}</p>
                         <p className="badge  bg-fifth ">{wine?.dryness?.level}</p>
+                    </div>
+                </div>
+                <div className="w-full md:w-1/2 my-auto">
+                    <div id="map" className="object-contain w-full p-2 md:w-1/2 ">
+                        {isLoading ? ""
+                            : MyMapComponent()}
                     </div>
                 </div>
             </div>

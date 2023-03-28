@@ -27,14 +27,16 @@ export const Social = () => {
 
     return (<>
         <h2 className="text-center p-6 text-secondary font-semibold text-4xl">The White Rabbit Community.</h2>
-        <div className="w-full text-center  flex row justify-center gap-10 mx-auto  ">
+        <div className="w-full text-center  flex row justify-center gap-10 mx-auto p-5 ">
             <button onClick={() => navigate("/social/updateProfile")} className="btn bg-secondary">Update Profile</button>
             <button onClick={() => navigate("messages")} className="btn bg-secondary">My Messages ( {messages.length} )</button>
         </div>
-        <div className="flex row flex-wrap justify-center  pb-10">
+        {/* <div className="fixed h-full w-full overflow-y-auto mt-10"> */}
+        <div className="h-3/4 fixed overflow-y-auto md:static flex row flex-wrap justify-center pb-24"> 
             {customers.map((customer) => {
                 return <Customer key={customer.id} customer={customer} />
             })}
+        {/* </div> */}
         </div>
     </>
     )

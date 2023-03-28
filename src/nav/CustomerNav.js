@@ -78,25 +78,25 @@ return (<>
         <span className="text-xl text-white font-semibold">white rabbit.</span>
     </Link>
     <Dropdown
-    class="bg-none z-40"
+    class="bg-none z-20"
      label={<svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>}
     >
    
     
     <Dropdown.Item>
-    <Link to="/library" className="block py-2 pl-3 pr-4 text-secondary rounded " aria-current="page">Library</Link>
+    <Link to="/library" className="block py-1 pl-3 pr-4 text-secondary rounded " aria-current="page">Library</Link>
   </Dropdown.Item>
   <Dropdown.Item>
-  <Link to="/cellar" className="block py-2 pl-3 pr-4 text-secondary rounded ">Wine Cellar</Link> 
+  <Link to="/cellar" className="block py-1 pl-3 pr-4 text-secondary rounded ">Wine Cellar</Link> 
   </Dropdown.Item>
   <Dropdown.Item>
-  <Link to="/chat" className="block py-2 pl-3 pr-4 text-secondary rounded " >Chat With Us</Link> 
+  <Link to="/chat" className="block py-1 pl-3 pr-4 text-secondary rounded " >Chat With Us</Link> 
   </Dropdown.Item>
   <Dropdown.Item>
-  <Link to="/social" className="block py-2 pl-3 pr-4 text-secondary rounded " >Social</Link> 
+  <Link to="/social" className="block py-1 pl-3 pr-4 text-secondary rounded " >Social</Link> 
   </Dropdown.Item>
   <Dropdown.Item>
-  <Link to="/like" className="block py-2 pl-3 pr-4 text-secondary rounded " >Will I Like It?</Link> 
+  <Link to="/like" className="block py-1 pl-3 pr-4 text-secondary rounded " >Will I Like It?</Link> 
   </Dropdown.Item>
   <Dropdown.Item>
   <Link onClick={() => {

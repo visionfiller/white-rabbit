@@ -1,6 +1,10 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { UploadWidget } from "../cloudinary/UploadWidget"
+
+
 import { getCustomerById, updateCustomer } from "./SocialProvider"
+
 
 export const UpdateProfile = () => {
     const[user, updateUser] = useState({})
@@ -8,7 +12,9 @@ export const UpdateProfile = () => {
     const rabbitUserObject = JSON.parse(localRabbitUser)
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate()
-
+    const [url, setURL] = useState("")
+    const [error, updateError] = useState("");
+   
     useEffect( () => {
             if(rabbitUserObject){ 
             getCustomerById(rabbitUserObject.id)
@@ -27,6 +33,18 @@ const HandleControlledInputChange = (event) => {
     updateUser(newUser)
 }
 
+function handleOnUpload(error, result, widget) {
+    if ( error ) {
+      updateError(error);
+      widget.close({
+        quiet: true
+      });
+      return;
+    }
+    setURL(result?.info?.secure_url);
+  }
+
+
 const HandleSaveButton = () => {
     setIsLoading(true)
     if(rabbitUserObject) {
@@ -35,7 +53,7 @@ const HandleSaveButton = () => {
             fullName: user.fullName,
             email: user.email,
             password: user.password,
-            profilePicture: user.profilePicture,
+            profilePicture: url,
             isStaff: false
     
         })
@@ -44,6 +62,8 @@ const HandleSaveButton = () => {
     
     
     }
+
+  
     
 return(<>
 <div className="w-full h-screen ">
@@ -71,17 +91,22 @@ return(<>
                         defaultValue={user.password}
                         type="text" id="password" className="input input-bordered input-md"
                         placeholder="new password" name="password"required />
-                       
+                    
                 </fieldset>
 
                 <fieldset className="p-4 mx-auto flex row">
-                <label className="mx-auto" htmlFor="picture">Profile Picture URL</label>
-                    <input 
+                <label className="mx-auto" htmlFor="picture">New Profile Picture</label>
+                <UploadWidget onUpload={handleOnUpload}/>
+               
+
+       
+                    {/* <input 
                 onChange={HandleControlledInputChange}
                       defaultValue={user.profilePicture}
-                        type="text" id="profilePicture" className="input input-bordered input-md"
+                        type="text"id="profilePicture" className="input input-bordered input-md"
                         placeholder="URL" name="profilePicture"required />
-                       
+                        */}
+
                 </fieldset>
                 <button className="btn bg-secondary m-4" disabled={isLoading}
           onClick={event => {

@@ -1,13 +1,26 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { UploadWidget } from "../cloudinary/UploadWidget"
 import { getUsersToCreate, getUserByEmailId} from "./UserProvider"
 
 export const Register = (props) => {
-    const [user, setUser] = useState({ isStaff: false })
+    const [user, setUser] = useState({ isStaff: false})
+    const [url, setURL] = useState("")
+    const [error, updateError] = useState("")
     let navigate = useNavigate()
 
+
+
+
     const registerNewUser = () => {
-        return getUsersToCreate(user)
+        
+        return getUsersToCreate({
+            fullName: user.fullName,
+            email: user.email,
+            password: user.password,
+            profilePicture: url,
+            isStaff: user.isStaff
+        })
             .then(createdUser => {
                 if (createdUser.hasOwnProperty("id")) {
                     localStorage.setItem("rabbit_user", JSON.stringify({
@@ -19,6 +32,26 @@ export const Register = (props) => {
                 }
             })
     }
+    function handleOnUpload(error, result, widget) {
+        if ( error ) {
+          updateError(error);
+          widget.close({
+            quiet: true
+          });
+          return;
+        }
+       
+        setURL(result?.info?.secure_url)
+        .then(() => {
+            const copy = {...user}
+            copy.profilePicture = url
+            setUser(copy)
+        })
+      
+      }
+    
+
+
 
     const handleRegister = (e) => {
         e.preventDefault()
@@ -76,14 +109,8 @@ export const Register = (props) => {
                         <span>password</span>
                     </label>
                 </fieldset>
-                <fieldset className=" hidden md:block pt-4">
-                <label className="input-group input-group-md" htmlFor="profilepicture">
-                    <input onChange={updateUser}
-                      
-                        type="text" id="profilePicture" className="input input-bordered input-md"
-                        placeholder="URL" name="profilePicture"required />
-                         <span>picture</span>
-                         </label>
+                <fieldset className="pt-4 text-left">
+                <UploadWidget onUpload={handleOnUpload}/>
                 </fieldset>
                 <div className="flex row justify-start gap-10 pt-4 p-5">
                     <fieldset className="pt-2 ">

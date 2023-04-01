@@ -80,7 +80,7 @@ export const CardDetails = ({ wineDetails, HandleCardClose }) => {
 
                     <h2 className="text-xl font-bold text-secondary">{wine?.region?.location} {wine.varietal?.name}</h2>
                     <div>Country: {wine?.region?.country}</div>
-                    <div className="text-sm font-bold">{wine?.varietal?.description}</div>
+                    <div className="text-sm font-bold p-8">{wine?.varietal?.description}</div>
                     <div className="flex row justify-evenly">
                         <p className="badge bg-fifth ">{wine?.body?.density}</p>
                         <p className="badge  bg-fifth ">{wine?.acidity?.style}</p>

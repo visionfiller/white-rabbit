@@ -84,19 +84,19 @@ return (<>
    
     
     <Dropdown.Item>
-    <Link to="/library" className="block py-1 pl-3 pr-4 text-secondary rounded " aria-current="page">Library</Link>
+    <Link to="/library" className="block  pl-3 pr-4 text-secondary rounded " aria-current="page">Library</Link>
   </Dropdown.Item>
   <Dropdown.Item>
-  <Link to="/cellar" className="block py-1 pl-3 pr-4 text-secondary rounded ">Wine Cellar</Link> 
+  <Link to="/cellar" className="block  pl-3 pr-4 text-secondary rounded ">Wine Cellar</Link> 
   </Dropdown.Item>
   <Dropdown.Item>
-  <Link to="/chat" className="block py-1 pl-3 pr-4 text-secondary rounded " >Chat With Us</Link> 
+  <Link to="/chat" className="block  pl-3 pr-4 text-secondary rounded " >Chat With Us</Link> 
   </Dropdown.Item>
   <Dropdown.Item>
-  <Link to="/social" className="block py-1 pl-3 pr-4 text-secondary rounded " >Social</Link> 
+  <Link to="/social" className="block  pl-3 pr-4 text-secondary rounded " >Social</Link> 
   </Dropdown.Item>
   <Dropdown.Item>
-  <Link to="/like" className="block py-1 pl-3 pr-4 text-secondary rounded " >Will I Like It?</Link> 
+  <Link to="/like" className="block  pl-3 pr-4 text-secondary rounded " >Will I Like It?</Link> 
   </Dropdown.Item>
   <Dropdown.Item>
   <Link onClick={() => {

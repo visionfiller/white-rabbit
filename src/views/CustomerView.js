@@ -21,14 +21,14 @@ export const CustomerViews = () => {
     const [user, setUser] = useState(true)
     const navigate= useNavigate()
 
-useEffect(
-    () => {
-        if(user){
-            navigate('/home')
-        }
+// useEffect(
+//     () => {
+//         if(user){
+//             navigate('/home')
+//         }
 
-    },[]
-)
+//     },[]
+// )
 
 
 

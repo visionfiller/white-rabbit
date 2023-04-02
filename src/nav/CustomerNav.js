@@ -23,7 +23,7 @@ if(foundUser.profilePicture){
 }
 },[foundUser])
 return (<>
-<nav className="bg-white hidden  w-full md:flex items-center border-t-8 border-b-8 border-primary ">
+<nav className="bg-white hidden justify-between w-full md:flex items-center border-t-8 border-b-8 border-primary ">
 <Link className="w-1/6 h-full flex flex-col items-center " to="/home">
       <img src="https://i.pinimg.com/originals/9d/ea/ac/9deaacacdbc7066962eb35f4e513190a.jpg" className="h-24  mr-3 " alt="Logo" />
       <span className=" text-left text-secondary text-3xl font-semibold whitespace-nowrap">white rabbit.</span>
@@ -48,7 +48,7 @@ return (<>
     </div>
 
     </div>
-    <div className=" bg-third   items-center justify-evenly flex w-full order-1" id="mobile-menu-2">
+    <div className=" bg-third items-center justify-evenly flex w-full order-1" id="mobile-menu-2">
     <ul className="w-full flex row p-8 my-6 gap-10 rounded-lg justify-evenly  ">
       <li className="transform hover:scale-125  transition ease-out duration-300 ">
       <Link to="/library" className=" block  text-white font-semibold text-xl  hover:text-primary  md:p-0" aria-current="page">Library</Link>

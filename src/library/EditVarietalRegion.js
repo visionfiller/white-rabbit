@@ -67,9 +67,10 @@ export const EditVarietalRegion = () => {
     }
 
     return (<>
+      <div className="text-right p-3"><button className="btn bg-secondary" onClick={() => navigate("/library")}>Back to Library</button></div>
         <h2 className="text-center p-6 text-secondary font-semibold text-4xl">Edit Varietal Region</h2>
         <div className="w-full h-screen flex row px-10  ">
-            <form className="rounded text-center w-1/2 h-3/4 mx-auto my-10 border-primary border-2 p-16 flex flex-col justify-evenly items-center ">
+            <form className="rounded text-center w-full md:w-1/2 h-3/4 mx-auto my-10 border-primary border-2 p-16 flex flex-col justify-evenly items-center ">
                 <h2 className="text-2xl font-semibold" >Update Information for {varietalRegion.varietal?.name} in {varietalRegion.region?.location}</h2>
                 <fieldset className="">
                     <select className="block py-2.5 px-0 text-center w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer" name="bodyId" value={varietalRegion.bodyId} onChange={HandleControlledInputChange}>

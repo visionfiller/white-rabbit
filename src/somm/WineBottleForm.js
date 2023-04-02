@@ -39,8 +39,9 @@ export const WineBottleForm = () => {
        <div className="text-right p-3"><button className="btn bg-secondary" onClick={() => navigate("/somm")}>Back to Mad Hatter</button></div>
      <h2 className="text-center p-6 text-secondary font-semibold text-4xl">Add a New Wine Bottle</h2>
        <div className="w-full h-screen flex row px-10  ">
-        <form className="rounded text-center w-full md:w-1/2 h-3/4 mx-auto my-10 border-primary border-2 p-16 flex flex-col justify-evenly items-center ">
-    <fieldset>
+        <form className="rounded text-center w-full md:w-1/2 h-3/4 mx-auto my-10 border-primary border-2 p-4 md:p-16 flex flex-col justify-evenly items-center ">
+      
+        <fieldset className="p-1 pt-4 flex row justify-start gap-14">
             <label>Name of Wine</label>
             <input 
             onChange={
@@ -49,10 +50,10 @@ export const WineBottleForm = () => {
                     copy.name = evt.target.value
                     setWineBottle(copy)
                 }}
-            className="pl-2" name="name" id="name" type="text" placeholder="e.g. Les Petit Fers"/>
+            className="block py-2.5 px-0 w-3/4 text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer" name="name" id="name" type="text" placeholder="e.g. Les Petit Fers"/>
             
         </fieldset>
-        <fieldset>
+        <fieldset className="p-1 pt-4 flex row justify-start gap-14">
             <label>Wine Bottle Image</label>
             <input 
             onChange={
@@ -61,10 +62,10 @@ export const WineBottleForm = () => {
                     copy.image = evt.target.value
                     setWineBottle(copy)
                 }}
-            className="pl-2" name="name" id="name" type="text" placeholder="image URL"/>
+            className="block py-2.5 px-0 w-3/4 text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer" name="name" id="name" type="text" placeholder="image URL"/>
             
         </fieldset>
-        <fieldset>
+        <fieldset className="p-1 pt-4 flex row justify-start gap-14">
             <label>Wine Vintage</label>
             <input 
             onChange={
@@ -73,10 +74,10 @@ export const WineBottleForm = () => {
                     copy.vintage = evt.target.value
                     setWineBottle(copy)
                 }}
-            className="pl-2" name="name" id="name" type="text" placeholder="e.g. 2019 or 2022"/>
+                className="block py-2.5 px-0 w-3/4 text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer" name="name" id="name" type="text" placeholder="e.g. 2019 or 2022"/>
             
         </fieldset>
-        <fieldset>
+        <fieldset className="p-1 pt-4 flex row justify-start gap-14">
             <label>Website URL</label>
             <input 
             onChange={
@@ -85,12 +86,13 @@ export const WineBottleForm = () => {
                     copy.link = evt.target.value
                     setWineBottle(copy)
                 }}
-            className="pl-2" name="name" id="name" type="text" placeholder="e.g.https://www.wines.com"/>
+                className="block py-2.5 px-0 w-3/4 text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer" name="name" id="name" type="text" placeholder="e.g.https://www.wines.com"/>
             
         </fieldset>
-        <fieldset>
+        <fieldset className="p-1 pt-4 flex row justify-start gap-14">
+        <label>What type of wine?</label>
             <select
-                    className="w-full"
+                    className="block py-2.5 px-0 w-1/2 text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
                         id="varietalRegion"
                         onChange={
                             (evt) => {

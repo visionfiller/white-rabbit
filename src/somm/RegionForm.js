@@ -19,12 +19,12 @@ export const RegionForm = ({ HandleRegionFormClose }) => {
 
     return (<>
         <div className="fixed inset-0 z-20  backdrop-blur-sm ">
-            <form className=" bg-white w-1/2 h-2/3 mx-auto my-10 rounded-lg border-secondary border-2 p-10   ">
+        <form className=" bg-white w-4/5 h-3/4 md:w-1/2 md:h-2/3 mx-auto my-10 rounded-lg border-secondary border-2 p-10   ">
                 <div className="flex row justify-between">
                     <h2 className="text-3xl font-semibold text-right">New Region</h2>
                     <button type="button" className="text-right text-2xl" onClick={(event) => HandleRegionFormClose(event)}>X</button>
                 </div>
-                <div className="flex row h-full pt-0 p-6">
+                <div className="flex flex-col h-full pt-0 p-4 items-center md:p-6">
                     <div className="flex flex-col justify-evenly items-center h-full text-secondary">
                         <fieldset className="p-1 pt-4 flex row justify-start gap-14">
                             <label className="w-1/2">New Region Location</label>

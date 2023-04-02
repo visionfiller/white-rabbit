@@ -20,6 +20,6 @@ export const UploadWidget =({onUpload}) => {
         },[]
     )
     return (
-        <button className="widget-btn btn" onClick={(event) => {event.preventDefault(); widgetRef.current.open()}} > Upload Profile Picture</button>
+        <button className="widget-btn btn bg-secondary" onClick={(event) => {event.preventDefault(); widgetRef.current.open()}} > Upload Profile Picture</button>
     )
 }

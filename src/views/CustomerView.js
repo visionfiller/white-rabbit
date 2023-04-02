@@ -1,40 +1,22 @@
-import { Route, Routes, useNavigate } from "react-router-dom"
+import {  Route, Routes } from "react-router-dom"
 import { Library } from "../library/Library"
-import { WineCellar } from "../cellar/WineCellar"
 import { Home } from "../home/Home"
-import { WillILikeIt, WillILikeItSearchContainer } from "../likeit/LikeItContainer"
-import { SearchedContainer } from "../home/SearchContainer"
+import {  WillILikeItSearchContainer } from "../likeit/LikeItContainer"
 import { CardDetails } from "../library/CardDetails"
 import { CellarContainer } from "../cellar/CellarContainer"
-import { Probability } from "../likeit/Probability"
 import { Social } from "../social/Social"
 import { CustomerDetails } from "../social/CustomerDetails"
 import { UpdateProfile } from "../social/UpdateProfile"
 import { ChatWine } from "../chat/Chat"
 import { Messages } from "../social/Messages"
-import { MessageForm } from "../social/MessageForm"
-import { ReplyForm } from "../social/ReplyForm"
-import { useEffect, useState } from "react"
 
 
 export const CustomerViews = () => {
-    const [user, setUser] = useState(true)
-    const navigate= useNavigate()
-
-// useEffect(
-//     () => {
-//         if(user){
-//             navigate('/home')
-//         }
-
-//     },[]
-// )
-
-
-
+ 
     return (<div className="pt-20 md:pt-0">
 
     <Routes>
+        <Route path="/" element={ <Home />} />
         <Route path="/home" element={ <Home />} />
         <Route path="/library" element={ <Library/>} />
         <Route path="/chat" element={ <ChatWine/>} />
@@ -43,8 +25,6 @@ export const CustomerViews = () => {
         <Route path="/social/updateProfile" element={ <UpdateProfile/>} />
         <Route path="/social/details/:customerId" element={ <CustomerDetails />} />
         <Route path="/social/messages" element={<Messages />} />
-        {/* <Route path="/social/messageForm/:customerId" element={<MessageForm />} /> */}
-        {/* <Route path="/social/reply/:customerId" element={<ReplyForm />} /> */}
         <Route path="/cellar" element={ <CellarContainer />} />
         <Route path="/like" element={ <WillILikeItSearchContainer />} />
        

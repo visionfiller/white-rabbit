@@ -29,12 +29,12 @@ export const VarietalForm = ({ HandleVarietalFormClose }) => {
 
     return (<>
         <div className="fixed inset-0 z-20  backdrop-blur-sm ">
-            <form className=" bg-white w-1/2 h-2/3 mx-auto my-10 rounded-lg border-secondary border-2 p-10   ">
+            <form className=" bg-white w-4/5 h-3/4 md:w-1/2 md:h-2/3 mx-auto my-10 rounded-lg border-secondary border-2 p-10   ">
                 <div className="flex row justify-between">
                     <h2 className="text-3xl font-semibold text-right">New Varietal</h2>
                     <button type="button" className="text-right text-2xl" onClick={(event) => HandleVarietalFormClose(event)}>X</button>
                 </div>
-                <div className="flex row h-full pt-0 p-6">
+                <div className="flex flex-col  h-full pt-0 p-2 md:p-6">
                     <div className="flex flex-col justify-evenly items-start h-full text-secondary">
                         <fieldset className="p-1 pt-4 flex row justify-start gap-14">
                             <label>Name</label>
@@ -57,7 +57,7 @@ export const VarietalForm = ({ HandleVarietalFormClose }) => {
                                 className="block py-2.5 px-0 w-1/2 text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer"
                                 name="image" id="image" placeholder=" e.g a jpeg or png file" />
                         </fieldset>
-                        <fieldset className="p-1 pt-4 flex row justify-start gap-5">
+                        <fieldset className="p-1 pt-4 flex flex-col md:flex-row justify-start gap-5">
                             <label>Description</label>
                             <textarea
                                 onChange={(evt) => {

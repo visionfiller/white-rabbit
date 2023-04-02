@@ -42,31 +42,31 @@ export const Login = () => {
             <div className="p-10 w-full">
             <span className="text-8xl text-white lowercase opacity-80 w-full" >White Rabbit.</span>
             <section className="w-full h-full relative">
-                <form className=" m-auto form-control text-right" onSubmit={handleLogin}>
-                    <fieldset className="form-control pt-2">
-                        <label className="input-group input-group-md" htmlFor="inputEmail">
+                <form className="m-auto form-control text-center" onSubmit={handleLogin}>
+                    <fieldset className=" pt-4 flex row justify-evenly items-center">
+                    <label className="text-white text-lg" >email</label>
                             <input type="email"
                                 value={email}
                                 onChange={evt => set(evt.target.value)}
-                                className="input input-bordered input-md"
+                                className="block py-2.5 px-0 w-1/2 text-sm text-white bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer"
                                 placeholder=""
                                 required autoFocus />
-                            <span className="">email</span>
-                        </label>
+                           
+                          
                     </fieldset>
-                    <fieldset className="form-control pt-8">
-                        <label className="input-group input-group-md" htmlFor="password">
+                    <fieldset className="p-1 pt-4 flex row justify-evenly items-center ">
+                    
+                    <label className="text-white text-lg" >password</label>
                             <input type="password"
                                 value={password}
                                 onChange={evt => setPassword(evt.target.value)}
-                                className="input input-bordered input-md"
+                                className="block py-2.5 px-0 w-1/2 text-sm text-white bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer"
                                 placeholder=""
                                 required autoFocus />
-                            <span>password</span>
-                        </label>
+                          
                     </fieldset>
-                    <fieldset className="pt-8 flex row items-center justify-start gap-10">
-                        <button className="btn bg-secondary" type="submit">
+                    <fieldset className="pt-8 flex row  items-center justify-evenly gap-10">
+                        <button className="btn  bg-secondary" type="submit">
                             Sign in
                         </button>
                         <Link className="inline-block text-white" to="/register">Is this your first visit?</Link>

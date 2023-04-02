@@ -17,6 +17,7 @@ export const WhiteRabbit = () => {
 			<Routes>
 				<Route path="/login" element={<Login />} />
 				<Route path="/register" element={<Register />} />
+		
 				<Route path="*" element={
 				<Authorized>
 					<>
@@ -30,6 +31,7 @@ export const WhiteRabbit = () => {
 				</Authorized>
 
 			} />
+			
 			</Routes>
 
 		</>

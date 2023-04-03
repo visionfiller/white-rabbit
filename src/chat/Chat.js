@@ -15,6 +15,9 @@ export const ChatWine = () => {
         const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
         if (newWindow) newWindow.opener = null;
       };
+
+
+  
     return (<>
         <div className="w-full h-full flex flex-col md:flex md:flex-row p-24">
 
@@ -25,6 +28,7 @@ export const ChatWine = () => {
                     <Link href="#" onClick = {() => openInNewTab("https://winefolly.com/")}> <img className="w-auto h-16 md:h-24 md:w-24" src="https://ww1.prweb.com/prfiles/2021/02/24/18071870/wine-folly-classic-logo.png" /></Link>
                     <Link href="#" onClick = {() => openInNewTab("https://www.wineenthusiast.com/")}><img className="w-auto h-16 md:h-24 md:w-auto m-8 text-center" src="https://www.freemanwinery.com/assets/upload/images/logos/.thumbs/publications-Wine-Enthusiast-logo-800.0.0.png" /></Link>
                     <Link href="#" onClick = {() => openInNewTab("https://www.wine-searcher.com/")}><img className="w-auto h-16 md:h-24 md:w-auto m-8 text-center" src="https://www.openimagination.co.uk/sites/default/files/styles/partner_logo/public/wine-searcher-logo.png?itok=t9NmDzy9" /></Link>
+                    <Link href="#" onClick= {() => openInNewTab("https://drizly.com/")}><img className="w-auto h-16 md:h-24 md:w-24"src="https://bevalcinsights.com/wp-content/uploads/2022/06/cropped-Drizly_Logo_RGB_Red.png"/></Link>
                 </div>
 
             </div>
@@ -44,6 +48,7 @@ export const ChatWine = () => {
                 <div className="relative z-0 w-full mb-6 group text-center"><button onClick={() => CreateNewMessage(message).then(navigate("/home"))} className="btn bg-secondary mx-auto">Send</button></div>
 
             </form>
+
 
         </div>
 

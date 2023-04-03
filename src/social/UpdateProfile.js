@@ -14,6 +14,7 @@ export const UpdateProfile = () => {
     const navigate = useNavigate()
     const [url, setURL] = useState("")
     const [error, updateError] = useState("");
+    const [profilePicture, setProfilePicture] =useState(<></>)
    
     useEffect( () => {
             if(rabbitUserObject){ 
@@ -41,9 +42,23 @@ function handleOnUpload(error, result, widget) {
       });
       return;
     }
-    setURL(result?.info?.secure_url);
+    setURL(result?.info?.secure_url)
+   
   }
 
+  useEffect(
+    () => {
+        if(url !== ""){
+            const copy = {...user}
+            copy.profilePicture = url
+            updateUser(copy)
+           
+            
+            }
+
+
+    },[url]
+  )
 
 const HandleSaveButton = () => {
     setIsLoading(true)
@@ -94,8 +109,10 @@ return(<>
                     
                 </fieldset>
 
-                <fieldset className="p-4 mx-auto flex row">
-                <label className="mx-auto" htmlFor="picture">New Profile Picture</label>
+                <fieldset className="p-4 mx-auto flex row justify-evenly items-center">
+                {user.profilePicture && url === "" ? <img className="h-1/3 w-1/3" src={user.profilePicture}/>
+                :  <img className="h-1/3 w-1/3" src={url}/>}
+                
                 <UploadWidget onUpload={handleOnUpload}/>
                
 

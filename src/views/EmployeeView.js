@@ -19,7 +19,7 @@ import { WineList } from "../somm/WineBottleList"
 export const EmployeeViews = () => {
     return (<div className="pt-20 md:pt-0">
     <Routes>
-    <Route path="/" element={ <Home />} />
+    <Route path="/" element={ <Somm />} />
        <Route path="/home" element={ <Home />} />
        <Route path="/library/details/:varietalRegionId" element={ <CardDetails />} />
         <Route path="/library" element={ <Library/>} />

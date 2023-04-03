@@ -51,7 +51,7 @@ return (<>
     <div className=" bg-third items-center justify-evenly flex w-full order-1" id="mobile-menu-2">
     <ul className="w-full flex row p-8 my-6 gap-10 rounded-lg justify-evenly  ">
       <li className="transform hover:scale-125  transition ease-out duration-300 ">
-      <Link to="/library" className=" block  text-white font-semibold text-xl  hover:text-primary  md:p-0" aria-current="page">Library</Link>
+      <Link to="/library" className=" block active:underline text-white font-semibold text-xl  hover:text-primary  md:p-0" aria-current="page">Library</Link>
       </li>
      <li className="transform hover:scale-125  transition ease-out duration-300">
       <Link to="/cellar" className="block py-2  text-white font-semibold text-xl hover:text-primary md:p-0"  aria-current="page">Wine Cellar</Link>

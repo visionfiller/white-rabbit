@@ -13,7 +13,7 @@ export const LoginVideo = ({HandleClose}) => {
       
       title='video'
   />
-  <img className="h-screen w-screen object-cover  md:hidden" src="https://ih0.redbubble.net/image.347725011.4219/flat%2c800x800%2c070%2cf.jpg"/>
+  <img className="h-full w-full object-cover  md:hidden" src="https://ih0.redbubble.net/image.347725011.4219/flat%2c800x800%2c070%2cf.jpg"/>
       {/* <iframe autoPlay muted src="./videos/video.mp4" type="video/mp4"className="h-screen w-screen object-cover"/> */}
 
   

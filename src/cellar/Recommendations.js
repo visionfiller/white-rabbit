@@ -34,7 +34,7 @@ export const Recommendations = ({ favorites }) => {
     return (<>
         <div className="flex flex-col w-full mr-8">
            
-                <h2 className="mx-auto text-2xl text-secondary font-semibold  ">Try these different varietal regions!</h2>
+                <h2 className="mx-auto text-2xl text-secondary font-semibold  ">Try these different varietals!</h2>
             
             <div className="flex  w-full p-10 justify-evenly">
                 <div className="w-full md:w-1/2 flex flex-col  flex-wrap  ">

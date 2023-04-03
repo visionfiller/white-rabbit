@@ -86,7 +86,7 @@ export const LikeItSearchedList = ({ searchTermStateVarietal, searchTermStateReg
         let wineAverage = (bodyPercentage + drynessPercentage + acidityPercentage) / 3
 
         return (<div className="h-full p-10 text-secondary">
-            <div className="text-2xl">{foundWine.region.location},{foundWine.region.country} - {foundWine.varietal.name}</div>
+            <div className="text-2xl">{foundWine.region.location}, {foundWine.region.country}  {foundWine.varietal.name}</div>
             <h2>Matched percentage to your favorites</h2>
             <div>Body: {parseFloat(bodyPercentage * 100).toFixed(0)}% </div>
             <div>Dryness: {parseFloat(drynessPercentage * 100).toFixed(0)}% </div>
@@ -107,7 +107,7 @@ export const LikeItSearchedList = ({ searchTermStateVarietal, searchTermStateReg
 
         {probability && foundWine ? calculatePercentage(foundWine)
             : ""}
-        {probability && foundWine ? <button onClick={(event) => HandleCardClick(event, foundWine)} className=""><img src="https://cdn-icons-png.flaticon.com/512/3698/3698569.png" /><span className="btn btn-xs bg-primary text-white m-2">Tell me more!</span>
+        {probability && foundWine ? <button onClick={(event) => HandleCardClick(event, foundWine)} className=""><img className="w-1/2 mx-auto"src="https://cdn-icons-png.flaticon.com/512/3698/3698569.png" /><span className="btn  bg-primary text-white m-2">Tell me more!</span>
         </button>
             : ""}
         {cardDetails ? <CardDetails HandleCardClose={HandleCardClose} wineDetails={foundDetails} />

@@ -14,8 +14,8 @@ export const MessageForm = ({closeButton,foundCustomer}) => {
 
     return(<>
     
-        <div className="fixed inset-0 z-20  backdrop-blur-sm ">
-        <form className="bg-white w-full h-1/2 md:w-1/2 md:h-1/2 mx-auto my-10 rounded-lg border-secondary border-2 p-8">
+        <div className="fixed inset-0 z-20 w-full backdrop-blur-sm ">
+        <form className="bg-white w-4/5 h-1/2 md:w-1/2 md:h-1/2 mx-auto my-10 rounded-lg border-secondary border-2 p-8">
             <div className="text-right pt-0 mt-0 text-2xl ">
         <button type="button" className="text-right" onClick={(event) => closeButton(event)}>X</button>
         </div>

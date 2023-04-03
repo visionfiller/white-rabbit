@@ -71,7 +71,7 @@ export const Library = () => {
     };
 
     const CreateList = () => {
-        return filteredWines.map(wine => <LibraryCard wine={wine} />)
+        return filteredWines.map(wine => <LibraryCard key={wine.id} wine={wine} />)
 
     }
     const HandleShowFavorites = (event) => {
@@ -108,18 +108,18 @@ export const Library = () => {
                 </select>
             </div>
             {rabbitUserObject.staff ? ""
-            : <>
+            : <div className="flex row gap-5 items-center">
             <div id="favorites" className="flex row gap-2 p-1">
                 <label>Show everyone's favorites</label>
-                <input type="checkbox" checked={showFavorites} onChange={(evt) => { HandleShowFavorites(evt) }
+                <input className="text-primary focus:ring-primary"type="checkbox" checked={showFavorites} onChange={(evt) => { HandleShowFavorites(evt) }
                 } />
             </div>
             <div className="flex row gap-2">
                 <label>Only show my favorites</label>
-                <input type="checkbox" checked={showMyFavorites} onChange={(evt) => { HandleShowMyFavorites(evt) }} />
+                <input className="text-primary focus:ring-primary" type="checkbox" checked={showMyFavorites} onChange={(evt) => { HandleShowMyFavorites(evt) }} />
 
             </div>
-            </>}
+            </div>}
         </div>
   
         <div className="flex flex-col items-center w-full pb-24 -z-10 absolute md:static md:grid md:grid-cols-5">

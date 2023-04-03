@@ -15,7 +15,7 @@ export const WineList =({wineBottles, varietalRegions,findVarietal, findRegion, 
     <div className="grid grid-cols-2 w-full ">
 
     {wineBottles.map((bottle) => {
-        return  <Link className="flex row items-center justify-center p-8 text-center bg-white border-b border-gray-200 rounded-t-lg md:rounded-t-none md:rounded-tl-lg md:border-r dark:bg-gray-800 dark:border-gray-700" href="#" onClick = {() => openInNewTab(bottle?.link)}><figure key={bottle.id} className="">
+        return  <Link key={bottle.id} className="flex row items-center justify-center p-8 text-center bg-white border-b border-gray-200 rounded-t-lg md:rounded-t-none md:rounded-tl-lg md:border-r dark:bg-gray-800 dark:border-gray-700" href="#" onClick = {() => openInNewTab(bottle?.link)}><figure key={bottle.id} className="">
     <blockquote className="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
     <div key={bottle?.id} className="text-lg font-semibold text-gray-900 dark:text-white">{bottle.name}</div>
     

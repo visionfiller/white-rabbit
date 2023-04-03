@@ -65,17 +65,26 @@ export const CardDetails = ({ wineDetails, HandleCardClose }) => {
         else { return <button className="btn-sm btn bg-secondary " onClick={() => addToFavorites(wineObject).then(() => getFavorites(rabbitUserObject.id).then((data) => setFavorites(data)))}>Add to favorites</button> }
 
     }
+    const openInNewTab = (url) => {
+        const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+        if (newWindow) newWindow.opener = null;
+    };
 
-
+    const FindWineByName = (name) => {
+        let url = `https://drizly.com/search?q=${name}`
+        return url
+    }
+    
     return (<>
         <div className="fixed inset-0 z-20 backdrop-blur-sm ">
             
-            <div className="m-6 md:mt-[50px] mt-[100px] overflow-y-auto flex flex-col md:flex md:flex-row mx-auto bg-slate-100 w-full h-1/2 md:h-3/4 md:w-3/4 rounded-lg border-2 border-primary">
-               
+            <div className="p-2 m-6 md:mt-[50px] mt-[150px] overflow-y-auto flex flex-col md:flex md:flex-row mx-auto bg-slate-100 w-full h-1/2 md:h-3/4 md:w-3/4 rounded-lg border-2 border-primary">
+               <button onClick={HandleCardClose} className="p-2 text-2xl font-semibold md:hidden text-right">X</button>
                 <div className="flex flex-col w-full md:w-1/2 p-4">
                     
                         
-                  <div className="mx-auto p-4">
+                  <div className="mx-auto p-2">
+                    <button onClick={() => openInNewTab(FindWineByName(wine.varietal.name))} className="mr-5 bg-red-700 btn btn-sm text-white">Find on Drizzly</button>
                     {rabbitUserObject.staff ? ""
                         : IsFavorite(wine)}
                     </div>
@@ -88,14 +97,14 @@ export const CardDetails = ({ wineDetails, HandleCardClose }) => {
                         <p className="badge  bg-fifth ">{wine?.dryness?.level}</p>
                     </div>
                 </div>
-                <div className="w-full p-8 m-8 md:w-1/2  my-auto">
-                    <div id="map" className="object-contain w-full p-2 md:w-1/2 ">
+                <div className="w-3/4 md:p-8 md:m-8 md:w-1/2  my-auto">
+                    <div id="map" className="object-cover w-full md:p-2 md:w-1/2 ">
                         {isLoading ? ""
                             : MyMapComponent()}
                     </div>
                 </div>
-                <div className=" text-right p-4">
-                            <button className="text-right font-semibold"onClick={HandleCardClose}>X</button>
+                <div className="hidden md:block text-right p-2">
+                            <button className="text-right text-2xl font-semibold"onClick={HandleCardClose}>X</button>
                             </div>
             </div>
             

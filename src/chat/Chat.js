@@ -16,7 +16,7 @@ export const ChatWine = () => {
         if (newWindow) newWindow.opener = null;
       };
     return (<>
-        <div className="w-full h-screen flex flex-col md:flex md:flex-row p-8">
+        <div className="w-full h-full flex flex-col md:flex md:flex-row p-24">
 
             <div className="w-full mx-auto p-8 flex flex-row md:w-1/2 md:flex-col">
                 <h2 className="my-auto md:my-0 text-2xl font-semibold text-secondary underline text-center">Check these guys out for more wine info!</h2>

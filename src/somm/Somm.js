@@ -99,7 +99,7 @@ export const Somm = () => {
             </div>
             {wineButton ? <WineList varietalRegions={varietalRegions} wineBottles={wineBottles} findRegion={findRegion} findVarietal={findVarietal} openInNewTab={openInNewTab} HandleWineClose={HandleWineClose} />
                 : ""}
-            <div className="md:grid md:grid-cols-2 md:p-24">
+            <div className="md:grid md:grid-cols-2 md:p-16 md:pr-0">
                 <Link className="md:border-b-2 md:border-r-2 border-secondary" to="/somm/createVarietalRegion">
                     <img className=" w-3/4 h-3/4 mx-auto" src="https://th.bing.com/th/id/R.9bacebdd9ed8ea8b3f3b8fe496bbec67?rik=xYCoMrSb3nMLDA&riu=http%3a%2f%2fwww.clker.com%2fcliparts%2f4%2f2%2f1%2fe%2f1197104269542805265PanamaG_French_outline.svg.hi.png&ehk=87yZWE1OvqaEcmAJT4KRka80DBEBxrsZsvF8joayECc%3d&risl=&pid=ImgRaw&r=0" />
                     <div className="text-center p-4 font-semibold">Assign a new varietal region</div>

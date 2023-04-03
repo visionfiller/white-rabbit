@@ -46,7 +46,7 @@ const handleDelete = (rabbitUserObject, wine) => {
  
 return (<>
     <div className="w-full mr-auto ml-auto h-full m-8 ">
-    <div className="carousel carousel-center p-6 gap-10 h-full bg-third border-b-4 border-secondary">
+    <div className="carousel carousel-center p-6 gap-10 h-full bg-third border-b-4 border-primary">
    {varietalRegions.map((wine) => {
     return  <div key={wine.id} className="static card carousel-item w-64 h-64 rounded-sm bg-slate-100 shadow-inner p-4 m-2">
     <div className="text-center text-secondary font-semibold">{wine?.region?.location} {wine.varietal?.name}</div>

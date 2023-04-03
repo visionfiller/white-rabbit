@@ -54,14 +54,14 @@ export const CustomerDetails = ({ }) => {
     return (<>
         {rabbitUserObject.staff ? <div className="text-right p-3"><button className="btn bg-secondary" onClick={() => navigate("/somm")}>Back to Mad Hatter</button></div>
             : <div className="text-right p-3"><button className="btn bg-secondary" onClick={() => navigate("/social")}>Back to WR Community</button></div>}
-        <div className="text-4xl text-center p-8">{foundCustomer.fullName}'s Favorite Wines</div>
-        <div className="w-full text-center p-10 flex row justify-center gap-10">
+        <h2 className="text-4xl text-center pb-4">{foundCustomer.fullName}'s Favorite Wines</h2>
+        <div className="w-full text-center  flex row justify-center gap-10">
             <button onClick={(event) => HandleMessageClick(event)} className="btn bg-secondary">Send {foundCustomer.fullName} a message</button>
             {messageForm ? <MessageForm foundCustomer={foundCustomer} closeButton={HandleMessageClose} />
                 : ""}
         </div>
-        <div className="w-screen">
-        <div className=" flex flex-col md:grid md:grid-cols-3 content-around w-screen p-10">
+        <div className="w-screen p-4">
+        <div className="fixed md:static overflow-y-auto h-3/4  flex flex-col md:grid md:grid-cols-4 content-around w-screen p-10">
             {varietalRegions.map((wine) => {
                 return <div key={wine.id} className="card w-64 h-64 bg-slate-200 shadow-xl m-4">
                     <div className="card-body p-2 m-2 h-full ">

@@ -10,21 +10,35 @@ A digital wine sommelier where the admin user can submit a wine through a form t
 
 ### Dependencies
 
-* This app uses react, tailwindcss, daisyui, leaflet, and react-leaflet
-* 
+* [ReactJS](https://react.dev/)
+* [TailwindCSS](https://tailwindcss.com/docs/guides/create-react-app)
+* [DaisyUI](https://daisyui.com/)
+* [Cloudinary](https://cloudinary.com/documentation/react_quick_start)
+* [React-Leaflet](https://react-leaflet.js.org/)
+* [LeafletJS](https://leafletjs.com/)
+* [FlowbiteUI](https://flowbite.com/)
+* [Flowbite-React](https://flowbite-react.com/)
 
-### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
 
 ### Executing program
 
 * How to run the program
 * 'npm start' Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-* 'json-server database.json -p 8088 -w' serve the whiterabbit-api on local json server
 
+### Mobile View
+
+<img width="319" alt="Screen Shot 2023-04-03 at 11 04 11 AM" src="https://user-images.githubusercontent.com/119541686/229569268-757b9c90-fdca-42fb-8a9f-def916307253.png">
+
+### Desktop View
+<img width="1497" alt="Screen Shot 2023-04-03 at 11 03 50 AM" src="https://user-images.githubusercontent.com/119541686/229569353-519aa3dc-d8a8-4378-9073-bf873fbfbb60.png">
+
+<img width="1133" alt="Screen Shot 2023-04-03 at 11 04 26 AM" src="https://user-images.githubusercontent.com/119541686/229569371-dde246e6-8ad9-46dc-8543-861d3a4ef9fa.png">
+
+### Public Access
+* Deployed using [Digital Ocean ](https://cloud.digitalocean.com/login)
+* [White Rabbit ](https://white-rabbit.live)
 
 
 ## Authors
